@@ -1,0 +1,45 @@
+[日志] 本次输出已保存到: d:\HYJ_projiect\Pepper\Fruit_picker_project\testapi\logs\lift_api_20260424_174026.log
+[日志] 参数: Namespace(host='169.254.128.2', port=5480, user='admin', password='123456', timeout=10.0, sleep=1.0, only=None, debug_file=False)
+[硬件模块] 升降平台初始化完毕 (endpoint: http://169.254.128.2:5480/woosh/ros/CallAction)
+
+[TEST] 开始测试: move_level_3
+[升降 API] 请求升降机构3，height=0.1...
+[升降 API] 发送动作: {"lift_control3": {"execute_mode": 1, "height": 0.1, "speed": 0.03, "action": 1}}
+[升降 API] 动作响应: {"status": 200, "reason": "OK", "data": {"body": {"liftControl3": {"action": 1, "executeMode": 1, "flags": 0, "height": 0.1, "speed": 0.03}}, "msg": "Request succeed", "ok": true, "timestamp": 1777023629208, "type": "woosh.ros.CallAction"}, "raw": "{\"body\":{\"liftControl3\":{\"action\":1,\"executeMode\":1,\"flags\":0,\"height\":0.1,\"speed\":0.03}},\"msg\":\"Request succeed\",\"ok\":true,\"timestamp\":1777023629208,\"type\":\"woosh.ros.CallAction\"}"}
+[升降 API] 未找到升降动作反馈，连续次数: 1
+[升降 API] 未找到升降动作反馈，连续次数: 2
+[升降 API] 未找到升降动作反馈，连续次数: 3
+[升降 API] 连续未找到升降反馈，认为动作窗口已结束
+
+===== move_level_3 =====
+{
+  "status": -1,
+  "data": {
+    "body": {
+      "fbs": []
+    },
+    "msg": "Request succeed",
+    "ok": true,
+    "timestamp": 1777023631294,
+    "type": "woosh.ros.Feedbacks"
+  },
+  "raw": "{\"body\":{\"fbs\":[]},\"msg\":\"Request succeed\",\"ok\":true,\"timestamp\":1777023631294,\"type\":\"woosh.ros.Feedbacks\"}"
+}
+[TEST] 当前记录高度: 0.0
+
+[TEST] 开始测试: reset_to_bottom
+[升降 API] 升降平台正在降至最低点...
+[升降 API] 请求升降机构3，height=0.05...
+[升降 API] 发送动作: {"lift_control3": {"execute_mode": 1, "height": 0.05, "speed": 0.03, "action": 1}}
+[升降 API] 动作响应: {"status": 200, "reason": "OK", "data": {"body": {"liftControl3": {"action": 1, "executeMode": 1, "flags": 0, "height": 0.05, "speed": 0.03}}, "msg": "Request succeed", "ok": true, "timestamp": 1777023632319, "type": "woosh.ros.CallAction"}, "raw": "{\"body\":{\"liftControl3\":{\"action\":1,\"executeMode\":1,\"flags\":0,\"height\":0.05,\"speed\":0.03}},\"msg\":\"Request succeed\",\"ok\":true,\"timestamp\":1777023632319,\"type\":\"woosh.ros.CallAction\"}"}
+[升降 API] 未找到升降动作反馈，连续次数: 1
+[升降 API] 执行中，目标高度: 0.05m
+[升降 API] 执行中，目标高度: 0.05m
+[升降 API] 执行中，目标高度: 0.05m
+[升降 API] 未找到升降动作反馈，连续次数: 2
+[升降 API] 未找到升降动作反馈，连续次数: 3
+[升降 API] 连续未找到升降反馈，认为动作窗口已结束
+[升降 API] 已回到底部。
+[TEST] reset_to_bottom 执行完成，无返回值
+[TEST] 当前记录高度: 0.05
+[TEST] 升降机构 API 测试结束

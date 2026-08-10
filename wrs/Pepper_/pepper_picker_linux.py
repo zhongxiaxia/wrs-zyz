@@ -1,0 +1,983 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Time : 2026/04/19
+
+
+import os
+import importlib.util
+import sys
+
+# OpenCV 若带 Qt 后端，会在 site-packages/cv2/qt/fonts 找字体；该目录常为空，导致 QFontDatabase 刷屏。
+# 部分构建会忽略 QT_QPA_FONTDIR，因此在 import cv2 之前向 cv2/qt/fonts 链入系统字体更可靠。
+if not os.environ.get("QT_QPA_FONTDIR"):
+    for _qt_font in (
+        "/usr/share/fonts/truetype/dejavu",
+        "/usr/share/fonts/truetype/liberation",
+        "/usr/share/fonts/truetype/noto",
+        "/usr/share/fonts",
+    ):
+        if os.path.isdir(_qt_font):
+            os.environ["QT_QPA_FONTDIR"] = _qt_font
+            break
+
+
+def _prepare_cv2_qt_fonts() -> None:
+    """在 cv2 加载 Qt 插件前，把系统 TTF 链到 cv2/qt/fonts（不复制文件，仅 symlink）。"""
+    try:
+        spec = importlib.util.find_spec("cv2")
+        if spec is None:
+            return
+        cv2_root = None
+        locs = getattr(spec, "submodule_search_locations", None) or ()
+        if locs:
+            cv2_root = locs[0]
+        elif getattr(spec, "origin", None):
+            cv2_root = os.path.dirname(spec.origin)
+            if os.path.basename(cv2_root) != "cv2":
+                alt = os.path.join(cv2_root, "cv2")
+                if os.path.isdir(alt):
+                    cv2_root = alt
+        if not cv2_root or not os.path.isdir(cv2_root):
+            py = f"python{sys.version_info.major}.{sys.version_info.minor}"
+            for lib in ("lib", "lib64"):
+                alt = os.path.join(sys.prefix, lib, py, "site-packages", "cv2")
+                if os.path.isdir(alt):
+                    cv2_root = alt
+                    break
+        if not cv2_root or not os.path.isdir(cv2_root):
+            return
+        qt_fonts = os.path.join(cv2_root, "qt", "fonts")
+        for dejavu in (
+            "/usr/share/fonts/truetype/dejavu",
+            "/usr/share/fonts/truetype/liberation",
+            "/usr/share/fonts/truetype/noto",
+        ):
+            if not os.path.isdir(dejavu):
+                continue
+            try:
+                os.makedirs(qt_fonts, exist_ok=True)
+            except OSError:
+                return
+            for name in os.listdir(dejavu):
+                low = name.lower()
+                if not (low.endswith(".ttf") or low.endswith(".otf") or low.endswith(".ttc")):
+                    continue
+                src = os.path.join(dejavu, name)
+                dst = os.path.join(qt_fonts, name)
+                if os.path.lexists(dst):
+                    continue
+                try:
+                    os.symlink(os.path.realpath(src), dst)
+                except OSError:
+                    pass
+            return
+    except Exception:
+        return
+
+
+_prepare_cv2_qt_fonts()
+
+import numpy as np
+import time
+import cv2
+import json
+from pathlib import Path
+import wrs.visualization.panda.world as wd
+import wrs.basis.robot_math as rm
+import wrs.modeling.geometric_model as mgm
+import wrs.modeling.collision_model as mcm
+import wrs.motion.probabilistic.rrt_connect as rrtc
+import wrs.motion.primitives.approach_depart_planner as adp
+from wrs.robot_sim.robots.realman.realman_single_arm import Realman
+from wrs.robot_con.realman.realman import RealmanArmController
+import pyrealsense2 as rs
+from wrs.Pepper.Grapper.Grapper import ClawController
+from wrs.Pepper.vision_io import safe_imshow
+
+
+base = wd.World(cam_pos=rm.vec(2, 0, 1), lookat_pos=rm.vec(0, 0, 0.5))
+mgm.gen_frame().attach_to(base)
+
+
+_WRS_ROOT = Path(__file__).resolve().parents[1]
+_PEPPER_DIR = _WRS_ROOT / "Pepper"  #_PEPPER_DIR / "best.pt" 这里放的是yolo权重的模型,需要改成自己的
+_PEPPER_NBV_DIR = _WRS_ROOT / "Pepper_NBV" #_PEPPER_NBV_DIR / "newcar_m.stl" 这里放小车的模型,需要改成自己的
+
+
+DEFAULT_GRIPPER_COM = "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_BG033GD5-if00-port0"  # 如现场端口不同，改这里
+claw_id = 9  # 夹爪ID
+claw_controller = ClawController(claw_id, com_port=DEFAULT_GRIPPER_COM)  # 创建夹爪控制器对象
+time.sleep(1)
+claw_controller.connect_gripper()  # 连接夹爪
+time.sleep(1)
+claw_controller.enable_gripper()  # 使能夹爪
+# 预通电
+claw_controller.close_gripper()
+claw_controller.open_gripper()
+
+# Ultralytics 首次 predict 会在 GPU 上做 fuse；不兼容的 PyTorch 在 Orin 上会直接崩溃。
+_YOLO_PRED_DEVICE_RESOLVED = None
+
+
+def _yolo_predict_device() -> str:
+    """
+    返回传给 YOLO predict(device=...) 的设备字符串。
+    默认优先使用 GPU；如需强制指定，可设置环境变量 WRS_YOLO_DEVICE。
+    """
+    global _YOLO_PRED_DEVICE_RESOLVED
+    if _YOLO_PRED_DEVICE_RESOLVED is not None:
+        return _YOLO_PRED_DEVICE_RESOLVED
+
+    forced = (os.environ.get("WRS_YOLO_DEVICE") or "").strip()
+    if forced:
+        _YOLO_PRED_DEVICE_RESOLVED = forced
+        return forced
+
+    import torch
+
+    if torch.cuda.is_available():
+        _YOLO_PRED_DEVICE_RESOLVED = "cuda:0"
+        try:
+            name = torch.cuda.get_device_name(0)
+            major, minor = torch.cuda.get_device_capability(0)
+            print(f"[YOLO] 检测到 GPU: {name} (SM {major}.{minor})，将优先使用 CUDA 推理。")
+        except Exception:
+            print("[YOLO] 检测到 CUDA 可用，将优先使用 GPU 推理。")
+        return _YOLO_PRED_DEVICE_RESOLVED
+
+    _YOLO_PRED_DEVICE_RESOLVED = "cpu"
+    print("[YOLO] 未检测到可用 CUDA，回退到 CPU。")
+    return _YOLO_PRED_DEVICE_RESOLVED
+
+
+class RealmanPepperPicker():
+    def __init__(self, real_robot=True):
+        self._reset_timing_records()
+        _init_t0 = time.time()
+        # 绑定yolo_utils的手眼变换函数，让它成为类方法
+        import wrs.Pepper.yoloutils.yolo_utils as yoloutils
+        self.transform_point_cloud_handeye = yoloutils.transform_point_cloud_handeye.__get__(self)
+        self.shelf_model = mcm.gen_box(xyz_lengths=np.array([0.02, 0.7, 1.55]),
+                                       pos=rm.vec(-1, 0, 0),
+                                       rotmat=np.eye(3),
+                                       rgb=[0.1, 0.1, 0.2],
+                                       alpha=0.8)
+        self.shelf_model.attach_to(base)
+        self._record_timing("init_scene", time.time() - _init_t0, "world/frame/shelf attached")
+        _init_t0 = time.time()
+
+        # 机器人小车底座碰撞模型（robotcar_m.stl 已预先转换为米单位，scale=0.003）
+        # 注：CollisionModel 不支持 set_scale，故使用预转换的 _m.stl 文件
+        # 原 box 模型保留备用：
+        # self.box_model = mcm.gen_box(
+        #     xyz_lengths=np.array([0.5, 0.5, 0.66]),
+        #     pos=rm.vec(0, 0, -0.33),
+        #     rotmat=np.eye(3),
+        #     rgb=[0.1, 0.1, 0.2],
+        #     alpha=0.8,
+        # )
+        self.box_model = mcm.CollisionModel(
+            str(_PEPPER_NBV_DIR / "newcar_m.stl"),
+            rgb=np.array([0.6, 0.6, 0.6]),
+            alpha=0.9,
+        )
+        self.box_model.pos = np.array([0.13, 0.0, -0.79])
+        self.box_model.rotmat = rm.rotmat_from_axangle(np.array([0, 0, 1]), np.pi * 90 / 180)
+        self.box_model.attach_to(base)
+        self._record_timing("init_models", time.time() - _init_t0, "collision model attached")
+        _init_t0 = time.time()
+
+        self.robot = Realman(enable_cc=True)
+        self.rrtc_planner = rrtc.RRTConnect(self.robot)
+        self.adp_planner = adp.ADPlanner(self.robot)
+        self._record_timing("init_robot_planner", time.time() - _init_t0, "robot/rrt/adp ready")
+        _init_t0 = time.time()
+        self.real_robot = real_robot
+        self.rm_controller = None
+        # 加载 YOLO 权重（请确保路径存在）
+        self.yolo_model = yoloutils.init_yolo(str(_PEPPER_DIR / "best.pt"))
+        self._record_timing("init_yolo", time.time() - _init_t0, "yolo weights loaded")
+        _init_t0 = time.time()
+        # RealSense pipeline（真机）或 None（仿真）
+        self.rs_pipeline = None
+        self.rs_align = None
+        # self.HANDEYE = np.array([[-0.012102519796519457, 0.9998605053175249, 0.011510817528360709, -0.046999999999999736], [-0.9998133994554028, -0.012273682788263483, 0.01491720415436704, 0.007999999999999965], [0.01505640340671479, -0.011328133844956416, 0.9998224732918157, -0.041000000000000106], [0.0, 0.0, 0.0, 1.0]])
+        self.HANDEYE = self._load_handeye_matrix()
+        self._record_timing("init_handeye", time.time() - _init_t0, "handeye matrix loaded")
+        _init_t0 = time.time()
+
+        if self.real_robot:
+            try:
+                # RealmanArmController 不支持 can_name/enable，使用默认参数
+                self.rm_controller = RealmanArmController(has_gripper=True)
+                print("Realman机械臂连接成功。")
+                self._record_timing("init_rm_controller", time.time() - _init_t0, "realman controller connected")
+                _init_t0 = time.time()
+            except Exception as e:
+                print(f"[错误] Realman机械臂连接失败：{e}")
+                print("[提示] 已切换到仿真模式。")
+                self.real_robot = False
+
+            # RealSense 初始化（与 Main_last.py 相同，直接启动 pipeline）
+            if self.real_robot:
+                try:
+                    self.rs_pipeline = rs.pipeline()
+                    self.rs_config = rs.config()
+                    self.rs_config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+                    self.rs_config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+                    self.rs_profile = self.rs_pipeline.start(self.rs_config)
+                    self.rs_align = rs.align(rs.stream.color)
+                    print("RealSense 相机已启动（pipeline）。")
+                    self._record_timing("init_realsense", time.time() - _init_t0, "realsense pipeline started")
+                    _init_t0 = time.time()
+                except Exception as e:
+                    print(f"[错误] RealSense初始化失败：{e}")
+                    print("[提示] 已切换到仿真模式。")
+                    self.real_robot = False
+                    self.rs_pipeline = None
+                    self.rs_align = None
+
+            # 此处已在 __init__ 顶部加载权重，无需重复加载
+        self._record_timing("init_total", time.time() - _init_t0, "constructor tail")
+        self._flush_timing_log(total_success=0)
+
+    def _load_handeye_matrix(self):
+        """优先从标定 JSON 中加载手眼矩阵，避免手工复制。"""
+        calib_path = _WRS_ROOT / "vision" / "depth_camera" / "manual_calibration_realman22.json"
+        try:
+            with open(calib_path, "r", encoding="utf-8") as f:
+                calib_data = json.load(f)
+            handeye = np.array(calib_data["affine_mat"], dtype=float)
+            print(f"[手眼标定] 已加载: {calib_path}")
+            return handeye
+        except Exception as e:
+            print(f"[手眼标定] 读取失败")
+
+    # def _warmup_realsense(self, warmup_frames: int = 10, sleep_s: float = 0.03):
+    #     """丢弃前几帧，等待 RealSense 图像和曝光稳定。"""
+    #     if self.rs_pipeline is None or self.rs_align is None:
+    #         return
+    #     print(f"[相机预热] 开始丢弃前 {warmup_frames} 帧...")
+    #     last_color = None
+    #     for i in range(int(warmup_frames)):
+    #         try:
+    #             frames = self.rs_pipeline.wait_for_frames()
+    #             aligned = self.rs_align.process(frames)
+    #             color_frame = aligned.get_color_frame()
+    #             depth_frame = aligned.get_depth_frame()
+    #             if color_frame and depth_frame:
+    #                 last_color = np.asanyarray(color_frame.get_data())
+    #             if sleep_s > 0:
+    #                 time.sleep(float(sleep_s))
+    #         except Exception as e:
+    #             print(f"[相机预热] 第 {i + 1} 帧失败: {e}")
+    #             break
+    #     if last_color is not None:
+    #         print(f"[相机预热] 完成，最后一帧尺寸: {last_color.shape}")
+    #     else:
+    #         print("[相机预热] 完成，但未成功读取有效彩色帧。")
+
+    def _reset_timing_records(self):
+        self._timing_records = []
+        self._timing_task_start = time.time()
+
+    def _record_timing(self, stage, duration, detail=""):
+        if not hasattr(self, "_timing_records"):
+            self._timing_records = []
+        duration = float(duration)
+        self._timing_records.append((stage, duration, detail))
+        if detail:
+            print(f"[计时] {stage}: {duration:.3f} 秒 | {detail}")
+        else:
+            print(f"[计时] {stage}: {duration:.3f} 秒")
+
+    def _flush_timing_log(self, total_success):
+        if not hasattr(self, "_timing_records"):
+            return
+        task_start = getattr(self, "_timing_task_start", time.time())
+        ts_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(task_start))
+        try:
+            log_dir = Path(os.environ.get("WRS_LOG_DIR", Path.home() / ".cache" / "wrs" / "logs"))
+            log_dir.mkdir(parents=True, exist_ok=True)
+            log_path = log_dir / "pepper_pick_timing_log.txt"
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(f"==== {ts_str} | picked={total_success} ====\n")
+                for stage, duration, detail in self._timing_records:
+                    if detail:
+                        f.write(f"{stage},{duration:.6f},{detail}\n")
+                    else:
+                        f.write(f"{stage},{duration:.6f}\n")
+        except Exception as e:
+            print(f"[警告] 写入分阶段计时日志失败：{e}")
+
+    def get_Keyresult(self, results):
+        """
+        从YOLO检测结果中提取关键点信息（参考 Main_last.py）
+        返回关键点数组，每个元素为 [x, y, confidence]
+        """
+        keypoints_array = []
+        target_class_id = 0  # 目标类别ID，根据实际情况调整
+        
+        for result in results:
+            # 获取所有检测框的类别编号（整数形式）
+            class_ids = result.boxes.cls.tolist()  # 返回浮点数列表
+            class_ids = [int(x) for x in class_ids]  # 转换为整数
+
+            boxes = result.boxes
+            keypoints = result.keypoints  # 关键点数据
+            
+            # 遍历每个检测到的对象
+            for i in range(len(boxes)):
+                class_id = int(boxes[i].cls)
+                if class_id == target_class_id:
+                    # 获取目标框的置信度
+                    box_confidence = boxes.conf[i].item()  # 获取单个目标框的置信度
+                    print(f"目标框的置信度：{box_confidence}")
+
+                    # 获取关键点坐标（形状为 [num_keypoints, 3]）
+                    # 每行格式: [x, y, confidence]
+                    if keypoints is not None and len(keypoints) > i:
+                        kpts = keypoints[i].data[0].cpu().numpy()
+                        for j, kpt in enumerate(kpts):
+                            print(f"关键点 {j}: X={kpt[0]:.2f}, Y={kpt[1]:.2f}, 可见={kpt[2]:.4f}")
+                            if j == 0:  # 只取第一个关键点（可根据需要调整）
+                                # 将关键点数据添加到数组中
+                                keypoints_array.append([kpt[0], kpt[1], kpt[2]])
+        
+        return keypoints_array
+
+    # def visualize_pointcloud_once(self, downsample_step: int = 10, rgba=np.array([0, 0, 1, 0.4])):
+    #     """
+    #     从 RealSense 获取一帧 RGB-D，生成点云，做手眼变换后在 Panda3D 场景中可视化。
+    #     - downsample_step: 每隔多少个点取一个，避免点数过大导致卡顿
+    #     - rgba: 点云颜色 (r,g,b,a)
+    #     """
+    #     if not self.real_robot:
+    #         print("[PCD] real_robot=False，当前函数仅支持真机模式。")
+    #         return
+    #     if self.rs_pipeline is None or self.rs_align is None:
+    #         print("[PCD] Camera pipeline not initialized.")
+    #         return
+
+    #     try:
+    #         frames = self.rs_pipeline.wait_for_frames()
+    #         aligned = self.rs_align.process(frames)
+    #         depth_frame = aligned.get_depth_frame()
+    #         color_frame = aligned.get_color_frame()
+    #         if not depth_frame or not color_frame:
+    #             print("[PCD] Failed to get depth/color frames.")
+    #             return
+    #     except Exception as e:
+    #         print(f"[PCD] Camera grab failed: {e}")
+    #         return
+
+    #     # 生成相机坐标系下的点云
+    #     pc = rs.pointcloud()
+    #     pc.map_to(color_frame)
+    #     points = pc.calculate(depth_frame)
+    #     pcd_cam = np.asanyarray(points.get_vertices()).view(np.float32).reshape(-1, 3)
+
+    #     # 变换到世界坐标系
+    #     given_conf = self.rm_controller.get_joint_values() if self.rm_controller else None
+    #     try:
+    #         pcd_world = self.transform_point_cloud_handeye(
+    #             handeye_mat=self.HANDEYE,
+    #             pcd=pcd_cam,
+    #             given_conf=given_conf
+    #         )
+    #     except Exception as e:
+    #         print(f"[PCD] Hand-eye transform failed: {e}")
+    #         return
+
+    #     # 简单下采样，减少点数
+    #     if downsample_step > 1:
+    #         pcd_world = pcd_world[::downsample_step]
+
+    #     print(f"[PCD] Visualizing pointcloud, num_points={pcd_world.shape[0]}")
+    #     # 使用几何模型生成点云，并挂到全局 world 上
+    #     try:
+    #         pcd_model = mgm.gen_pointcloud(pcd_world, rgba=rgba)
+    #         pcd_model.attach_to(base)
+    #     except Exception as e:
+    #         print(f"[PCD] Failed to create pointcloud model: {e}")
+
+    # def scan_and_detect(self):
+    #     """
+    #     获取图像并识别目标的世界坐标。
+    #     **此方法已完全依赖 yolo_utils.py 中的函数**
+    #     """
+    #     # 真机：用 pyrealsense2 pipeline 取帧；仿真：返回 None 交由上层使用 mock 点
+    #     if self.real_robot:
+    #         if self.rs_pipeline is None or self.rs_align is None:
+    #             print("Camera pipeline not initialized.")
+    #             return None
+    #         try:
+    #             frames = self.rs_pipeline.wait_for_frames()
+    #             aligned = self.rs_align.process(frames)
+    #             depth = aligned.get_depth_frame()
+    #             color = aligned.get_color_frame()
+    #             if not depth or not color:
+    #                 print("Failed to get depth/color frames.")
+    #                 return None
+    #             color_img = np.asanyarray(color.get_data())
+    #             depth_img = np.asanyarray(depth.get_data())
+    #         except Exception as e:
+    #             print(f"Camera grab failed: {e}")
+    #             return None
+    #
+    #         # 点云（如需）
+    #         pc = rs.pointcloud()
+    #         pc.map_to(color)
+    #         points = pc.calculate(depth)
+    #         pcd_raw = np.asanyarray(points.get_vertices()).view(np.float32).reshape(-1, 3)
+    #
+    #         given_conf = self.rm_controller.get_joint_values() if self.rm_controller else None
+    #         pcd_world = yoloutils.transform_point_cloud_handeye(
+    #             self, self.HANDEYE, pcd_raw, given_conf=given_conf
+    #         )
+    #
+    #         # 这里调用 detect_target_point_manual_vision 仍依赖 self.camera，改为直接返回点云/图像，交由上层或自定义检测
+    #         # 若仍想复用手动点击，可将 self.camera 替换为当前 pipeline 的数据源；此处简单返回 None 表示未检测
+    #         print("Frames captured; please插入你的检测逻辑（YOLO或手动点选）。")
+    #         return None
+    #     else:
+    #         print("Simulation mode: skip camera capture.")
+    #         return None
+    def scan_and_detect(self):
+        """
+        获取图像，通过YOLO识别目标（使用关键点检测），并返回目标在世界坐标系下的坐标 (x, y, z)。
+        参考 Main_last.py 的处理方法，使用关键点而不是边界框中心。
+        """
+        if self.real_robot:
+            # 1. 检查相机流
+            if self.rs_pipeline is None or self.rs_align is None:
+                print("[错误] 相机数据流未初始化。")
+                return None
+
+            try:
+                # 2. 获取对齐的帧
+                frames = self.rs_pipeline.wait_for_frames()
+                aligned = self.rs_align.process(frames)
+                depth_frame = aligned.get_depth_frame()
+                color_frame = aligned.get_color_frame()
+
+                if not depth_frame or not color_frame:
+                    print("[错误] 获取深度图或彩色图失败。")
+                    return None
+
+                color_img = np.asanyarray(color_frame.get_data())
+                # depth_img = np.asanyarray(depth_frame.get_data()) # 暂时没用到，可注释
+
+                height, width, _ = color_img.shape  # 获取图像宽高，用于计算索引
+
+                # 获取深度内参（用于坐标转换）
+                depth_intrin = depth_frame.profile.as_video_stream_profile().intrinsics
+            
+            except Exception as e:
+                print(f"[错误] 相机取帧失败：{e}")
+                return None
+
+            # 3. YOLO 推理
+            print("--- 正在执行YOLO推理 ---")
+            device = _yolo_predict_device()
+            print(f"[YOLO] 使用设备: {device}")
+            _pred_kw = dict(save=False, show_conf=False, device=device)
+            results = self.yolo_model.predict(color_img, **_pred_kw)
+
+            # 4. 获取关键点结果
+            keypoints_array = self.get_Keyresult(results)
+
+            target_world_pos = None
+
+            # 5. 处理关键点，转换为世界坐标
+            if len(keypoints_array) > 0:
+                # 选择第一个有效关键点（可见性为1）
+                for keypoint in keypoints_array:
+                    if round(keypoint[2]) == 1:  # 关键点可见性为1
+                        ux, uy = int(keypoint[0]), int(keypoint[1])
+                        
+                        # 添加边界检查
+                        if not (0 <= ux < depth_intrin.width and 0 <= uy < depth_intrin.height):
+                            print(f"[警告] 坐标超出范围 ({ux}, {uy})")
+                            continue  # 跳过无效坐标
+
+                        # 获取深度值
+                        dis = depth_frame.get_distance(ux, uy)
+                        print(f"采摘点坐标（像素）：{ux}, {uy}, 深度：{dis}")
+
+                        if dis > 0:  # 确保深度有效
+                            # 将像素坐标和深度转换为相机坐标系下的3D坐标
+                            camera_xyz = rs.rs2_deproject_pixel_to_point(depth_intrin, (ux, uy), dis)
+                            camera_xyz = np.array(camera_xyz)  # 转换为numpy数组
+
+                            # 转换到世界坐标系（利用手眼矩阵和机械臂当前姿态）
+                            given_conf = self.rm_controller.get_joint_values() if self.rm_controller else None
+                            
+                            # 将单个点转换为点云格式（N, 3），以便使用 transform_point_cloud_handeye
+                            camera_point_cloud = camera_xyz.reshape(1, 3)
+                            
+                            # 使用手眼变换函数（考虑机械臂当前姿态）
+                            # 注意：使用已绑定的类方法，而不是直接调用 yoloutils 的函数
+                            world_point_cloud = self.transform_point_cloud_handeye(
+                                handeye_mat=self.HANDEYE,
+                                pcd=camera_point_cloud,
+                                given_conf=given_conf
+                            )
+                            # mgm.gen_pointcloud(world_point_cloud)
+                            # mgm.gen_sphere(pos=)
+                            target_world_pos = world_point_cloud[0]  # 提取第一个点
+
+                            print(f"目标世界坐标：{target_world_pos}")
+                            
+                            # 6. 可视化检测结果
+                            # 绘制检测结果（包含边界框和关键点）
+                            vis_scale = 2.0
+                            im_array = results[0].plot()  # 绘制检测结果
+                            im_array = cv2.resize(im_array, None, fx=vis_scale, fy=vis_scale)
+
+                            ux_vis = int(round(ux * vis_scale))
+                            uy_vis = int(round(uy * vis_scale))
+
+                            # 在图像上标注关键点
+                            cv2.circle(im_array, (ux_vis, uy_vis), 5, (0, 255, 0), -1)  # 绿色圆点标记关键点
+                            cv2.putText(im_array, f"Depth: {dis:.3f}m", (ux_vis + 10, uy_vis - 10),
+                                       cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                            
+                            # 显示检测结果
+                            safe_imshow('YOLO Detection', im_array, wait_ms=1)
+                            
+                            return target_world_pos
+                        else:
+                            print(f"[警告] 关键点 ({ux}, {uy}) 深度无效")
+                            continue
+                
+                # 如果没有找到有效关键点
+                if target_world_pos is None:
+                    print("[警告] 未找到有效的关键点（可见性为1）")
+                    # 仍然显示检测结果（即使没有有效关键点）
+                    if results and len(results) > 0:
+                        im_array = results[0].plot()
+                        safe_imshow('YOLO Detection', im_array, wait_ms=1)
+                    return None
+            else:
+                print("[提示] YOLO未检测到目标。")
+                # 显示原始图像（无检测结果）
+                vis_scale = 1.5
+                show_img = cv2.resize(color_img, None, fx=vis_scale, fy=vis_scale)
+                safe_imshow('YOLO Detection', show_img, wait_ms=1)
+                return None
+
+        else:
+            print("当前为仿真模式，使用模拟检测结果。")
+            # 仿真模式下返回假数据
+            return np.array([0.45, -0.1, 0.3])
+
+    def pick_place_pepper(self,
+                          approach_dis=0.05,
+                          bound_lower=-40,
+                          bound_upper=40,
+                          grad=50,
+                          viewpoint_joint=np.array([-0.08028514,
+                                                    -1.05934503,
+                                                    1.49318156,
+                                                    0.08553859,
+                                                    1.19422415,
+                                                    -0.04305727]),
+                          place_joint=np.array([1.57254163e+00, 6.96909976e-02, 1.92076978e+00, 1.71216801e-02, 7.77579056e-01, 2.96705989e-04]),
+                          continuous_mode=True,
+                          max_targets_per_round=1,
+                          stop_on_no_detection=True,
+                          ):
+        """
+        执行循环采摘任务。
+        参数
+        ----
+        continuous_mode      : True → 每次采摘后返回观测点并重新检测，循环直到无目标；
+                               False → 只执行一次采摘后退出（兼容旧行为）
+        max_targets_per_round: 每轮最多处理的目标数量（通常为 1）
+        stop_on_no_detection : True → 检测不到目标时退出循环；False → 等 1 秒后重试
+        日志追加写入 pepper_pick_log.txt（CSV 格式）：
+        time_start, duration_sec, result, picked=N
+        """
+        _task_start_time = time.time()
+        self._reset_timing_records()
+        robot = self.robot
+        rrtc_planner = self.rrtc_planner
+
+        # 同步真机状态到仿真
+        if self.real_robot and self.rm_controller is not None:
+            start_conf = self.rm_controller.get_joint_values()
+        else:
+            start_conf = robot.get_jnt_values()
+        robot.goto_given_conf(start_conf)
+
+        # ------------------------------------------------------------------
+        # Phase 1：移动到观测点（仅在任务开始时执行一次）
+        # ------------------------------------------------------------------
+        print("--- 阶段1：移动到观察位 ---")
+        _t0 = time.time()
+        if np.linalg.norm(np.array(start_conf) - np.array(viewpoint_joint)) > 0.03:
+            mot_data_view = rrtc_planner.plan(start_conf=start_conf,
+                                              goal_conf=viewpoint_joint,
+                                              obstacle_list=[self.shelf_model, self.box_model],
+                                              ext_dist=.1,
+                                              max_time=300)
+            if mot_data_view is not None:
+                robot.goto_given_conf(viewpoint_joint)
+                if self.real_robot:
+                    self.rm_controller.move_jntspace_path(mot_data_view.jv_list, control_frequency=0.8)
+                    time.sleep(3.0)
+                self._record_timing("phase1_move_view", time.time() - _t0, "moved to viewpoint")
+            else:
+                self._record_timing("phase1_move_view", time.time() - _t0, "failed")
+                print("[错误] 规划到观察位失败。")
+                return
+        else:
+            self._record_timing("phase1_move_view", time.time() - _t0, "already at viewpoint")
+            print("当前已经位于观察位。")
+
+        pick_count = 0
+        total_success = 0
+
+        # ------------------------------------------------------------------
+        # 循环采摘
+        # ------------------------------------------------------------------
+        while True:
+            print(f"\n--- 阶段2：检测目标（第 {pick_count + 1} 轮）---")
+            _t0 = time.time()
+
+            # 检测目标
+            if self.real_robot:
+                tgt_pos = self.scan_and_detect()
+            else:
+                tgt_pos = np.array([-0.45, -0.1, 0.3])
+                print(f"[仿真] 使用模拟目标：{tgt_pos}")
+
+            self._record_timing("phase2_detection", time.time() - _t0, "target detection finished")
+            if tgt_pos is None:
+                if stop_on_no_detection:
+                    print("[提示] 未检测到辣椒，结束采摘。")
+                    break
+                else:
+                    print("[提示] 未检测到辣椒，准备重试。")
+                    time.sleep(1.0)
+                    pick_count += 1
+                    continue
+
+            # 对检测到的目标执行最多 max_targets_per_round 次采摘
+            targets_this_round = [tgt_pos] if max_targets_per_round >= 1 else []
+            for tgt in targets_this_round:
+                # ----------------------------------------------------------
+                # Phase 3：IK 搜索 + 路径规划
+                # ----------------------------------------------------------
+                print(f"--- 阶段3：搜索抓取位姿，目标位置 {tgt} ---")
+                _t0 = time.time()
+                start_conf = robot.get_jnt_values()
+
+                is_success = False
+                final_approach_path = None
+                final_linear_path = None
+                phase3_search_time = 0.0
+                phase3_ik_time = 0.0
+                phase3_plan_time = 0.0
+                found_theta = None
+
+                for theta in range(bound_lower, bound_upper + 1, grad):
+                    _t_search = time.time()
+                    hand_x = np.array([0, 0, -1])
+                    hand_z = np.array([-1, 0, 0])
+                    hand_y = np.cross(hand_z, hand_x)
+                    tgt_rotmat_base = np.array([hand_x, hand_y, hand_z]).T
+                    tgt_rotmat = rm.rotmat_from_axangle(hand_y, np.radians(theta)) @ tgt_rotmat_base
+                    phase3_search_time += time.time() - _t_search
+
+                    _t_ik = time.time()
+                    grasp_conf = robot.ik(tgt_pos=tgt,
+                                          tgt_rotmat=tgt_rotmat,
+                                          seed_jnt_values=start_conf)
+                    if grasp_conf is not None:
+                        robot.goto_given_conf(grasp_conf)
+                        if not robot.is_collided(obstacle_list=[self.shelf_model, self.box_model]):
+                            tgt_pos_approach = tgt - hand_z * approach_dis
+                            approach_conf = robot.ik(tgt_pos_approach, tgt_rotmat, seed_jnt_values=grasp_conf)
+
+                            if approach_conf is not None:
+                                robot.goto_given_conf(approach_conf)
+                                if not robot.is_collided(obstacle_list=[self.shelf_model, self.box_model]):
+                                    phase3_ik_time += time.time() - _t_ik
+                                    _t_plan = time.time()
+                                    mot_data_rrt = rrtc_planner.plan(
+                                        start_conf=start_conf,
+                                        goal_conf=approach_conf,
+                                        obstacle_list=[self.shelf_model, self.box_model],
+                                        ext_dist=.1,
+                                        max_time=300)
+
+                                    if mot_data_rrt is not None:
+                                        mot_data_linear = self.adp_planner.gen_linear_motion(
+                                            start_conf=approach_conf,
+                                            goal_conf=grasp_conf,
+                                            granularity=0.01,
+                                            obstacle_list=[self.shelf_model, self.box_model])
+
+                                        if mot_data_linear is not None:
+                                            phase3_plan_time += time.time() - _t_plan
+                                            final_approach_path = mot_data_rrt
+                                            final_linear_path = mot_data_linear
+                                            found_theta = theta
+                                            self.vis_path(mot_data_rrt, rm.const.winter_map)
+                                            self.vis_path(mot_data_linear, rm.const.wistia_map)
+                                            is_success = True
+                                            self._record_timing("phase3_search_pose", phase3_search_time, f"theta={theta}")
+                                            self._record_timing("phase3_inverse_ik", phase3_ik_time, f"theta={theta}, success")
+                                            self._record_timing("phase3_path_plan", phase3_plan_time, f"theta={theta}, success")
+                                            self._record_timing("phase3_total", time.time() - _t0, f"theta={theta}, success")
+                                            break
+                                        else:
+                                            phase3_plan_time += time.time() - _t_plan
+                                            print(f"角度 {theta}：直线运动规划失败。")
+                                    else:
+                                        phase3_plan_time += time.time() - _t_plan
+                                        print(f"角度 {theta}：RRT路径规划失败。")
+                                else:
+                                    phase3_ik_time += time.time() - _t_ik
+                                    print(f"角度 {theta}：预抓取构型发生碰撞。")
+                            else:
+                                phase3_ik_time += time.time() - _t_ik
+                                print(f"角度 {theta}：预抓取构型IK求解失败。")
+                        else:
+                            phase3_ik_time += time.time() - _t_ik
+                            print(f"角度 {theta}：抓取构型发生碰撞。")
+                    else:
+                        phase3_ik_time += time.time() - _t_ik
+                        print(f"角度 {theta}：抓取构型IK求解失败。")
+
+                if not is_success:
+                    self._record_timing("phase3_search_pose", phase3_search_time, "failed")
+                    self._record_timing("phase3_inverse_ik", phase3_ik_time, "failed")
+                    self._record_timing("phase3_path_plan", phase3_plan_time, "failed")
+                    self._record_timing("phase3_total", time.time() - _t0, "failed")
+
+                # ----------------------------------------------------------
+                # Phase 4：规划放置路径
+                # ----------------------------------------------------------
+                mot_data_place = None
+                if is_success:
+                    print("--- 阶段4：规划放置路径 ---")
+                    _t0 = time.time()
+                    if hasattr(final_approach_path, "jv_list"):
+                        cur_conf = final_approach_path.jv_list[-1]
+                    else:
+                        cur_conf = final_approach_path[-1]
+                    robot.goto_given_conf(cur_conf)
+
+                    mot_data_place = rrtc_planner.plan(
+                        start_conf=cur_conf,
+                        goal_conf=place_joint,
+                        obstacle_list=[self.shelf_model, self.box_model],
+                        ext_dist=.1,
+                        max_time=300)
+
+                    if mot_data_place is not None:
+                        self.vis_path(mot_data_place, rm.const.copper_map)
+                        self._record_timing("phase4_place_plan", time.time() - _t0, "success")
+                    else:
+                        self._record_timing("phase4_place_plan", time.time() - _t0, "failed")
+                        print("[错误] 规划到放置位失败。")
+                        is_success = False
+
+                # ----------------------------------------------------------
+                # Phase 5：执行
+                # ----------------------------------------------------------
+                if is_success and mot_data_place is not None and self.real_robot:
+                    print("--- 阶段5：执行抓取与放置 ---")
+                    _t0 = time.time()
+                    grasp_start_time = time.time()
+
+                    claw_controller.open_gripper()
+                    time.sleep(0.5)
+
+                    self.rm_controller.move_jntspace_path(final_approach_path.jv_list, control_frequency=0.8)
+                    # time.sleep(2)
+                    time.sleep(0.8)
+
+                    self.rm_controller.move_jntspace_path(final_linear_path.jv_list, control_frequency=0.8)
+                    # time.sleep(2)
+                    time.sleep(1.4)
+
+                    claw_controller.close_gripper()
+                    # time.sleep(1.0)
+                    time.sleep(0.8)
+
+                    self.rm_controller.move_jntspace_path(final_linear_path.jv_list[::-1], control_frequency=0.8)
+                    # time.sleep(2)
+                    time.sleep(0.8)
+
+                    self.rm_controller.move_jntspace_path(mot_data_place.jv_list, control_frequency=0.8)
+                    # time.sleep(2)
+                    time.sleep(0.8)
+
+                    claw_controller.open_gripper()
+                    time.sleep(0.5)
+
+                    total_success += 1
+                    exec_dur = time.time() - _t0
+                    self._record_timing("phase5_exec", exec_dur, f"picked={total_success}")
+                    print(f"[成功] 已完成第 {total_success} 个辣椒的抓取与放置，"
+                          f"耗时：{time.time() - grasp_start_time:.1f} 秒")
+
+                    # 采摘完成后返回观测点，准备下一轮
+                    if continuous_mode:
+                        print("--- 返回观察位 ---")
+                        mot_return = rrtc_planner.plan(
+                            start_conf=place_joint,
+                            goal_conf=viewpoint_joint,
+                            obstacle_list=[self.shelf_model, self.box_model],
+                            ext_dist=.1,
+                            max_time=300)
+                        if mot_return is not None:
+                            robot.goto_given_conf(viewpoint_joint)
+                            self.rm_controller.move_jntspace_path(mot_return.jv_list, control_frequency=0.8)
+                            time.sleep(3.0)
+                        else:
+                            print("[警告] 返回观察位路径规划失败。")
+
+                elif is_success and mot_data_place is not None and not self.real_robot:
+                    print("仿真执行成功。")
+                    robot.goto_given_conf(place_joint)
+                    total_success += 1
+                    if continuous_mode:
+                        robot.goto_given_conf(viewpoint_joint)
+                        time.sleep(1.0)
+                else:
+                    print(f"[失败] 未找到目标 {tgt} 的可行路径。")
+
+            pick_count += 1
+
+            # 非循环模式只跑一次
+            if not continuous_mode:
+                break
+
+        # ------------------------------------------------------------------
+        # 日志记录
+        # ------------------------------------------------------------------
+        _task_end_time = time.time()
+        _duration = _task_end_time - _task_start_time
+        self._record_timing("task_total", _duration, f"success={total_success}")
+        _result_str = "success" if total_success > 0 else "fail"
+        _ts_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(_task_start_time))
+        log_line = f"{_ts_str},{_duration:.3f},{_result_str},picked={total_success}\n"
+        try:
+            log_dir = Path(os.environ.get("WRS_LOG_DIR", Path.home() / ".cache" / "wrs" / "logs"))
+            log_dir.mkdir(parents=True, exist_ok=True)
+            log_path = log_dir / "pepper_pick_log.txt"
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(log_line)
+        except Exception as e:
+            print(f"[警告] 写入采摘日志失败：{e}")
+        self._flush_timing_log(total_success)
+        _result_str_cn = "成功" if total_success > 0 else "失败"
+        print(f"[日志] 本次采摘任务结果：{_result_str_cn}，总耗时：{_duration:.3f} 秒，成功数量：{total_success}")
+
+    def vis_path(self, mot_data, colormap):
+        """辅助函数：可视化轨迹"""
+        if mot_data:
+            n = len(mot_data.mesh_list)
+            for i, model in enumerate(mot_data.mesh_list):
+                model.rgb = colormap(i / n)
+                model.alpha = 0.3
+                model.attach_to(base)
+
+    # def execute_path_point_by_point(self, path, speed=5, is_radians=True):
+    #     for jv in path:
+    #         self.rm_controller.move_j(
+    #             joint_angles=jv,
+    #             speed=speed,
+    #         )
+    #     time.sleep(0.03)
+
+    def retreat_to_pick_pose(self, pick_joint, obstacle_list=None, control_frequency=0.8):
+        """
+        没检测到辣椒时，把机械臂收回到“采摘点位姿”(你定义的 pick_joint)。
+        - 真机：RRT规划 + move_jntspace_path 执行
+        - 仿真：robot.goto_given_conf
+        """
+        if obstacle_list is None:
+            obstacle_list = [self.shelf_model]
+
+        robot = self.robot
+
+        # 当前关节（真机优先）
+        if self.real_robot and self.rm_controller is not None:
+            start_conf = self.rm_controller.get_joint_values()
+        else:
+            start_conf = robot.get_jnt_values()
+
+        # 规划回到采摘点位姿
+        mot = self.rrtc_planner.plan(
+            start_conf=start_conf,
+            goal_conf=pick_joint,
+            obstacle_list=obstacle_list,
+            ext_dist=.1,
+            max_time=300
+        )
+
+        if mot is None:
+            print("[错误] 回撤到采摘初始位姿的路径规划失败。")
+            # 兜底：仿真可直接goto；真机建议不要强行硬走
+            if not self.real_robot:
+                robot.goto_given_conf(pick_joint)
+            return False
+
+        # 执行
+        robot.goto_given_conf(pick_joint)
+        if self.real_robot and self.rm_controller is not None:
+            self.rm_controller.move_jntspace_path(mot.jv_list, control_frequency=control_frequency)
+            time.sleep(1.0)
+
+        print("[提示] 已回撤到采摘初始位姿。")
+        return True
+
+
+if __name__ == '__main__':
+    picker = RealmanPepperPicker(real_robot=True)
+    robot = Realman()
+    robot.gen_meshmodel(toggle_jnt_frames=True).attach_to(base)
+
+    # view_point = np.array([-0.03005457, -1.20970511, 1.26979681, 0.01317724, 1.52136859, -0.00029671])
+    view_point  = np.array([-2.9569019, 0.12503539, -0.20418608, 3.02282313, 1.46630347, 0.03455752])
+    # place_point = np.array([1.57254163e+00, 6.96909976e-02, 1.92076978e+00, 1.71216801e-02, 7.77579056e-01, 2.96705989e-04])
+    place_point = np.array([-1.62024151, -0.72099554, -0.65041438, 3.06512984, 1.58201875, -0.12065461])
+
+    picker.pick_place_pepper(
+        approach_dis=0.2,
+        bound_lower=-20,
+        bound_upper=20,
+        grad=5,
+        viewpoint_joint=view_point,
+        place_joint=place_point,
+        continuous_mode=True,        # True=循环采摘 / False=单次采摘
+        max_targets_per_round=1,     # 每轮最多采摘目标数
+        stop_on_no_detection=True,   # 检测不到目标时停止循环
+    )
+    base.run()
+# if __name__ == '__main__':
+#     import wrs.Pepper.yoloutils.yolo_utils as yoloutils
+#     from wrs.drivers.devices.realsense.realsense_d400s import RealSenseD405
+#
+#     picker = RealmanPepperPicker(real_robot=True)  # ✅ 有 self.robot / self.rm_controller / self.HANDEYE
+#
+#     camera = RealSenseD405()
+#     pcd_raw, pcd_color, _depth_img, color_img = camera.get_pcd_texture_depth()
+#
+#     given_conf = picker.rm_controller.get_joint_values() if picker.rm_controller else picker.robot.get_jnt_values()
+#
+#     pcd_r = picker.transform_point_cloud_handeye(
+#         handeye_mat=picker.HANDEYE,
+#         pcd=pcd_raw,
+#         given_conf=given_conf
+#     )
+#
+#     mgm.gen_pointcloud(pcd_r).attach_to(base)
+#     mgm.gen_sphere(pos=np.array([-0.53961  ,  0.065742    , 0.56813]),radius=0.005,rgb=np.array([1,0,0])).attach_to(base)
+#     base.run()

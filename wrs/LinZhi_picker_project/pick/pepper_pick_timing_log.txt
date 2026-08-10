@@ -1,0 +1,1151 @@
+==== 2026-04-29 19:27:02 | picked=0 ====
+init_scene,0.223213,world/frame attached
+init_models,0.004992,shelf attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.499273,realsense pipeline started
+init_robot_planner,21.171769,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 19:27:23 | picked=2 ====
+phase1_move_view,3.025269,moved to viewpoint
+phase2_detection,2.519206,target detection finished
+phase3_search_pose,0.000832,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,0.978693,theta=-30, success
+phase3_total,1.072342,theta=-30, success
+phase4_place_plan,0.000044,success
+phase5_exec,5.452062,picked=1
+pick_to_return,9.044168,picked=1, before_return
+phase2_detection,0.120607,target detection finished
+phase3_search_pose,0.000720,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.045055,theta=-30, success
+phase3_total,1.137536,theta=-30, success
+phase4_place_plan,0.000047,success
+phase5_exec,5.501356,picked=2
+pick_to_return,6.760102,picked=2, before_return
+phase2_detection,0.156986,target detection finished
+phase3_search_pose,0.855347,failed
+phase3_inverse_ik,0.855347,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.873151,failed
+task_total,25.921245,success=2
+==== 2026-04-29 19:29:05 | picked=0 ====
+init_scene,0.255136,world/frame attached
+init_models,0.003927,shelf attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.528886,realsense pipeline started
+init_robot_planner,20.399768,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 19:29:25 | picked=2 ====
+phase1_move_view,0.000047,already at viewpoint
+phase2_detection,1.957760,target detection finished
+phase3_search_pose,0.000908,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.036192,theta=-30, success
+phase3_total,1.126497,theta=-30, success
+phase4_place_plan,0.000040,success
+phase5_exec,5.509543,picked=1
+pick_to_return,8.594368,picked=1, before_return
+phase2_detection,0.251009,target detection finished
+phase3_search_pose,0.000637,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.375793,theta=-30, success
+phase3_total,1.467777,theta=-30, success
+phase4_place_plan,0.000050,success
+phase5_exec,5.467989,picked=2
+pick_to_return,7.187362,picked=2, before_return
+phase2_detection,0.121715,target detection finished
+phase3_search_pose,0.855602,failed
+phase3_inverse_ik,0.855602,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.873148,failed
+task_total,22.840037,success=2
+==== 2026-04-29 20:59:56 | picked=0 ====
+init_scene,0.395794,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.465506,realsense pipeline started
+init_robot_planner,24.701191,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 21:00:22 | picked=0 ====
+phase1_move_view,3.024423,moved to viewpoint
+phase2_detection,2.249471,target detection finished
+phase3_search_pose,1.343091,failed
+phase3_inverse_ik,1.343091,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.374610,failed
+task_total,6.663465,success=0
+==== 2026-04-29 21:01:03 | picked=0 ====
+init_scene,0.448244,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.534185,realsense pipeline started
+init_robot_planner,25.097677,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 21:01:28 | picked=1 ====
+phase1_move_view,0.000035,already at viewpoint
+phase2_detection,2.177536,target detection finished
+phase3_search_pose,0.000666,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.381330,theta=-30, success
+phase3_total,1.522229,theta=-30, success
+phase4_place_plan,0.000052,success
+phase5_exec,5.719040,picked=1
+pick_to_return,9.419297,picked=1, before_return
+phase2_detection,0.170311,target detection finished
+phase3_search_pose,1.020108,failed
+phase3_inverse_ik,1.020108,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.039280,failed
+task_total,13.665821,success=1
+==== 2026-04-29 21:15:20 | picked=0 ====
+init_scene,0.369677,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.518730,realsense pipeline started
+init_robot_planner,25.897827,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 21:16:09 | picked=0 ====
+init_scene,0.374987,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.519645,realsense pipeline started
+init_robot_planner,24.598322,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:00:49 | picked=0 ====
+init_scene,0.839948,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.417832,realsense pipeline started
+init_robot_planner,29.094050,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:01:57 | picked=0 ====
+init_scene,0.445530,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.441005,realsense pipeline started
+init_robot_planner,26.108304,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:10:38 | picked=0 ====
+init_scene,0.344676,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.418174,realsense pipeline started
+init_robot_planner,25.619867,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:20:48 | picked=0 ====
+init_scene,0.379811,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.430656,realsense pipeline started
+init_robot_planner,27.098944,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:21:43 | picked=0 ====
+init_scene,0.384937,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.409648,realsense pipeline started
+init_robot_planner,25.476547,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:22:33 | picked=0 ====
+init_scene,0.423982,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.433987,realsense pipeline started
+init_robot_planner,25.350067,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:23:36 | picked=0 ====
+init_scene,0.362752,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.441927,realsense pipeline started
+init_robot_planner,26.018047,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:26:12 | picked=0 ====
+init_scene,0.392443,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.419387,realsense pipeline started
+init_robot_planner,25.762286,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:26:38 | picked=0 ====
+phase1_move_view,3.023338,moved to viewpoint
+phase2_detection,3.284214,target detection finished
+phase3_search_pose,1.408533,failed
+phase3_inverse_ik,1.408533,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.428070,failed
+task_total,7.748530,success=0
+==== 2026-04-29 23:28:50 | picked=0 ====
+init_scene,0.383655,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.418468,realsense pipeline started
+init_robot_planner,24.701380,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-29 23:59:28 | picked=0 ====
+init_scene,0.471771,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.411418,realsense pipeline started
+init_robot_planner,26.981092,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:01:21 | picked=0 ====
+init_scene,0.510122,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.451113,realsense pipeline started
+init_robot_planner,30.076124,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:02:10 | picked=0 ====
+init_scene,0.389175,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.425283,realsense pipeline started
+init_robot_planner,25.319937,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:03:12 | picked=0 ====
+init_scene,0.361596,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.437105,realsense pipeline started
+init_robot_planner,25.954129,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:04:14 | picked=0 ====
+init_scene,0.382039,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.422153,realsense pipeline started
+init_robot_planner,25.355514,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:06:16 | picked=0 ====
+init_scene,0.352786,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.415680,realsense pipeline started
+init_robot_planner,25.309882,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:12:22 | picked=0 ====
+init_scene,0.445389,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.429252,realsense pipeline started
+init_robot_planner,25.971717,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:12:48 | picked=0 ====
+phase1_move_view,3.026619,moved to viewpoint
+phase2_detection,3.086366,target detection finished
+phase3_search_pose,1.477648,failed
+phase3_inverse_ik,1.477648,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.496437,failed
+task_total,7.618379,success=0
+==== 2026-04-30 00:13:22 | picked=0 ====
+init_scene,0.560986,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.413373,realsense pipeline started
+init_robot_planner,24.864591,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 00:14:17 | picked=0 ====
+init_scene,0.383487,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.406577,realsense pipeline started
+init_robot_planner,24.827211,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 13:24:44 | picked=0 ====
+init_scene,0.876984,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.549628,realsense pipeline started
+init_robot_planner,31.408278,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:43:00 | picked=0 ====
+init_scene,0.216184,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.394213,realsense pipeline started
+init_robot_planner,21.200683,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:43:21 | picked=0 ====
+phase1_move_view,0.000105,already at viewpoint
+phase2_detection,0.033739,target detection finished
+phase3_search_pose,0.872765,failed
+phase3_inverse_ik,0.872765,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.890820,failed
+task_total,0.934266,success=0
+==== 2026-05-01 14:46:09 | picked=0 ====
+init_scene,0.235443,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.409671,realsense pipeline started
+init_robot_planner,21.026591,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:46:31 | picked=0 ====
+phase1_move_view,0.000085,already at viewpoint
+phase2_detection,0.025798,target detection finished
+phase3_search_pose,0.858497,failed
+phase3_inverse_ik,0.858497,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.875274,failed
+task_total,0.912698,success=0
+==== 2026-05-01 14:48:13 | picked=0 ====
+init_scene,0.222998,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.415264,realsense pipeline started
+init_robot_planner,21.140917,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:49:02 | picked=0 ====
+init_scene,0.227614,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.401077,realsense pipeline started
+init_robot_planner,20.814788,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:51:24 | picked=0 ====
+init_scene,0.202080,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.407026,realsense pipeline started
+init_robot_planner,20.691334,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:52:45 | picked=0 ====
+init_scene,0.244064,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.397083,realsense pipeline started
+init_robot_planner,20.909324,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:29:37 | picked=0 ====
+init_scene,0.339990,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.423564,realsense pipeline started
+init_robot_planner,22.486461,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:30:47 | picked=0 ====
+init_scene,0.298252,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.422109,realsense pipeline started
+init_robot_planner,22.659579,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:34:47 | picked=0 ====
+init_scene,0.326792,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.427199,realsense pipeline started
+init_robot_planner,22.940477,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:39:27 | picked=0 ====
+init_scene,0.255640,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.415892,realsense pipeline started
+init_robot_planner,22.123791,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:42:52 | picked=0 ====
+init_scene,0.297899,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.429373,realsense pipeline started
+init_robot_planner,21.849143,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:43:43 | picked=0 ====
+init_scene,0.251919,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.399724,realsense pipeline started
+init_robot_planner,21.242311,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:49:01 | picked=0 ====
+init_scene,0.285312,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.406424,realsense pipeline started
+init_robot_planner,21.986494,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:53:01 | picked=0 ====
+init_scene,0.289185,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.412822,realsense pipeline started
+init_robot_planner,22.832084,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 11:53:25 | picked=1 ====
+phase1_move_view,4.372066,moved to viewpoint
+phase2_detection,3.457782,target detection finished
+phase3_search_pose,0.000711,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.427712,theta=-30, success
+phase3_total,2.540819,theta=-30, success
+phase4_place_plan,3.487157,success
+phase5_exec,5.825903,picked=1
+pick_to_return,15.312228,picked=1, before_return
+phase2_detection,0.089119,target detection finished
+phase2_detection,0.094212,target detection finished
+phase3_search_pose,0.928432,failed
+phase3_inverse_ik,0.928432,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.949501,failed
+task_total,27.600122,success=1
+==== 2026-05-15 12:12:38 | picked=0 ====
+init_scene,0.335304,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.393691,realsense pipeline started
+init_robot_planner,22.379882,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 12:20:16 | picked=0 ====
+init_scene,0.281508,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.440663,realsense pipeline started
+init_robot_planner,21.839285,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 12:20:38 | picked=1 ====
+phase1_move_view,5.674403,moved to viewpoint
+phase2_detection,2.026346,target detection finished
+phase3_search_pose,0.000778,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,4.929681,theta=-30, success
+phase3_total,5.064704,theta=-30, success
+phase4_place_plan,3.870603,success
+phase5_exec,6.035218,picked=1
+pick_to_return,16.997403,picked=1, before_return
+phase2_detection,0.115167,target detection finished
+phase2_detection,0.062733,target detection finished
+phase2_detection,0.059154,target detection finished
+phase2_detection,0.073029,target detection finished
+phase2_detection,0.084860,target detection finished
+task_total,29.114201,success=1
+==== 2026-05-15 12:24:45 | picked=0 ====
+init_scene,0.277449,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.433682,realsense pipeline started
+init_robot_planner,22.067472,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:03:34 | picked=0 ====
+init_scene,0.542117,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.432822,realsense pipeline started
+init_robot_planner,22.461304,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:03:57 | picked=1 ====
+phase1_move_view,5.905564,moved to viewpoint
+phase2_detection,2.183791,target detection finished
+phase3_search_pose,0.000654,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.376436,theta=-30, success
+phase3_total,2.490654,theta=-30, success
+phase4_place_plan,4.221464,success
+phase5_exec,5.960301,picked=1
+pick_to_return,14.856851,picked=1, before_return
+phase2_detection,0.091386,target detection finished
+phase2_detection,0.058436,target detection finished
+phase2_detection,0.060802,target detection finished
+phase2_detection,0.069417,target detection finished
+phase2_detection,0.065351,target detection finished
+task_total,27.299372,success=1
+==== 2026-05-15 13:06:08 | picked=0 ====
+init_scene,0.299435,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.420381,realsense pipeline started
+init_robot_planner,21.682106,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:16:07 | picked=0 ====
+init_scene,0.248908,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.414259,realsense pipeline started
+init_robot_planner,21.751390,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:23:43 | picked=0 ====
+init_scene,0.267209,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.405721,realsense pipeline started
+init_robot_planner,22.153976,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:27:04 | picked=0 ====
+init_scene,0.242274,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.439904,realsense pipeline started
+init_robot_planner,21.909453,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:28:48 | picked=0 ====
+init_scene,0.283189,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.410700,realsense pipeline started
+init_robot_planner,22.642003,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:29:11 | picked=3 ====
+phase1_move_view,0.004438,already at viewpoint
+phase2_detection,2.542879,target detection finished
+phase3_search_pose,0.003291,theta=-18
+phase3_inverse_ik,0.272274,theta=-18, success
+phase3_path_plan,1.502848,theta=-18, success
+phase3_total,1.880660,theta=-18, success
+phase4_place_plan,3.396212,success
+phase5_exec,5.369594,picked=1
+pick_to_return,13.189865,picked=1, before_return
+phase2_detection,0.099284,target detection finished
+phase3_search_pose,0.000722,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,4.606107,theta=-30, success
+phase3_total,4.717354,theta=-30, success
+phase4_place_plan,2.991381,success
+phase5_exec,6.274662,picked=2
+pick_to_return,14.083318,picked=2, before_return
+phase2_detection,0.079884,target detection finished
+phase3_search_pose,0.006441,theta=-6
+phase3_inverse_ik,0.483562,theta=-6, success
+phase3_path_plan,6.081212,theta=-6, success
+phase3_total,6.963429,theta=-6, success
+phase4_place_plan,1.328581,success
+phase5_exec,5.240892,picked=3
+pick_to_return,13.613369,picked=3, before_return
+phase2_detection,0.071274,target detection finished
+phase2_detection,0.072373,target detection finished
+phase2_detection,0.065256,target detection finished
+phase2_detection,0.070930,target detection finished
+phase2_detection,0.062968,target detection finished
+task_total,56.623445,success=3
+==== 2026-05-15 13:30:35 | picked=0 ====
+init_scene,0.257522,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.393174,realsense pipeline started
+init_robot_planner,22.659995,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 13:30:58 | picked=1 ====
+phase1_move_view,0.008806,already at viewpoint
+phase2_detection,2.717897,target detection finished
+phase3_search_pose,0.000720,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.554832,theta=-30, success
+phase3_total,5.698916,theta=-30, success
+phase4_place_plan,3.102101,success
+phase5_exec,6.524014,picked=1
+pick_to_return,18.043464,picked=1, before_return
+phase2_detection,0.089315,target detection finished
+phase2_detection,0.088154,target detection finished
+phase2_detection,0.069996,target detection finished
+phase2_detection,0.090618,target detection finished
+phase2_detection,0.076835,target detection finished
+task_total,25.363266,success=1
+==== 2026-05-15 14:00:42 | picked=0 ====
+init_scene,0.282798,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.410582,realsense pipeline started
+init_robot_planner,21.896520,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 14:01:04 | picked=3 ====
+phase1_move_view,4.301399,moved to viewpoint
+phase2_detection,1.995832,target detection finished
+phase3_search_pose,0.002194,theta=-24
+phase3_inverse_ik,0.223498,theta=-24, success
+phase3_path_plan,1.938751,theta=-24, success
+phase3_total,2.296734,theta=-24, success
+phase4_place_plan,3.885124,success
+phase5_exec,5.576905,picked=1
+pick_to_return,13.755158,picked=1, before_return
+phase2_detection,0.100434,target detection finished
+phase3_search_pose,0.000649,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,3.718715,theta=-30, success
+phase3_total,3.874646,theta=-30, success
+phase4_place_plan,3.093013,success
+phase5_exec,5.853302,picked=2
+pick_to_return,12.922015,picked=2, before_return
+phase2_detection,0.099982,target detection finished
+phase3_search_pose,0.002357,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.343925,theta=-30, success
+phase3_total,2.479719,theta=-30, success
+phase4_place_plan,3.921229,success
+phase5_exec,6.144376,picked=3
+pick_to_return,12.645898,picked=3, before_return
+phase2_detection,0.071326,target detection finished
+phase2_detection,0.060089,target detection finished
+phase2_detection,0.064503,target detection finished
+phase2_detection,0.076442,target detection finished
+phase2_detection,0.061171,target detection finished
+task_total,59.492157,success=3
+==== 2026-05-15 15:00:38 | picked=0 ====
+init_scene,0.338434,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.398684,realsense pipeline started
+init_robot_planner,23.631473,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 15:09:05 | picked=0 ====
+init_scene,0.310553,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.422143,realsense pipeline started
+init_robot_planner,23.443205,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 15:09:28 | picked=2 ====
+phase1_move_view,0.010786,already at viewpoint
+phase2_detection,2.942839,target detection finished
+phase3_search_pose,0.011969,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.165461,theta=-30, success
+phase3_total,5.328842,theta=-30, success
+phase4_place_plan,6.169901,success
+phase5_exec,6.684267,picked=1
+pick_to_return,21.126382,picked=1, before_return
+phase2_detection,0.123826,target detection finished
+phase3_search_pose,0.000702,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.583661,theta=-30, success
+phase3_total,5.746510,theta=-30, success
+phase4_place_plan,3.969456,success
+phase5_exec,6.452826,picked=2
+pick_to_return,16.293177,picked=2, before_return
+phase2_detection,0.066042,target detection finished
+phase2_detection,0.075713,target detection finished
+phase2_detection,0.074029,target detection finished
+phase2_detection,0.094910,target detection finished
+phase2_detection,0.096050,target detection finished
+task_total,49.674690,success=2
+==== 2026-05-15 15:12:50 | picked=0 ====
+init_scene,0.524137,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.412827,realsense pipeline started
+init_robot_planner,24.721090,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 15:13:15 | picked=1 ====
+phase1_move_view,5.196275,moved to viewpoint
+phase2_detection,2.386838,target detection finished
+phase3_search_pose,0.000705,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.225133,theta=-30, success
+phase3_total,2.375093,theta=-30, success
+phase4_place_plan,4.563291,success
+phase5_exec,5.835658,picked=1
+pick_to_return,15.161405,picked=1, before_return
+phase2_detection,0.140993,target detection finished
+phase2_detection,0.078642,target detection finished
+phase2_detection,0.073708,target detection finished
+phase2_detection,0.078478,target detection finished
+phase2_detection,0.121407,target detection finished
+task_total,27.464883,success=1
+==== 2026-05-15 15:21:38 | picked=0 ====
+init_scene,0.290960,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.456386,realsense pipeline started
+init_robot_planner,22.235503,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 15:22:00 | picked=1 ====
+phase1_move_view,6.314898,moved to viewpoint
+phase2_detection,1.985984,target detection finished
+phase3_search_pose,0.000635,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.920420,theta=-30, success
+phase3_total,2.032048,theta=-30, success
+phase4_place_plan,3.692858,success
+phase5_exec,5.868124,picked=1
+pick_to_return,13.579544,picked=1, before_return
+phase2_detection,0.117596,target detection finished
+phase3_search_pose,1.188180,failed
+phase3_inverse_ik,1.188180,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.214783,failed
+task_total,27.674004,success=1
+==== 2026-05-15 15:28:50 | picked=0 ====
+init_scene,0.336534,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.399918,realsense pipeline started
+init_robot_planner,21.685856,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 15:29:12 | picked=1 ====
+phase1_move_view,5.190697,moved to viewpoint
+phase2_detection,1.891081,target detection finished
+phase3_search_pose,0.000764,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.097609,theta=-30, success
+phase3_total,2.203342,theta=-30, success
+phase4_place_plan,4.121861,success
+phase5_exec,5.797456,picked=1
+pick_to_return,14.014344,picked=1, before_return
+phase2_detection,0.099474,target detection finished
+phase2_detection,0.090175,target detection finished
+phase2_detection,0.083811,target detection finished
+phase2_detection,0.087921,target detection finished
+phase2_detection,0.100729,target detection finished
+task_total,25.841912,success=1
+==== 2026-05-15 15:51:27 | picked=0 ====
+init_scene,0.230104,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.412850,realsense pipeline started
+init_robot_planner,25.531252,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 15:53:33 | picked=0 ====
+init_scene,0.271261,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.398942,realsense pipeline started
+init_robot_planner,23.089952,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 15:53:57 | picked=1 ====
+phase1_move_view,6.372376,moved to viewpoint
+phase2_detection,3.108239,target detection finished
+phase3_search_pose,0.000754,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.276538,theta=-30, success
+phase3_total,2.430971,theta=-30, success
+phase4_place_plan,3.676818,success
+phase5_exec,5.785979,picked=1
+pick_to_return,15.002591,picked=1, before_return
+phase2_detection,0.149523,target detection finished
+phase3_search_pose,1.137985,failed
+phase3_inverse_ik,1.137985,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.157660,failed
+task_total,27.479933,success=1
+==== 2026-05-15 16:29:17 | picked=0 ====
+init_scene,0.298151,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.409593,realsense pipeline started
+init_robot_planner,23.944437,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 16:29:41 | picked=4 ====
+phase1_move_view,8.075643,moved to viewpoint
+phase2_detection,3.092790,target detection finished
+phase3_search_pose,0.002467,theta=-21
+phase3_inverse_ik,0.215506,theta=-21, success
+phase3_path_plan,9.463677,theta=-21, success
+phase3_total,9.954518,theta=-21, success
+phase4_place_plan,1.177455,success
+phase5_exec,6.229329,picked=1
+pick_to_return,20.454682,picked=1, before_return
+phase2_detection,0.111053,target detection finished
+phase3_search_pose,0.006281,theta=-9
+phase3_inverse_ik,0.343345,theta=-9, success
+phase3_path_plan,17.644227,theta=-9, success
+phase3_total,18.430052,theta=-9, success
+phase4_place_plan,2.307294,success
+phase5_exec,6.178524,picked=2
+pick_to_return,27.027519,picked=2, before_return
+phase2_detection,0.081446,target detection finished
+phase3_search_pose,0.004645,theta=-21
+phase3_inverse_ik,0.363958,theta=-21, success
+phase3_path_plan,5.603298,theta=-21, success
+phase3_total,6.107180,theta=-21, success
+phase4_place_plan,1.753720,success
+phase5_exec,6.124527,picked=3
+pick_to_return,14.067520,picked=3, before_return
+phase2_detection,0.119107,target detection finished
+phase3_search_pose,0.011681,theta=3
+phase3_inverse_ik,0.554502,theta=3, success
+phase3_path_plan,11.329371,theta=3, success
+phase3_total,12.261135,theta=3, success
+phase4_place_plan,1.503548,success
+phase5_exec,6.002057,picked=4
+pick_to_return,19.886474,picked=4, before_return
+phase2_detection,0.106069,target detection finished
+phase2_detection,0.123488,target detection finished
+phase2_detection,0.149430,target detection finished
+phase2_detection,0.104725,target detection finished
+phase2_detection,0.072447,target detection finished
+task_total,110.945268,success=4
+==== 2026-05-15 18:12:12 | picked=0 ====
+init_scene,0.324745,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.412341,realsense pipeline started
+init_robot_planner,9.954695,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 18:12:22 | picked=3 ====
+phase1_move_view,5.464210,moved to viewpoint
+phase2_detection,3.459633,target detection finished
+phase3_search_pose,0.001166,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.025134,theta=-30, success
+phase3_total,2.142627,theta=-30, success
+phase4_place_plan,1.846503,success
+phase5_exec,5.620893,picked=1
+pick_to_return,13.070341,picked=1, before_return
+phase2_detection,0.097388,target detection finished
+phase3_search_pose,0.000823,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,3.510545,theta=-30, success
+phase3_total,3.624093,theta=-30, success
+phase4_place_plan,2.840602,success
+phase5_exec,5.739968,picked=2
+pick_to_return,12.302640,picked=2, before_return
+phase2_detection,0.117282,target detection finished
+phase3_search_pose,0.001400,theta=-27
+phase3_inverse_ik,0.160353,theta=-27, success
+phase3_path_plan,3.662467,theta=-27, success
+phase3_total,3.949037,theta=-27, success
+phase4_place_plan,1.092195,success
+phase5_exec,5.694757,picked=3
+pick_to_return,10.853959,picked=3, before_return
+phase2_detection,0.069901,target detection finished
+phase2_detection,0.079989,target detection finished
+phase2_detection,0.071328,target detection finished
+phase2_detection,0.064360,target detection finished
+phase2_detection,0.080928,target detection finished
+task_total,61.708770,success=3
+==== 2026-05-15 18:16:05 | picked=0 ====
+init_scene,0.287196,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.414382,realsense pipeline started
+init_robot_planner,7.654549,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 18:16:13 | picked=2 ====
+phase1_move_view,0.006650,already at viewpoint
+phase2_detection,2.682954,target detection finished
+phase3_search_pose,0.010497,theta=3
+phase3_inverse_ik,0.582221,theta=3, success
+phase3_path_plan,3.790430,theta=3, success
+phase3_total,4.697345,theta=3, success
+phase4_place_plan,4.160928,success
+phase5_exec,5.236320,picked=1
+pick_to_return,16.778081,picked=1, before_return
+phase2_detection,0.107883,target detection finished
+phase3_search_pose,0.017113,theta=18
+phase3_inverse_ik,0.734449,theta=18, success
+phase3_path_plan,20.797122,theta=18, success
+phase3_total,22.031433,theta=18, success
+phase4_place_plan,4.521568,success
+phase5_exec,6.967108,picked=2
+pick_to_return,33.628598,picked=2, before_return
+phase2_detection,0.104621,target detection finished
+phase2_detection,0.083253,target detection finished
+phase2_detection,0.078878,target detection finished
+phase2_detection,0.062643,target detection finished
+phase2_detection,0.064995,target detection finished
+task_total,60.174222,success=2
+==== 2026-05-15 18:18:38 | picked=0 ====
+init_scene,0.282541,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.451900,realsense pipeline started
+init_robot_planner,8.081988,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 18:18:46 | picked=0 ====
+phase1_move_view,4.115102,moved to viewpoint
+phase2_detection,1.906136,target detection finished
+phase3_search_pose,1.329015,failed
+phase3_inverse_ik,1.329015,failed
+phase3_path_plan,0.000000,failed
+phase3_total,16.263335,failed
+task_total,22.294309,success=0
+==== 2026-05-15 18:19:26 | picked=0 ====
+init_scene,0.322010,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.404336,realsense pipeline started
+init_robot_planner,7.893417,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-15 18:19:34 | picked=2 ====
+phase1_move_view,0.004544,already at viewpoint
+phase2_detection,2.641350,target detection finished
+phase3_search_pose,0.000783,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,6.181870,theta=-30, success
+phase3_total,6.345642,theta=-30, success
+phase4_place_plan,2.760507,success
+phase5_exec,6.553621,picked=1
+pick_to_return,18.301831,picked=1, before_return
+phase2_detection,0.094120,target detection finished
+phase3_search_pose,0.000743,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.711343,theta=-30, success
+phase3_total,1.822149,theta=-30, success
+phase4_place_plan,0.808529,success
+phase5_exec,5.345044,picked=2
+pick_to_return,8.070498,picked=2, before_return
+phase2_detection,0.093935,target detection finished
+phase2_detection,0.066401,target detection finished
+phase2_detection,0.084329,target detection finished
+phase2_detection,0.094051,target detection finished
+phase2_detection,0.074977,target detection finished
+task_total,37.648467,success=2
+==== 2026-05-24 09:53:06 | picked=0 ====
+init_scene,0.280450,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.436503,realsense pipeline started
+init_robot_planner,8.725536,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 10:04:56 | picked=0 ====
+init_scene,0.283970,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.410968,realsense pipeline started
+init_robot_planner,7.561909,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:08:50 | picked=0 ====
+init_scene,0.291404,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.387396,realsense pipeline started
+init_robot_planner,7.366421,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:10:56 | picked=0 ====
+init_scene,0.261242,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.417910,realsense pipeline started
+init_robot_planner,7.525974,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:11:04 | picked=0 ====
+phase1_move_view,0.004374,already at viewpoint
+phase2_detection,2.485564,target detection finished
+phase2_detection,0.374674,target detection finished
+phase2_detection,0.110125,target detection finished
+phase2_detection,0.067105,target detection finished
+phase2_detection,0.088372,target detection finished
+task_total,4.337142,success=0
+==== 2026-05-24 12:12:25 | picked=0 ====
+init_scene,0.264941,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.411355,realsense pipeline started
+init_robot_planner,7.556854,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:12:33 | picked=0 ====
+phase1_move_view,0.008646,already at viewpoint
+phase2_detection,2.467355,target detection finished
+phase2_detection,0.070914,target detection finished
+phase2_detection,0.063944,target detection finished
+phase2_detection,0.077418,target detection finished
+phase2_detection,0.097479,target detection finished
+task_total,3.997824,success=0
+==== 2026-05-24 12:13:33 | picked=0 ====
+init_scene,0.246217,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.415371,realsense pipeline started
+init_robot_planner,7.405849,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:13:40 | picked=0 ====
+phase1_move_view,0.008636,already at viewpoint
+phase2_detection,2.621148,target detection finished
+phase2_detection,0.072368,target detection finished
+phase2_detection,0.070067,target detection finished
+phase2_detection,0.057566,target detection finished
+phase2_detection,0.086356,target detection finished
+task_total,4.127403,success=0
+==== 2026-05-24 12:16:39 | picked=0 ====
+init_scene,0.231854,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.402540,realsense pipeline started
+init_robot_planner,7.442532,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:16:47 | picked=0 ====
+phase1_move_view,0.004952,already at viewpoint
+phase2_detection,2.739107,target detection finished
+phase2_detection,0.064986,target detection finished
+phase2_detection,0.063393,target detection finished
+phase2_detection,0.068172,target detection finished
+phase2_detection,0.066133,target detection finished
+task_total,4.213827,success=0
+==== 2026-05-24 12:17:28 | picked=0 ====
+init_scene,0.242128,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.397800,realsense pipeline started
+init_robot_planner,7.142722,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:17:36 | picked=0 ====
+phase1_move_view,0.006563,already at viewpoint
+phase2_detection,2.515199,target detection finished
+phase2_detection,0.063565,target detection finished
+phase2_detection,0.061294,target detection finished
+phase2_detection,0.065637,target detection finished
+phase2_detection,0.065790,target detection finished
+task_total,3.987041,success=0
+==== 2026-05-24 12:24:14 | picked=0 ====
+init_scene,0.228213,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.394958,realsense pipeline started
+init_robot_planner,7.190860,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:24:53 | picked=0 ====
+init_scene,0.276925,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.422143,realsense pipeline started
+init_robot_planner,7.104127,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:25:00 | picked=0 ====
+phase1_move_view,3.976117,moved to viewpoint
+phase2_detection,1.905949,target detection finished
+phase3_search_pose,1.143162,failed
+phase3_inverse_ik,1.143162,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.163200,failed
+task_total,7.052893,success=0
+==== 2026-05-24 12:26:55 | picked=0 ====
+init_scene,0.270659,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.407599,realsense pipeline started
+init_robot_planner,7.381993,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:27:03 | picked=0 ====
+phase1_move_view,0.004360,already at viewpoint
+phase2_detection,2.409109,target detection finished
+phase2_detection,0.208985,target detection finished
+phase3_search_pose,1.115972,failed
+phase3_inverse_ik,1.115972,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.133472,failed
+task_total,4.063773,success=0
+==== 2026-05-24 12:36:17 | picked=0 ====
+init_scene,0.250562,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.413193,realsense pipeline started
+init_robot_planner,7.255745,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:36:24 | picked=0 ====
+phase1_move_view,3.473155,moved to viewpoint
+phase2_detection,2.038567,target detection finished
+phase3_search_pose,1.163500,failed
+phase3_inverse_ik,1.163500,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.180491,failed
+task_total,6.697722,success=0
+==== 2026-05-24 12:36:56 | picked=0 ====
+init_scene,0.269573,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.409088,realsense pipeline started
+init_robot_planner,7.146223,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:37:03 | picked=0 ====
+phase1_move_view,0.004456,already at viewpoint
+phase2_detection,2.544733,target detection finished
+phase2_detection,0.170854,target detection finished
+phase3_search_pose,1.110530,failed
+phase3_inverse_ik,1.110530,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.132604,failed
+task_total,4.160581,success=0
+==== 2026-05-24 12:43:28 | picked=0 ====
+init_scene,0.298908,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.448491,realsense pipeline started
+init_robot_planner,7.453554,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:43:36 | picked=0 ====
+phase1_move_view,0.004558,already at viewpoint
+phase2_detection,2.687884,target detection finished
+phase3_search_pose,1.143004,failed
+phase3_inverse_ik,1.143004,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.174260,failed
+task_total,3.874157,success=0
+==== 2026-05-24 12:44:05 | picked=0 ====
+init_scene,0.239330,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.393989,realsense pipeline started
+init_robot_planner,7.075236,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:44:12 | picked=0 ====
+phase1_move_view,0.008663,already at viewpoint
+phase2_detection,2.437020,target detection finished
+phase3_search_pose,1.139529,failed
+phase3_inverse_ik,1.139529,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.160442,failed
+task_total,3.611428,success=0
+==== 2026-05-24 12:44:42 | picked=0 ====
+init_scene,0.225178,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.386287,realsense pipeline started
+init_robot_planner,7.037794,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 12:44:49 | picked=0 ====
+phase1_move_view,0.010834,already at viewpoint
+phase2_detection,2.509477,target detection finished
+phase2_detection,0.166472,target detection finished
+phase3_search_pose,1.181020,failed
+phase3_inverse_ik,1.181020,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.197794,failed
+task_total,4.204656,success=0
+==== 2026-05-24 13:25:25 | picked=0 ====
+init_scene,0.288540,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.404929,realsense pipeline started
+init_robot_planner,7.547398,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 13:25:33 | picked=0 ====
+phase1_move_view,0.006584,already at viewpoint
+phase2_detection,2.523578,target detection finished
+phase2_detection,0.182829,target detection finished
+phase3_search_pose,1.136676,failed
+phase3_inverse_ik,1.136676,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.153315,failed
+task_total,4.174368,success=0
+==== 2026-05-24 13:26:34 | picked=0 ====
+init_scene,0.234450,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.396507,realsense pipeline started
+init_robot_planner,7.181262,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 13:26:42 | picked=0 ====
+phase1_move_view,0.004418,already at viewpoint
+phase2_detection,2.421494,target detection finished
+phase3_search_pose,1.093343,failed
+phase3_inverse_ik,1.093343,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.111460,failed
+task_total,3.546788,success=0
+==== 2026-05-24 13:33:52 | picked=0 ====
+init_scene,0.246408,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.454379,realsense pipeline started
+init_robot_planner,7.312377,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 13:33:59 | picked=0 ====
+phase1_move_view,0.004524,already at viewpoint
+phase2_detection,2.636964,target detection finished
+phase3_search_pose,1.109360,failed
+phase3_inverse_ik,1.109360,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.126948,failed
+task_total,3.777903,success=0
+==== 2026-05-24 13:34:42 | picked=0 ====
+init_scene,0.247115,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.406827,realsense pipeline started
+init_robot_planner,7.168287,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 13:34:50 | picked=0 ====
+phase1_move_view,0.004675,already at viewpoint
+phase2_detection,2.717438,target detection finished
+phase3_search_pose,1.120077,failed
+phase3_inverse_ik,1.120077,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.137786,failed
+task_total,3.869546,success=0
+==== 2026-05-24 13:35:08 | picked=0 ====
+init_scene,0.301432,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.396527,realsense pipeline started
+init_robot_planner,7.323482,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 13:35:16 | picked=0 ====
+phase1_move_view,0.004441,already at viewpoint
+phase2_detection,2.601793,target detection finished
+phase3_search_pose,1.178162,failed
+phase3_inverse_ik,1.178162,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.199880,failed
+task_total,3.815656,success=0
+==== 2026-05-24 14:57:29 | picked=0 ====
+init_scene,0.235964,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.422951,realsense pipeline started
+init_robot_planner,7.541621,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 14:57:36 | picked=0 ====
+phase1_move_view,0.012705,already at viewpoint
+phase2_detection,3.202143,target detection finished
+phase3_search_pose,1.173401,failed
+phase3_inverse_ik,1.173401,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.190737,failed
+task_total,4.413000,success=0
+==== 2026-05-24 15:37:09 | picked=0 ====
+init_scene,0.279345,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.418995,realsense pipeline started
+init_robot_planner,7.967068,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 15:58:19 | picked=0 ====
+init_scene,0.264392,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.408808,realsense pipeline started
+init_robot_planner,7.232600,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 16:12:55 | picked=0 ====
+init_scene,0.272807,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.409668,realsense pipeline started
+init_robot_planner,8.133913,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 16:44:19 | picked=0 ====
+init_scene,0.438025,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.409127,realsense pipeline started
+init_robot_planner,8.779164,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 16:55:30 | picked=0 ====
+init_scene,0.287747,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.408704,realsense pipeline started
+init_robot_planner,8.033310,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 17:11:11 | picked=0 ====
+init_scene,0.374995,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.400978,realsense pipeline started
+init_robot_planner,8.615816,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 17:12:42 | picked=0 ====
+init_scene,0.297400,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.402953,realsense pipeline started
+init_robot_planner,8.186145,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-24 17:15:57 | picked=0 ====
+init_scene,0.291672,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.416689,realsense pipeline started
+init_robot_planner,7.626693,robot/adp ready
+init_total,0.000000,initialization finished

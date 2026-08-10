@@ -1,0 +1,112 @@
+# --------------------
+# Python 虚拟环境
+# --------------------
+/.venv/
+/.venv_linux/
+/venv/
+/env/
+
+# --------------------
+# Python 缓存
+# --------------------
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --------------------
+# Python 编译和打包产物
+# --------------------
+/build/
+/dist/
+*.egg-info/
+/wrs/pytracik/build/
+/wrs/pytracik/pytracik.egg-info/
+
+# --------------------
+# IDE 和操作系统文件
+# --------------------
+/.idea/
+/.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --------------------
+# 临时文件
+# --------------------
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# --------------------
+# 环境变量和私密配置
+# --------------------
+.env
+.env.*
+!.env.example
+
+# --------------------
+# Fruit picker 运行日志
+# --------------------
+/wrs/Fruit_picker_project/logs/
+/wrs/Fruit_picker_project/testapi/logs/
+/wrs/Fruit_picker_project/FLASK/pepper_pick_log.txt
+/wrs/Fruit_picker_project/FLASK/pepper_pick_timing_log.txt
+/wrs/Pepper*/pepper_pick_log.txt
+/wrs/Pepper*/pepper_pick_timing_log.txt
+
+# --------------------
+# 仿真和相机采集结果
+# --------------------
+/wrs/Fruit_picker_project/Simulation/outputs/
+/wrs/Fruit_picker_project/Simulation/outputs_*/
+/wrs/Fruit_picker_project/Reality/outputs_*/
+
+# --------------------
+# 实验和轨迹运行结果
+# --------------------
+/wrs/Fruit_picker_project/Experiment/results/
+/wrs/Fruit_picker_project/pick/path_records/
+
+# --------------------
+# 手动标定产生的原始记录
+# 注意：不忽略最终标定 JSON
+# --------------------
+/wrs/Fruit_picker_project/manual_calibration/A1_records/
+/wrs/Fruit_picker_project/manual_calibration/B1_records/
+
+# --------------------
+# YOLO 训练产生的结果
+# --------------------
+/wrs/Pepper/yolov11_training/runs/
+/wrs/Pepper_/yolov11_training/runs/
+
+# 独立标注工具，两个采摘项目没有引用
+/ISAT_with_segment_anything/
+
+# 独立实验
+/0000_examples/
+
+# 本地安装包，当前采摘源码没有引用
+/JodellTool-*.whl
+
+# Fruit 仿真只使用 pepper/1
+/0000_book/objects/pepper/2/
+/0000_book/objects/pepper.zip
+
+# Fruit 主流程不使用的旧版大型小车模型
+/wrs/Pepper_NBV/NLDX-OSH100-DF-00总装（2026.4.1）.STL
+/wrs/Pepper_NBV/robotcar.stl
+/wrs/Pepper_NBV/robotcar_m.stl
+/wrs/Pepper_NBV/newcar.stl
+/wrs/Pepper_NBV/newcar_m.stl
+
+# 旧 NBV 模型权重，Fruit 主流程使用自己的 Weight/best.pt
+/wrs/Pepper_NBV/weights/

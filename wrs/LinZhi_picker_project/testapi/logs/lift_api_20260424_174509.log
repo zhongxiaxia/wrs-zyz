@@ -1,0 +1,16 @@
+[日志] 本次输出已保存到: d:\HYJ_projiect\Pepper\Fruit_picker_project\testapi\logs\lift_api_20260424_174509.log
+[日志] 参数: Namespace(host='169.254.128.2', port=5480, user='admin', password='123456', timeout=10.0, sleep=1.0, only=None, debug_file=False)
+[硬件模块] 升降平台初始化完毕 (endpoint: http://169.254.128.2:5480/woosh/ros/CallAction)
+
+[TEST] 开始测试: move_level_3
+[升降 API] 请求升降机构3，height=0.1...
+[升降 API] 发送动作: {"lift_control3": {"execute_mode": 1, "height": 0.1, "speed": 0.03, "action": 1}}
+[TEST] move_level_3 失败: RuntimeError('升降机构请求失败: timed out')
+
+[TEST] 开始测试: reset_to_bottom
+[升降 API] 升降平台正在降至最低点...
+[升降 API] 请求升降机构3，height=0.05...
+[升降 API] 发送动作: {"lift_control3": {"execute_mode": 1, "height": 0.05, "speed": 0.03, "action": 1}}
+[升降 API] 已回到底部。
+[TEST] reset_to_bottom 失败: RuntimeError('升降机构请求失败: timed out')
+[TEST] 升降机构 API 测试结束

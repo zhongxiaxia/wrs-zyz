@@ -1,0 +1,56 @@
+[日志] 本次输出已保存到: d:\HYJ_projiect\Pepper\Fruit_picker_project\logs\lift_api_20260424_161621.log
+[日志] 参数: Namespace(host='169.254.128.2', port=5480, user='admin', password='123456', timeout=10.0, sleep=1.0, debug_file=False)
+[硬件模块] 升降平台初始化完毕 (endpoint: http://169.254.128.2:5480/woosh/ros/CallAction)
+
+[TEST] 开始测试: move_up
+[升降 API] 请求举升机构上升...
+[升降 API] 上升指令已发送。
+
+===== move_up =====
+{
+  "status": 200,
+  "body": "{\"body\":{\"liftControl\":{\"action\":1,\"executeMode\":1}},\"msg\":\"Request succeed\",\"ok\":true,\"timestamp\":1777018584721,\"type\":\"woosh.ros.CallAction\"}"
+}
+[TEST] 当前记录高度: 0.0
+
+[TEST] 开始测试: move_down
+[升降 API] 请求举升机构下降...
+[升降 API] 下降指令已发送。
+
+===== move_down =====
+{
+  "status": 200,
+  "body": "{\"body\":{\"liftControl\":{\"action\":1,\"executeMode\":2}},\"msg\":\"Request succeed\",\"ok\":true,\"timestamp\":1777018585745,\"type\":\"woosh.ros.CallAction\"}"
+}
+[TEST] 当前记录高度: 0.0
+
+[TEST] 开始测试: move_level_2
+[升降 API] 请求升降机构2，height=-0.5...
+[升降 API] 升降机构2 指令已发送。
+
+===== move_level_2 =====
+{
+  "status": 200,
+  "body": "{\"body\":{\"liftControl2\":{\"action\":1,\"height\":-0.5}},\"msg\":\"Request succeed\",\"ok\":true,\"timestamp\":1777018586782,\"type\":\"woosh.ros.CallAction\"}"
+}
+[TEST] 当前记录高度: 0.0
+
+[TEST] 开始测试: move_level_3
+[升降 API] 请求升降机构3，height=0.5...
+[升降 API] 升降机构3 指令已发送。
+
+===== move_level_3 =====
+{
+  "status": 200,
+  "body": "{\"body\":{\"liftControl3\":{\"action\":1,\"executeMode\":1,\"flags\":0,\"height\":0.5,\"speed\":0}},\"msg\":\"Request succeed\",\"ok\":true,\"timestamp\":1777018587803,\"type\":\"woosh.ros.CallAction\"}"
+}
+[TEST] 当前记录高度: 0.0
+
+[TEST] 开始测试: reset_to_bottom
+[升降 API] 升降平台正在降至最低点...
+[升降 API] 请求举升机构下降...
+[升降 API] 下降指令已发送。
+[升降 API] 已回到底部。
+[TEST] reset_to_bottom 执行完成，无返回值
+[TEST] 当前记录高度: 0.0
+[TEST] 升降机构 API 测试结束

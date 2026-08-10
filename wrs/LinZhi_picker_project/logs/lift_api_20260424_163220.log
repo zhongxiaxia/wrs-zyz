@@ -1,0 +1,15 @@
+[日志] 本次输出已保存到: D:\HYJ_projiect\Pepper\Fruit_picker_project\logs\lift_api_20260424_163220.log
+[日志] 参数: Namespace(host='169.254.128.2', port=5480, user='admin', password='123456', timeout=10.0, sleep=1.0, only='level2', debug_file=False)
+[硬件模块] 升降平台初始化完毕 (endpoint: http://169.254.128.2:5480/woosh/ros/CallAction)
+
+[TEST] 开始测试: move_level_2
+[升降 API] 请求升降机构2，height=0.2...
+[升降 API] 升降机构2 指令已发送。
+
+===== move_level_2 =====
+{
+  "status": 200,
+  "body": "{\"ok\":false,\"msg\":\"REQUEST FAILED\"}\n"
+}
+[TEST] 当前记录高度: 0.0
+[TEST] 升降机构 API 测试结束

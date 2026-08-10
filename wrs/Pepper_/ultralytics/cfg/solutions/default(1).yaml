@@ -1,0 +1,40 @@
+# Ultralytics YOLO 🚀, AGPL-3.0 license
+
+# Configuration for Ultralytics Solutions
+# 提供针对不同计算机视觉任务（如目标检测、实例分割、姿态估计）的 标准化参数组合，避免用户手动配置大量参数。
+
+model: "yolo11n.pt" # The Ultralytics YOLO11 model to be used (e.g., yolo11n.pt for YOLO11 nano version and yolov8n.pt for YOLOv8 nano version)
+
+region: # Object counting, queue or speed estimation region points. Default region points are [(20, 400), (1080, 404), (1080, 360), (20, 360)]
+# 作用：定义检测区域用于物体计数、流量监控或速度估计。
+# 应用场景：商场人流量统计、高速公路车流监控、工厂流水线物品计数
+
+line_width: 2 # Width of the annotator used to draw regions on the image/video frames + bounding boxes and tracks drawing. Default value is 2.
+ # 标注线宽
+
+
+show: True # Flag to control whether to display output image or not, you can set this as False i.e. when deploying it on some embedded devices.
+show_in: True # Flag to display objects moving *into* the defined region
+# 显示进入区域物体
+
+
+show_out: True # Flag to display objects moving *out of* the defined region
+  # 显示离开区域物体
+
+
+classes: # To count specific classes. i.e, if you want to detect, track and count the person with COCO model, you can use classes=0, Default its None
+# 定义要检测的类别，如 COCO模型中，人类可以用 classes=[0]
+
+
+up_angle: 145.0 # Workouts up_angle for counts, 145.0 is default value. You can adjust it for different workouts, based on position of keypoints.
+# 作用：定义poses的up_angle和down_angle，默认值145.0和90，可以根据poses的关键点位置进行调整。
+# 应用场景：用于训练和评估人体姿态估计模型，如COCO模型。
+
+
+down_angle: 90 # Workouts down_angle for counts, 90 is default value. You can change it for different workouts, based on position of keypoints.
+kpts: [6, 8, 10] # Keypoints for workouts monitoring, i.e. If you want to consider keypoints for pushups that have mostly values of [6, 8, 10].
+# 定义要检测的关键点，如推ups，通常有[6, 8, 10]的关键点值
+
+
+colormap: # Colormap for heatmap, Only OPENCV supported colormaps can be used. By default COLORMAP_PARULA will be used for visualization.
+# 定义 heatmap的colormap，Opencv支持的colormap可以被使用。默认使用COLORMAP_PARULA进行可视化。

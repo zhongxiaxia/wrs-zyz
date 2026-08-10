@@ -1,0 +1,1970 @@
+==== 2026-04-30 13:49:49 | picked=0 ====
+init_scene,0.477212,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.426579,realsense pipeline started
+init_robot_planner,26.116605,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 13:50:25 | picked=1 ====
+phase1_move_view,3.024874,moved to viewpoint
+phase2_detection,3.071084,target detection finished
+phase3_search_pose,0.010868,theta=9
+phase3_inverse_ik,1.375130,theta=9, success
+phase3_path_plan,3.721322,theta=9, success
+phase3_total,5.203803,theta=9, success
+phase4_place_plan,0.000055,success
+phase5_exec,6.049196,picked=1
+pick_to_return,14.324601,picked=1, before_return
+task_total,20.384469,success=1
+==== 2026-04-30 13:50:46 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.172133,target detection finished
+task_total,0.181325,success=0
+==== 2026-04-30 13:50:46 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.083757,target detection finished
+task_total,0.090050,success=0
+==== 2026-04-30 13:50:46 | picked=0 ====
+phase1_move_view,0.000021,already at viewpoint
+phase2_detection,0.154665,target detection finished
+task_total,0.167949,success=0
+==== 2026-04-30 13:50:46 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.185831,target detection finished
+task_total,0.197052,success=0
+==== 2026-04-30 13:50:47 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.063202,target detection finished
+task_total,0.075191,success=0
+==== 2026-04-30 13:50:56 | picked=0 ====
+phase1_move_view,0.000071,already at viewpoint
+phase2_detection,0.127072,target detection finished
+phase3_search_pose,1.116666,failed
+phase3_inverse_ik,1.116666,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.171713,failed
+task_total,1.314219,success=0
+==== 2026-04-30 13:50:57 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.175621,target detection finished
+phase3_search_pose,1.008674,failed
+phase3_inverse_ik,1.008674,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.029615,failed
+task_total,1.227108,success=0
+==== 2026-04-30 13:50:59 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.214994,target detection finished
+phase3_search_pose,1.409711,failed
+phase3_inverse_ik,1.409711,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.442806,failed
+task_total,1.684251,success=0
+==== 2026-04-30 13:51:01 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.238829,target detection finished
+phase3_search_pose,1.192977,failed
+phase3_inverse_ik,1.192977,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.211099,failed
+task_total,1.459478,success=0
+==== 2026-04-30 13:51:02 | picked=0 ====
+phase1_move_view,0.000027,already at viewpoint
+phase2_detection,0.267485,target detection finished
+phase3_search_pose,1.275192,failed
+phase3_inverse_ik,1.275192,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.297358,failed
+task_total,1.571702,success=0
+==== 2026-04-30 13:51:13 | picked=1 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.192700,target detection finished
+phase3_search_pose,0.000634,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.630401,theta=-30, success
+phase3_total,2.721960,theta=-30, success
+phase4_place_plan,0.000053,success
+phase5_exec,6.090136,picked=1
+pick_to_return,9.005275,picked=1, before_return
+task_total,12.052291,success=1
+==== 2026-04-30 13:51:25 | picked=0 ====
+phase1_move_view,0.000025,already at viewpoint
+phase2_detection,0.132557,target detection finished
+phase3_search_pose,1.076635,failed
+phase3_inverse_ik,1.076635,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.095936,failed
+task_total,1.240077,success=0
+==== 2026-04-30 13:51:27 | picked=0 ====
+phase1_move_view,0.000030,already at viewpoint
+phase2_detection,0.116473,target detection finished
+phase3_search_pose,1.053944,failed
+phase3_inverse_ik,1.053944,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.072242,failed
+task_total,1.197719,success=0
+==== 2026-04-30 13:51:28 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.132156,target detection finished
+phase3_search_pose,1.038603,failed
+phase3_inverse_ik,1.038603,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.061107,failed
+task_total,1.214977,success=0
+==== 2026-04-30 13:51:29 | picked=0 ====
+phase1_move_view,0.000029,already at viewpoint
+phase2_detection,0.133563,target detection finished
+phase3_search_pose,0.997584,failed
+phase3_inverse_ik,0.997584,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.014557,failed
+task_total,1.158740,success=0
+==== 2026-04-30 13:51:30 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.148248,target detection finished
+phase3_search_pose,1.064514,failed
+phase3_inverse_ik,1.064514,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.087945,failed
+task_total,1.242782,success=0
+==== 2026-04-30 13:51:41 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.117499,target detection finished
+phase3_search_pose,1.177233,failed
+phase3_inverse_ik,1.177233,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.195369,failed
+task_total,1.323848,success=0
+==== 2026-04-30 13:51:42 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.179647,target detection finished
+phase3_search_pose,1.032668,failed
+phase3_inverse_ik,1.032668,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.052426,failed
+task_total,1.249009,success=0
+==== 2026-04-30 13:51:44 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.160475,target detection finished
+phase3_search_pose,1.104919,failed
+phase3_inverse_ik,1.104919,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.126575,failed
+task_total,1.302687,success=0
+==== 2026-04-30 13:51:45 | picked=0 ====
+phase1_move_view,0.000036,already at viewpoint
+phase2_detection,0.128223,target detection finished
+phase3_search_pose,1.032586,failed
+phase3_inverse_ik,1.032586,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.070710,failed
+task_total,1.212522,success=0
+==== 2026-04-30 13:51:46 | picked=0 ====
+phase1_move_view,0.000038,already at viewpoint
+phase2_detection,0.170943,target detection finished
+phase3_search_pose,1.149388,failed
+phase3_inverse_ik,1.149388,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.183937,failed
+task_total,1.374038,success=0
+==== 2026-04-30 13:52:11 | picked=1 ====
+phase1_move_view,0.000025,already at viewpoint
+phase2_detection,0.175097,target detection finished
+phase3_search_pose,0.000637,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,15.098962,theta=-30, success
+phase3_total,15.210535,theta=-30, success
+phase4_place_plan,0.000057,success
+phase5_exec,6.070076,picked=1
+pick_to_return,21.456236,picked=1, before_return
+task_total,24.496064,success=1
+==== 2026-04-30 13:52:36 | picked=0 ====
+phase1_move_view,0.000048,already at viewpoint
+phase2_detection,0.100375,target detection finished
+task_total,0.109162,success=0
+==== 2026-04-30 13:52:36 | picked=0 ====
+phase1_move_view,0.000028,already at viewpoint
+phase2_detection,0.102077,target detection finished
+task_total,0.112812,success=0
+==== 2026-04-30 13:52:36 | picked=0 ====
+phase1_move_view,0.000028,already at viewpoint
+phase2_detection,0.111575,target detection finished
+task_total,0.122419,success=0
+==== 2026-04-30 13:52:37 | picked=0 ====
+phase1_move_view,0.000028,already at viewpoint
+phase2_detection,0.110250,target detection finished
+task_total,0.120708,success=0
+==== 2026-04-30 13:52:37 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.088510,target detection finished
+task_total,0.094779,success=0
+==== 2026-04-30 13:52:46 | picked=0 ====
+phase1_move_view,0.000029,already at viewpoint
+phase2_detection,0.098588,target detection finished
+phase3_search_pose,1.096440,failed
+phase3_inverse_ik,1.096440,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.114527,failed
+task_total,1.223678,success=0
+==== 2026-04-30 13:52:48 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.151634,target detection finished
+phase3_search_pose,1.110605,failed
+phase3_inverse_ik,1.110605,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.147024,failed
+task_total,1.309719,success=0
+==== 2026-04-30 13:52:49 | picked=0 ====
+phase1_move_view,0.000048,already at viewpoint
+phase2_detection,0.130912,target detection finished
+phase3_search_pose,1.158618,failed
+phase3_inverse_ik,1.158618,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.221741,failed
+task_total,1.368169,success=0
+==== 2026-04-30 13:52:50 | picked=0 ====
+phase1_move_view,0.000028,already at viewpoint
+phase2_detection,0.145055,target detection finished
+phase3_search_pose,1.084983,failed
+phase3_inverse_ik,1.084983,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.131501,failed
+task_total,1.289635,success=0
+==== 2026-04-30 13:52:52 | picked=0 ====
+phase1_move_view,0.000030,already at viewpoint
+phase2_detection,0.149918,target detection finished
+phase3_search_pose,1.091230,failed
+phase3_inverse_ik,1.091230,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.109965,failed
+task_total,1.268607,success=0
+==== 2026-04-30 13:54:30 | picked=0 ====
+init_scene,0.475841,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.446504,realsense pipeline started
+init_robot_planner,26.882913,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 13:55:16 | picked=0 ====
+phase1_move_view,0.000037,already at viewpoint
+phase2_detection,2.530641,target detection finished
+task_total,2.540677,success=0
+==== 2026-04-30 13:55:19 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.078077,target detection finished
+task_total,0.084753,success=0
+==== 2026-04-30 13:55:19 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.139009,target detection finished
+task_total,0.145389,success=0
+==== 2026-04-30 13:55:19 | picked=0 ====
+phase1_move_view,0.000035,already at viewpoint
+phase2_detection,0.101592,target detection finished
+task_total,0.112737,success=0
+==== 2026-04-30 13:55:19 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.142354,target detection finished
+task_total,0.167201,success=0
+==== 2026-04-30 14:00:04 | picked=0 ====
+init_scene,0.433516,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.440213,realsense pipeline started
+init_robot_planner,26.574508,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 14:00:38 | picked=0 ====
+phase1_move_view,0.000032,already at viewpoint
+phase2_detection,2.453253,target detection finished
+task_total,2.460600,success=0
+==== 2026-04-30 14:00:41 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.089421,target detection finished
+task_total,0.106145,success=0
+==== 2026-04-30 14:00:41 | picked=0 ====
+phase1_move_view,0.000021,already at viewpoint
+phase2_detection,0.127993,target detection finished
+task_total,0.136308,success=0
+==== 2026-04-30 14:00:41 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.195269,target detection finished
+task_total,0.214079,success=0
+==== 2026-04-30 14:00:42 | picked=0 ====
+phase1_move_view,0.000021,already at viewpoint
+phase2_detection,0.109757,target detection finished
+task_total,0.116484,success=0
+==== 2026-04-30 14:00:51 | picked=0 ====
+phase1_move_view,0.000084,already at viewpoint
+phase2_detection,0.192848,target detection finished
+phase3_search_pose,1.312981,failed
+phase3_inverse_ik,1.312981,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.333799,failed
+task_total,1.548716,success=0
+==== 2026-04-30 14:00:53 | picked=0 ====
+phase1_move_view,0.000022,already at viewpoint
+phase2_detection,0.138897,target detection finished
+phase3_search_pose,1.112422,failed
+phase3_inverse_ik,1.112422,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.135198,failed
+task_total,1.284969,success=0
+==== 2026-04-30 14:00:54 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.148775,target detection finished
+phase3_search_pose,1.068011,failed
+phase3_inverse_ik,1.068011,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.092693,failed
+task_total,1.261740,success=0
+==== 2026-04-30 14:00:55 | picked=0 ====
+phase1_move_view,0.000030,already at viewpoint
+phase2_detection,0.161563,target detection finished
+phase3_search_pose,1.160939,failed
+phase3_inverse_ik,1.160939,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.194104,failed
+task_total,1.367006,success=0
+==== 2026-04-30 14:00:57 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.103096,target detection finished
+phase3_search_pose,1.027991,failed
+phase3_inverse_ik,1.027991,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.056206,failed
+task_total,1.167982,success=0
+==== 2026-04-30 14:01:07 | picked=1 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.100794,target detection finished
+phase3_search_pose,0.000609,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.380126,theta=-30, success
+phase3_total,2.493832,theta=-30, success
+phase4_place_plan,0.000051,success
+phase5_exec,6.094965,picked=1
+pick_to_return,8.690107,picked=1, before_return
+task_total,11.721774,success=1
+==== 2026-04-30 14:01:19 | picked=0 ====
+phase1_move_view,0.000025,already at viewpoint
+phase2_detection,0.127400,target detection finished
+phase3_search_pose,1.122283,failed
+phase3_inverse_ik,1.122283,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.140985,failed
+task_total,1.277247,success=0
+==== 2026-04-30 14:01:20 | picked=0 ====
+phase1_move_view,0.000359,already at viewpoint
+phase2_detection,0.110429,target detection finished
+phase3_search_pose,1.151035,failed
+phase3_inverse_ik,1.151035,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.167999,failed
+task_total,1.304777,success=0
+==== 2026-04-30 14:01:22 | picked=0 ====
+phase1_move_view,0.000032,already at viewpoint
+phase2_detection,0.123333,target detection finished
+phase3_search_pose,1.118807,failed
+phase3_inverse_ik,1.118807,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.138647,failed
+task_total,1.277637,success=0
+==== 2026-04-30 14:01:23 | picked=0 ====
+phase1_move_view,0.000027,already at viewpoint
+phase2_detection,0.232757,target detection finished
+phase3_search_pose,1.016100,failed
+phase3_inverse_ik,1.016100,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.037968,failed
+task_total,1.277781,success=0
+==== 2026-04-30 14:01:25 | picked=1 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.145665,target detection finished
+phase3_search_pose,0.002399,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.483177,theta=-30, success
+phase3_total,2.580922,theta=-30, success
+phase4_place_plan,0.000049,success
+phase5_exec,6.081528,picked=1
+pick_to_return,8.809311,picked=1, before_return
+task_total,11.844490,success=1
+==== 2026-04-30 14:01:37 | picked=1 ====
+phase1_move_view,0.000025,already at viewpoint
+phase2_detection,0.221220,target detection finished
+phase3_search_pose,0.000751,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,3.309756,theta=-30, success
+phase3_total,3.469701,theta=-30, success
+phase4_place_plan,0.000053,success
+phase5_exec,6.124924,picked=1
+pick_to_return,9.816379,picked=1, before_return
+task_total,12.854412,success=1
+==== 2026-04-30 14:01:49 | picked=0 ====
+phase1_move_view,0.000091,already at viewpoint
+phase2_detection,0.083920,target detection finished
+task_total,0.096162,success=0
+==== 2026-04-30 14:01:50 | picked=0 ====
+phase1_move_view,0.000086,already at viewpoint
+phase2_detection,0.095459,target detection finished
+task_total,0.115663,success=0
+==== 2026-04-30 14:01:50 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.117539,target detection finished
+task_total,0.128291,success=0
+==== 2026-04-30 14:01:50 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.111550,target detection finished
+task_total,0.117796,success=0
+==== 2026-04-30 14:01:50 | picked=0 ====
+phase1_move_view,0.000029,already at viewpoint
+phase2_detection,0.072686,target detection finished
+task_total,0.079232,success=0
+==== 2026-04-30 14:02:00 | picked=0 ====
+phase1_move_view,0.000040,already at viewpoint
+phase2_detection,0.091227,target detection finished
+task_total,0.109489,success=0
+==== 2026-04-30 14:02:00 | picked=0 ====
+phase1_move_view,0.000025,already at viewpoint
+phase2_detection,0.163818,target detection finished
+task_total,0.172967,success=0
+==== 2026-04-30 14:02:00 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.070698,target detection finished
+task_total,0.085566,success=0
+==== 2026-04-30 14:02:00 | picked=0 ====
+phase1_move_view,0.000025,already at viewpoint
+phase2_detection,0.141357,target detection finished
+task_total,0.154521,success=0
+==== 2026-04-30 14:02:01 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.092308,target detection finished
+task_total,0.101115,success=0
+==== 2026-04-30 14:02:24 | picked=0 ====
+phase1_move_view,0.000028,already at viewpoint
+phase2_detection,0.114412,target detection finished
+task_total,0.123615,success=0
+==== 2026-04-30 14:02:25 | picked=0 ====
+phase1_move_view,0.000022,already at viewpoint
+phase2_detection,0.211421,target detection finished
+phase3_search_pose,1.117711,failed
+phase3_inverse_ik,1.117711,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.136458,failed
+task_total,1.356513,success=0
+==== 2026-04-30 14:02:26 | picked=0 ====
+phase1_move_view,0.000051,already at viewpoint
+phase2_detection,0.099620,target detection finished
+task_total,0.107864,success=0
+==== 2026-04-30 14:02:26 | picked=0 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.159261,target detection finished
+task_total,0.168719,success=0
+==== 2026-04-30 14:02:27 | picked=0 ====
+phase1_move_view,0.000171,already at viewpoint
+phase2_detection,0.087916,target detection finished
+task_total,0.110669,success=0
+==== 2026-04-30 14:02:36 | picked=0 ====
+phase1_move_view,0.000083,already at viewpoint
+phase2_detection,0.087984,target detection finished
+task_total,0.097517,success=0
+==== 2026-04-30 14:02:36 | picked=0 ====
+phase1_move_view,0.000023,already at viewpoint
+phase2_detection,0.166003,target detection finished
+task_total,0.176816,success=0
+==== 2026-04-30 14:02:36 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.139730,target detection finished
+task_total,0.148059,success=0
+==== 2026-04-30 14:02:37 | picked=0 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,0.199982,target detection finished
+task_total,0.206384,success=0
+==== 2026-04-30 14:02:37 | picked=0 ====
+phase1_move_view,0.000035,already at viewpoint
+phase2_detection,0.084481,target detection finished
+task_total,0.094241,success=0
+==== 2026-04-30 14:29:18 | picked=0 ====
+init_scene,0.287989,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.397725,realsense pipeline started
+init_robot_planner,23.039150,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 14:29:48 | picked=1 ====
+phase1_move_view,3.024613,moved to viewpoint
+phase2_detection,2.191808,target detection finished
+phase3_search_pose,0.003143,theta=-21
+phase3_inverse_ik,0.252638,theta=-21, success
+phase3_path_plan,2.103021,theta=-21, success
+phase3_total,2.456628,theta=-21, success
+phase4_place_plan,0.000049,success
+phase5_exec,6.116377,picked=1
+pick_to_return,10.765334,picked=1, before_return
+task_total,16.823418,success=1
+==== 2026-04-30 14:48:11 | picked=0 ====
+init_scene,0.335538,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.422051,realsense pipeline started
+init_robot_planner,23.415031,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 14:48:42 | picked=1 ====
+phase1_move_view,0.000026,already at viewpoint
+phase2_detection,2.110833,target detection finished
+phase3_search_pose,0.002547,theta=-21
+phase3_inverse_ik,0.176641,theta=-21, success
+phase3_path_plan,2.682003,theta=-21, success
+phase3_total,3.060596,theta=-21, success
+phase4_place_plan,0.000049,success
+phase5_exec,6.115271,picked=1
+pick_to_return,11.287258,picked=1, before_return
+task_total,14.317667,success=1
+==== 2026-04-30 14:57:43 | picked=0 ====
+init_scene,0.292268,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.403316,realsense pipeline started
+init_robot_planner,23.121740,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 14:58:14 | picked=0 ====
+phase1_move_view,0.000028,already at viewpoint
+phase2_detection,2.210040,target detection finished
+task_total,2.226089,success=0
+==== 2026-04-30 14:58:16 | picked=1 ====
+phase1_move_view,0.000024,already at viewpoint
+phase2_detection,0.097826,target detection finished
+phase3_search_pose,0.005926,theta=-15
+phase3_inverse_ik,0.467055,theta=-15, success
+phase3_path_plan,16.892676,theta=-15, success
+phase3_total,17.472931,theta=-15, success
+phase4_place_plan,0.000049,success
+phase5_exec,6.106648,picked=1
+pick_to_return,23.677910,picked=1, before_return
+task_total,26.716056,success=1
+==== 2026-04-30 15:20:14 | picked=0 ====
+init_scene,0.398166,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.409726,realsense pipeline started
+init_robot_planner,26.076000,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 15:20:47 | picked=1 ====
+phase1_move_view,3.611279,moved to viewpoint
+phase2_detection,5.472229,target detection finished
+phase3_search_pose,0.000790,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,12.813952,theta=-30, success
+phase3_total,12.951773,theta=-30, success
+phase4_place_plan,8.565459,success
+phase5_exec,8.050709,picked=1
+pick_to_return,35.040647,picked=1, before_return
+task_total,46.997723,success=1
+==== 2026-04-30 15:31:45 | picked=0 ====
+init_scene,0.327277,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.417275,realsense pipeline started
+init_robot_planner,23.374827,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 15:32:16 | picked=1 ====
+phase1_move_view,0.000131,already at viewpoint
+phase2_detection,2.147115,target detection finished
+phase3_search_pose,0.003571,theta=-18
+phase3_inverse_ik,0.347536,theta=-18, success
+phase3_path_plan,2.537831,theta=-18, success
+phase3_total,2.979575,theta=-18, success
+phase4_place_plan,3.468902,success
+phase5_exec,7.363870,picked=1
+pick_to_return,15.959949,picked=1, before_return
+task_total,22.660882,success=1
+==== 2026-04-30 15:37:48 | picked=0 ====
+init_scene,0.371107,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.414065,realsense pipeline started
+init_robot_planner,23.637433,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 15:38:19 | picked=0 ====
+phase1_move_view,0.000100,already at viewpoint
+phase2_detection,2.195131,target detection finished
+phase3_search_pose,1.825555,failed
+phase3_inverse_ik,1.825555,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.847121,failed
+task_total,4.050131,success=0
+==== 2026-04-30 15:38:23 | picked=1 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.133653,target detection finished
+phase3_search_pose,0.001078,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.679167,theta=-30, success
+phase3_total,1.802875,theta=-30, success
+phase4_place_plan,2.764906,success
+phase5_exec,7.317119,picked=1
+pick_to_return,12.019134,picked=1, before_return
+task_total,18.857139,success=1
+==== 2026-04-30 16:01:10 | picked=0 ====
+init_scene,0.293883,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.412600,realsense pipeline started
+init_robot_planner,24.227511,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 16:01:42 | picked=1 ====
+phase1_move_view,3.469643,moved to viewpoint
+phase2_detection,2.047631,target detection finished
+phase3_search_pose,0.000677,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.458506,theta=-30, success
+phase3_total,1.549217,theta=-30, success
+phase4_place_plan,2.937948,success
+phase5_exec,6.358631,picked=1
+pick_to_return,12.893932,picked=1, before_return
+task_total,21.404809,success=1
+==== 2026-04-30 16:02:21 | picked=0 ====
+init_scene,0.300148,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.400914,realsense pipeline started
+init_robot_planner,23.314830,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 16:02:52 | picked=0 ====
+phase1_move_view,0.000105,already at viewpoint
+phase2_detection,2.069614,target detection finished
+phase3_search_pose,1.769404,failed
+phase3_inverse_ik,1.769404,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.790369,failed
+task_total,3.869777,success=0
+==== 2026-04-30 16:02:56 | picked=1 ====
+phase1_move_view,0.000075,already at viewpoint
+phase2_detection,0.147410,target detection finished
+phase3_search_pose,0.000640,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.913318,theta=-30, success
+phase3_total,6.031056,theta=-30, success
+phase4_place_plan,3.611117,success
+phase5_exec,7.546624,picked=1
+pick_to_return,17.336681,picked=1, before_return
+task_total,22.747809,success=1
+==== 2026-04-30 16:05:59 | picked=0 ====
+init_scene,0.364843,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.427770,realsense pipeline started
+init_robot_planner,24.877739,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 16:06:31 | picked=1 ====
+phase1_move_view,4.834625,moved to viewpoint
+phase2_detection,1.973795,target detection finished
+phase3_search_pose,0.000796,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.701061,theta=-30, success
+phase3_total,1.803784,theta=-30, success
+phase4_place_plan,2.787846,success
+phase5_exec,6.455815,picked=1
+pick_to_return,13.021812,picked=1, before_return
+task_total,23.283411,success=1
+==== 2026-04-30 16:06:55 | picked=1 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.104175,target detection finished
+phase3_search_pose,0.007825,theta=-3
+phase3_inverse_ik,0.771464,theta=-3, success
+phase3_path_plan,1.736223,theta=-3, success
+phase3_total,2.611195,theta=-3, success
+phase4_place_plan,3.423542,success
+phase5_exec,6.593107,picked=1
+pick_to_return,12.732552,picked=1, before_return
+task_total,18.015512,success=1
+==== 2026-04-30 16:07:13 | picked=0 ====
+phase1_move_view,0.000075,already at viewpoint
+phase2_detection,0.094063,target detection finished
+task_total,0.106273,success=0
+==== 2026-04-30 16:07:13 | picked=0 ====
+phase1_move_view,0.000077,already at viewpoint
+phase2_detection,0.094043,target detection finished
+task_total,0.108713,success=0
+==== 2026-04-30 16:07:14 | picked=0 ====
+phase1_move_view,0.000100,already at viewpoint
+phase2_detection,0.099782,target detection finished
+task_total,0.106986,success=0
+==== 2026-04-30 16:07:14 | picked=0 ====
+phase1_move_view,0.000091,already at viewpoint
+phase2_detection,0.100016,target detection finished
+task_total,0.107520,success=0
+==== 2026-04-30 16:07:14 | picked=0 ====
+phase1_move_view,0.000325,already at viewpoint
+phase2_detection,0.085888,target detection finished
+task_total,0.097651,success=0
+==== 2026-04-30 16:07:24 | picked=1 ====
+phase1_move_view,0.000095,already at viewpoint
+phase2_detection,0.158963,target detection finished
+phase3_search_pose,0.000730,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.709872,theta=-30, success
+phase3_total,1.803261,theta=-30, success
+phase4_place_plan,1.759950,success
+phase5_exec,6.515145,picked=1
+pick_to_return,10.237839,picked=1, before_return
+task_total,14.974752,success=1
+==== 2026-04-30 16:07:39 | picked=1 ====
+phase1_move_view,0.000116,already at viewpoint
+phase2_detection,0.112109,target detection finished
+phase3_search_pose,0.000643,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.815669,theta=-30, success
+phase3_total,5.914924,theta=-30, success
+phase4_place_plan,4.528710,success
+phase5_exec,7.541785,picked=1
+pick_to_return,18.098315,picked=1, before_return
+task_total,24.169969,success=1
+==== 2026-04-30 16:08:04 | picked=1 ====
+phase1_move_view,0.000096,already at viewpoint
+phase2_detection,0.106984,target detection finished
+phase3_search_pose,0.000682,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.006199,theta=-30, success
+phase3_total,2.108987,theta=-30, success
+phase4_place_plan,1.633282,success
+phase5_exec,6.486321,picked=1
+pick_to_return,10.336056,picked=1, before_return
+task_total,17.051484,success=1
+==== 2026-04-30 16:08:21 | picked=0 ====
+phase1_move_view,0.000106,already at viewpoint
+phase2_detection,0.088631,target detection finished
+task_total,0.095887,success=0
+==== 2026-04-30 16:08:21 | picked=0 ====
+phase1_move_view,0.000104,already at viewpoint
+phase2_detection,0.114388,target detection finished
+task_total,0.119594,success=0
+==== 2026-04-30 16:08:21 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.063336,target detection finished
+task_total,0.076930,success=0
+==== 2026-04-30 16:08:22 | picked=0 ====
+phase1_move_view,0.000102,already at viewpoint
+phase2_detection,0.093703,target detection finished
+task_total,0.102386,success=0
+==== 2026-04-30 16:08:22 | picked=0 ====
+phase1_move_view,0.000081,already at viewpoint
+phase2_detection,0.071330,target detection finished
+task_total,0.078948,success=0
+==== 2026-04-30 16:08:32 | picked=1 ====
+phase1_move_view,0.000099,already at viewpoint
+phase2_detection,0.171953,target detection finished
+phase3_search_pose,0.001082,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.733310,theta=-30, success
+phase3_total,1.873792,theta=-30, success
+phase4_place_plan,3.232831,success
+phase5_exec,6.574558,picked=1
+pick_to_return,11.853791,picked=1, before_return
+task_total,16.996662,success=1
+==== 2026-04-30 16:08:49 | picked=1 ====
+phase1_move_view,0.000074,already at viewpoint
+phase2_detection,0.098570,target detection finished
+phase3_search_pose,0.000643,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.703498,theta=-30, success
+phase3_total,1.794201,theta=-30, success
+phase4_place_plan,3.317609,success
+phase5_exec,6.556616,picked=1
+pick_to_return,11.767598,picked=1, before_return
+task_total,17.365721,success=1
+==== 2026-04-30 16:09:06 | picked=0 ====
+phase1_move_view,0.000087,already at viewpoint
+phase2_detection,0.095328,target detection finished
+task_total,0.104090,success=0
+==== 2026-04-30 16:09:07 | picked=0 ====
+phase1_move_view,0.000108,already at viewpoint
+phase2_detection,0.080721,target detection finished
+task_total,0.089623,success=0
+==== 2026-04-30 16:09:07 | picked=0 ====
+phase1_move_view,0.000100,already at viewpoint
+phase2_detection,0.068866,target detection finished
+task_total,0.076466,success=0
+==== 2026-04-30 16:09:07 | picked=0 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.071882,target detection finished
+task_total,0.082027,success=0
+==== 2026-04-30 16:09:08 | picked=0 ====
+phase1_move_view,0.000088,already at viewpoint
+phase2_detection,0.085283,target detection finished
+task_total,0.097030,success=0
+==== 2026-04-30 16:09:17 | picked=0 ====
+phase1_move_view,0.000075,already at viewpoint
+phase2_detection,0.101984,target detection finished
+task_total,0.109242,success=0
+==== 2026-04-30 16:09:17 | picked=0 ====
+phase1_move_view,0.000077,already at viewpoint
+phase2_detection,0.112382,target detection finished
+task_total,0.117512,success=0
+==== 2026-04-30 16:09:18 | picked=0 ====
+phase1_move_view,0.000078,already at viewpoint
+phase2_detection,0.072322,target detection finished
+task_total,0.077435,success=0
+==== 2026-04-30 16:09:18 | picked=0 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.099531,target detection finished
+task_total,0.108893,success=0
+==== 2026-04-30 16:09:18 | picked=0 ====
+phase1_move_view,0.000081,already at viewpoint
+phase2_detection,0.076476,target detection finished
+task_total,0.082815,success=0
+==== 2026-04-30 16:32:47 | picked=0 ====
+init_scene,0.324238,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.405390,realsense pipeline started
+init_robot_planner,23.402781,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:07:17 | picked=0 ====
+init_scene,0.281571,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.447089,realsense pipeline started
+init_robot_planner,26.071794,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:10:24 | picked=0 ====
+init_scene,0.480582,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.445715,realsense pipeline started
+init_robot_planner,26.389845,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:15:55 | picked=0 ====
+init_scene,0.513054,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.400754,realsense pipeline started
+init_robot_planner,24.798506,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:26:12 | picked=0 ====
+init_scene,0.340695,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.402914,realsense pipeline started
+init_robot_planner,25.273566,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:26:45 | picked=1 ====
+phase1_move_view,0.000113,already at viewpoint
+phase2_detection,3.283970,target detection finished
+phase3_search_pose,0.000635,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.739667,theta=-30, success
+phase3_total,1.835019,theta=-30, success
+phase4_place_plan,1.230174,success
+phase5_exec,6.392517,picked=1
+pick_to_return,12.742138,picked=1, before_return
+task_total,18.132529,success=1
+==== 2026-04-30 18:27:03 | picked=1 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.106676,target detection finished
+phase3_search_pose,0.000663,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,6.816613,theta=-30, success
+phase3_total,6.952976,theta=-30, success
+phase4_place_plan,4.296796,success
+phase5_exec,7.669018,picked=1
+pick_to_return,19.026052,picked=1, before_return
+task_total,26.417148,success=1
+==== 2026-04-30 18:27:30 | picked=0 ====
+phase1_move_view,5.306434,moved to viewpoint
+phase2_detection,0.069188,target detection finished
+task_total,5.396755,success=0
+==== 2026-04-30 18:28:56 | picked=0 ====
+init_scene,0.398998,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.404388,realsense pipeline started
+init_robot_planner,27.034314,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:29:31 | picked=1 ====
+phase1_move_view,7.089072,moved to viewpoint
+phase2_detection,2.268558,target detection finished
+phase3_search_pose,0.000732,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.806083,theta=-30, success
+phase3_total,2.936731,theta=-30, success
+phase4_place_plan,1.031443,success
+phase5_exec,6.786652,picked=1
+pick_to_return,13.024103,picked=1, before_return
+task_total,26.981078,success=1
+==== 2026-04-30 18:29:58 | picked=1 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.098590,target detection finished
+phase3_search_pose,0.000643,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.595923,theta=-30, success
+phase3_total,5.710465,theta=-30, success
+phase4_place_plan,2.025549,success
+phase5_exec,7.414580,picked=1
+pick_to_return,15.249662,picked=1, before_return
+task_total,20.174930,success=1
+==== 2026-04-30 18:30:19 | picked=1 ====
+phase1_move_view,0.000089,already at viewpoint
+phase2_detection,0.105440,target detection finished
+phase3_search_pose,0.000717,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.829577,theta=-30, success
+phase3_total,5.943958,theta=-30, success
+phase4_place_plan,4.309764,success
+phase5_exec,7.616526,picked=1
+pick_to_return,17.976202,picked=1, before_return
+task_total,22.881862,success=1
+==== 2026-04-30 18:30:42 | picked=0 ====
+phase1_move_view,6.096572,moved to viewpoint
+phase2_detection,0.083141,target detection finished
+task_total,6.191761,success=0
+==== 2026-04-30 18:30:48 | picked=0 ====
+phase1_move_view,5.834570,moved to viewpoint
+phase2_detection,0.096380,target detection finished
+task_total,5.951514,success=0
+==== 2026-04-30 18:30:54 | picked=0 ====
+phase1_move_view,6.051313,moved to viewpoint
+phase2_detection,0.063880,target detection finished
+task_total,6.144066,success=0
+==== 2026-04-30 18:45:04 | picked=0 ====
+init_scene,0.258770,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.407909,realsense pipeline started
+init_robot_planner,25.032324,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:45:37 | picked=1 ====
+phase1_move_view,8.923934,moved to viewpoint
+phase2_detection,2.769837,target detection finished
+phase3_search_pose,0.010469,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.599209,theta=-30, success
+phase3_total,5.726548,theta=-30, success
+phase4_place_plan,3.191524,success
+phase5_exec,7.442150,picked=1
+pick_to_return,19.130575,picked=1, before_return
+task_total,34.452954,success=1
+==== 2026-04-30 18:46:12 | picked=0 ====
+phase1_move_view,0.000439,already at viewpoint
+phase2_detection,0.098277,target detection finished
+task_total,0.115127,success=0
+==== 2026-04-30 18:46:12 | picked=0 ====
+phase1_move_view,0.000091,already at viewpoint
+phase2_detection,0.076051,target detection finished
+task_total,0.087483,success=0
+==== 2026-04-30 18:46:12 | picked=0 ====
+phase1_move_view,0.000175,already at viewpoint
+phase2_detection,0.110970,target detection finished
+task_total,0.116980,success=0
+==== 2026-04-30 18:46:13 | picked=0 ====
+phase1_move_view,0.000081,already at viewpoint
+phase2_detection,0.154215,target detection finished
+task_total,0.165810,success=0
+==== 2026-04-30 18:46:13 | picked=0 ====
+phase1_move_view,0.000150,already at viewpoint
+phase2_detection,0.066365,target detection finished
+task_total,0.071633,success=0
+==== 2026-04-30 18:46:22 | picked=0 ====
+phase1_move_view,0.000085,already at viewpoint
+phase2_detection,0.094337,target detection finished
+task_total,0.101707,success=0
+==== 2026-04-30 18:46:23 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.085003,target detection finished
+task_total,0.091326,success=0
+==== 2026-04-30 18:46:23 | picked=0 ====
+phase1_move_view,0.000088,already at viewpoint
+phase2_detection,0.096714,target detection finished
+task_total,0.101859,success=0
+==== 2026-04-30 18:46:23 | picked=0 ====
+phase1_move_view,0.000106,already at viewpoint
+phase2_detection,0.087846,target detection finished
+task_total,0.093365,success=0
+==== 2026-04-30 18:46:24 | picked=0 ====
+phase1_move_view,0.000087,already at viewpoint
+phase2_detection,0.089392,target detection finished
+task_total,0.105280,success=0
+==== 2026-04-30 18:46:33 | picked=1 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.099447,target detection finished
+phase3_search_pose,0.001016,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.664597,theta=-30, success
+phase3_total,1.769672,theta=-30, success
+phase4_place_plan,3.321356,success
+phase5_exec,6.554302,picked=1
+pick_to_return,11.745471,picked=1, before_return
+task_total,18.127729,success=1
+==== 2026-04-30 18:46:52 | picked=0 ====
+phase1_move_view,0.000091,already at viewpoint
+phase2_detection,0.063782,target detection finished
+task_total,0.072812,success=0
+==== 2026-04-30 18:46:52 | picked=0 ====
+phase1_move_view,0.000375,already at viewpoint
+phase2_detection,0.089357,target detection finished
+task_total,0.095147,success=0
+==== 2026-04-30 18:46:52 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.074443,target detection finished
+task_total,0.081763,success=0
+==== 2026-04-30 18:46:52 | picked=0 ====
+phase1_move_view,0.000089,already at viewpoint
+phase2_detection,0.093135,target detection finished
+task_total,0.104601,success=0
+==== 2026-04-30 18:46:53 | picked=0 ====
+phase1_move_view,0.000410,already at viewpoint
+phase2_detection,0.089973,target detection finished
+task_total,0.101876,success=0
+==== 2026-04-30 18:47:02 | picked=0 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.072510,target detection finished
+task_total,0.077725,success=0
+==== 2026-04-30 18:47:02 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.084670,target detection finished
+task_total,0.090027,success=0
+==== 2026-04-30 18:47:03 | picked=0 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.077630,target detection finished
+task_total,0.086937,success=0
+==== 2026-04-30 18:47:03 | picked=0 ====
+phase1_move_view,0.000084,already at viewpoint
+phase2_detection,0.077962,target detection finished
+task_total,0.083478,success=0
+==== 2026-04-30 18:47:03 | picked=0 ====
+phase1_move_view,0.000170,already at viewpoint
+phase2_detection,0.093094,target detection finished
+task_total,0.098806,success=0
+==== 2026-04-30 18:47:28 | picked=0 ====
+phase1_move_view,0.000168,already at viewpoint
+phase2_detection,0.073144,target detection finished
+task_total,0.080635,success=0
+==== 2026-04-30 18:47:28 | picked=0 ====
+phase1_move_view,0.000077,already at viewpoint
+phase2_detection,0.076081,target detection finished
+task_total,0.081314,success=0
+==== 2026-04-30 18:47:28 | picked=0 ====
+phase1_move_view,0.000085,already at viewpoint
+phase2_detection,0.094306,target detection finished
+task_total,0.101564,success=0
+==== 2026-04-30 18:47:28 | picked=0 ====
+phase1_move_view,0.000088,already at viewpoint
+phase2_detection,0.072757,target detection finished
+task_total,0.091269,success=0
+==== 2026-04-30 18:47:29 | picked=0 ====
+phase1_move_view,0.000093,already at viewpoint
+phase2_detection,0.071795,target detection finished
+task_total,0.079258,success=0
+==== 2026-04-30 18:47:38 | picked=0 ====
+phase1_move_view,0.000083,already at viewpoint
+phase2_detection,0.099399,target detection finished
+task_total,0.104929,success=0
+==== 2026-04-30 18:47:39 | picked=0 ====
+phase1_move_view,0.000078,already at viewpoint
+phase2_detection,0.068137,target detection finished
+task_total,0.088052,success=0
+==== 2026-04-30 18:47:39 | picked=0 ====
+phase1_move_view,0.000078,already at viewpoint
+phase2_detection,0.102186,target detection finished
+task_total,0.111467,success=0
+==== 2026-04-30 18:47:39 | picked=0 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.088887,target detection finished
+task_total,0.096244,success=0
+==== 2026-04-30 18:47:39 | picked=0 ====
+phase1_move_view,0.000098,already at viewpoint
+phase2_detection,0.105799,target detection finished
+task_total,0.116616,success=0
+==== 2026-04-30 18:48:24 | picked=0 ====
+init_scene,0.285105,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.424519,realsense pipeline started
+init_robot_planner,22.124053,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 18:48:54 | picked=1 ====
+phase1_move_view,0.000084,already at viewpoint
+phase2_detection,2.021529,target detection finished
+phase3_search_pose,0.000645,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.780779,theta=-30, success
+phase3_total,5.893942,theta=-30, success
+phase4_place_plan,3.594599,success
+phase5_exec,7.596322,picked=1
+pick_to_return,19.106900,picked=1, before_return
+task_total,23.851931,success=1
+==== 2026-04-30 18:49:18 | picked=0 ====
+phase1_move_view,5.097936,moved to viewpoint
+phase2_detection,0.103667,target detection finished
+task_total,5.214686,success=0
+==== 2026-04-30 18:49:23 | picked=0 ====
+phase1_move_view,5.254582,moved to viewpoint
+phase2_detection,0.072608,target detection finished
+task_total,5.336603,success=0
+==== 2026-04-30 18:49:29 | picked=0 ====
+phase1_move_view,6.213971,moved to viewpoint
+phase2_detection,0.075126,target detection finished
+task_total,6.302411,success=0
+==== 2026-04-30 18:49:35 | picked=0 ====
+phase1_move_view,6.354529,moved to viewpoint
+phase2_detection,0.061552,target detection finished
+task_total,6.423282,success=0
+==== 2026-04-30 18:49:42 | picked=0 ====
+phase1_move_view,5.361111,moved to viewpoint
+phase2_detection,0.079748,target detection finished
+task_total,5.449068,success=0
+==== 2026-04-30 19:05:18 | picked=0 ====
+init_scene,0.477674,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.424275,realsense pipeline started
+init_robot_planner,27.214797,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 19:05:56 | picked=0 ====
+phase1_move_view,5.585495,moved to viewpoint
+phase2_detection,2.420863,target detection finished
+task_total,8.018374,success=0
+==== 2026-04-30 19:06:04 | picked=0 ====
+phase1_move_view,0.000083,already at viewpoint
+phase2_detection,0.113980,target detection finished
+task_total,0.119852,success=0
+==== 2026-04-30 19:06:05 | picked=0 ====
+phase1_move_view,0.000095,already at viewpoint
+phase2_detection,0.071994,target detection finished
+task_total,0.083750,success=0
+==== 2026-04-30 19:06:05 | picked=0 ====
+phase1_move_view,0.000089,already at viewpoint
+phase2_detection,0.099649,target detection finished
+task_total,0.105677,success=0
+==== 2026-04-30 19:06:05 | picked=0 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.087784,target detection finished
+task_total,0.103348,success=0
+==== 2026-04-30 19:06:15 | picked=1 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.137833,target detection finished
+phase3_search_pose,0.014077,theta=24
+phase3_inverse_ik,1.831265,theta=24, success
+phase3_path_plan,2.210393,theta=24, success
+phase3_total,4.160860,theta=24, success
+phase4_place_plan,3.129999,success
+phase5_exec,8.086036,picked=1
+pick_to_return,15.515291,picked=1, before_return
+task_total,21.209590,success=1
+==== 2026-04-30 19:09:29 | picked=0 ====
+init_scene,0.284924,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.429090,realsense pipeline started
+init_robot_planner,25.347760,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 19:10:02 | picked=1 ====
+phase1_move_view,3.822528,moved to viewpoint
+phase2_detection,2.228283,target detection finished
+phase3_search_pose,0.004270,theta=-15
+phase3_inverse_ik,0.623555,theta=-15, success
+phase3_path_plan,2.064902,theta=-15, success
+phase3_total,2.823781,theta=-15, success
+phase4_place_plan,3.003476,success
+phase5_exec,6.568076,picked=1
+pick_to_return,14.624082,picked=1, before_return
+task_total,23.379330,success=1
+==== 2026-04-30 19:10:26 | picked=0 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.066217,target detection finished
+task_total,0.074098,success=0
+==== 2026-04-30 19:10:26 | picked=0 ====
+phase1_move_view,0.000083,already at viewpoint
+phase2_detection,0.143170,target detection finished
+task_total,0.156144,success=0
+==== 2026-04-30 19:10:27 | picked=0 ====
+phase1_move_view,0.000075,already at viewpoint
+phase2_detection,0.075473,target detection finished
+task_total,0.081303,success=0
+==== 2026-04-30 19:10:27 | picked=0 ====
+phase1_move_view,0.000078,already at viewpoint
+phase2_detection,0.111811,target detection finished
+task_total,0.119116,success=0
+==== 2026-04-30 19:10:27 | picked=0 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.087992,target detection finished
+task_total,0.093123,success=0
+==== 2026-04-30 19:10:37 | picked=1 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.173733,target detection finished
+phase3_search_pose,0.000749,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.809380,theta=-30, success
+phase3_total,1.952119,theta=-30, success
+phase4_place_plan,3.528731,success
+phase5_exec,6.734358,picked=1
+pick_to_return,12.389420,picked=1, before_return
+task_total,17.162262,success=1
+==== 2026-04-30 19:10:54 | picked=0 ====
+phase1_move_view,0.000094,already at viewpoint
+phase2_detection,0.164201,target detection finished
+task_total,0.173403,success=0
+==== 2026-04-30 19:10:55 | picked=0 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.092176,target detection finished
+task_total,0.099799,success=0
+==== 2026-04-30 19:10:55 | picked=0 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.098554,target detection finished
+task_total,0.104479,success=0
+==== 2026-04-30 19:10:55 | picked=0 ====
+phase1_move_view,0.000084,already at viewpoint
+phase2_detection,0.200694,target detection finished
+task_total,0.205960,success=0
+==== 2026-04-30 19:10:56 | picked=0 ====
+phase1_move_view,0.000083,already at viewpoint
+phase2_detection,0.133698,target detection finished
+task_total,0.143140,success=0
+==== 2026-04-30 19:11:05 | picked=1 ====
+phase1_move_view,0.000083,already at viewpoint
+phase2_detection,0.148437,target detection finished
+phase3_search_pose,0.000915,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.834345,theta=-30, success
+phase3_total,2.942863,theta=-30, success
+phase4_place_plan,3.353399,success
+phase5_exec,6.725031,picked=1
+pick_to_return,13.170338,picked=1, before_return
+task_total,18.856642,success=1
+==== 2026-04-30 19:11:24 | picked=0 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.086598,target detection finished
+task_total,0.095021,success=0
+==== 2026-04-30 19:11:25 | picked=0 ====
+phase1_move_view,0.000077,already at viewpoint
+phase2_detection,0.102756,target detection finished
+task_total,0.110152,success=0
+==== 2026-04-30 19:11:25 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.071777,target detection finished
+task_total,0.081194,success=0
+==== 2026-04-30 19:11:25 | picked=0 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.093219,target detection finished
+task_total,0.100447,success=0
+==== 2026-04-30 19:11:25 | picked=0 ====
+phase1_move_view,0.000074,already at viewpoint
+phase2_detection,0.122695,target detection finished
+task_total,0.132011,success=0
+==== 2026-04-30 19:11:35 | picked=0 ====
+phase1_move_view,0.000072,already at viewpoint
+phase2_detection,0.099234,target detection finished
+phase3_search_pose,1.014662,failed
+phase3_inverse_ik,1.014662,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.031691,failed
+task_total,1.138289,success=0
+==== 2026-04-30 19:11:36 | picked=0 ====
+phase1_move_view,0.000074,already at viewpoint
+phase2_detection,0.070100,target detection finished
+task_total,0.086881,success=0
+==== 2026-04-30 19:11:37 | picked=0 ====
+phase1_move_view,0.000089,already at viewpoint
+phase2_detection,0.110601,target detection finished
+task_total,0.118555,success=0
+==== 2026-04-30 19:11:37 | picked=0 ====
+phase1_move_view,0.000100,already at viewpoint
+phase2_detection,0.103157,target detection finished
+task_total,0.122284,success=0
+==== 2026-04-30 19:11:37 | picked=0 ====
+phase1_move_view,0.000152,already at viewpoint
+phase2_detection,0.087386,target detection finished
+task_total,0.107185,success=0
+==== 2026-04-30 19:12:02 | picked=0 ====
+phase1_move_view,0.000124,already at viewpoint
+phase2_detection,0.150743,target detection finished
+phase3_search_pose,1.127366,failed
+phase3_inverse_ik,1.127366,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.146713,failed
+task_total,1.306556,success=0
+==== 2026-04-30 19:12:03 | picked=0 ====
+phase1_move_view,0.000074,already at viewpoint
+phase2_detection,0.129209,target detection finished
+phase3_search_pose,0.968021,failed
+phase3_inverse_ik,0.968021,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.986089,failed
+task_total,1.129202,success=0
+==== 2026-04-30 19:12:04 | picked=0 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.081609,target detection finished
+phase3_search_pose,1.104820,failed
+phase3_inverse_ik,1.104820,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.133470,failed
+task_total,1.222661,success=0
+==== 2026-04-30 19:12:06 | picked=0 ====
+phase1_move_view,0.000076,already at viewpoint
+phase2_detection,0.126389,target detection finished
+phase3_search_pose,1.040600,failed
+phase3_inverse_ik,1.040600,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.097636,failed
+task_total,1.233105,success=0
+==== 2026-04-30 19:12:07 | picked=0 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.109632,target detection finished
+phase3_search_pose,1.022731,failed
+phase3_inverse_ik,1.022731,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.039927,failed
+task_total,1.163362,success=0
+==== 2026-04-30 19:12:18 | picked=0 ====
+phase1_move_view,0.000083,already at viewpoint
+phase2_detection,0.105558,target detection finished
+task_total,0.115631,success=0
+==== 2026-04-30 19:12:18 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.085312,target detection finished
+task_total,0.094760,success=0
+==== 2026-04-30 19:12:18 | picked=0 ====
+phase1_move_view,0.000077,already at viewpoint
+phase2_detection,0.109624,target detection finished
+task_total,0.122168,success=0
+==== 2026-04-30 19:12:19 | picked=0 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.088973,target detection finished
+task_total,0.096252,success=0
+==== 2026-04-30 19:12:19 | picked=0 ====
+phase1_move_view,0.000078,already at viewpoint
+phase2_detection,0.095148,target detection finished
+task_total,0.101109,success=0
+==== 2026-04-30 19:12:57 | picked=0 ====
+init_scene,0.372091,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.435016,realsense pipeline started
+init_robot_planner,23.678693,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-04-30 19:13:29 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,2.367746,target detection finished
+phase3_search_pose,1.125450,failed
+phase3_inverse_ik,1.125450,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.151602,failed
+task_total,3.526843,success=0
+==== 2026-04-30 19:13:32 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.106175,target detection finished
+task_total,0.113285,success=0
+==== 2026-04-30 19:13:33 | picked=0 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.080905,target detection finished
+task_total,0.088115,success=0
+==== 2026-04-30 19:13:33 | picked=0 ====
+phase1_move_view,0.000081,already at viewpoint
+phase2_detection,0.101971,target detection finished
+phase3_search_pose,1.051940,failed
+phase3_inverse_ik,1.051940,failed
+phase3_path_plan,0.000000,failed
+phase3_total,1.069072,failed
+task_total,1.178622,success=0
+==== 2026-04-30 19:13:34 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.093860,target detection finished
+task_total,0.099124,success=0
+==== 2026-04-30 19:13:44 | picked=1 ====
+phase1_move_view,0.000080,already at viewpoint
+phase2_detection,0.129368,target detection finished
+phase3_search_pose,0.005761,theta=-9
+phase3_inverse_ik,0.682066,theta=-9, success
+phase3_path_plan,2.267757,theta=-9, success
+phase3_total,3.046335,theta=-9, success
+phase4_place_plan,1.398437,success
+phase5_exec,6.750717,picked=1
+pick_to_return,11.325367,picked=1, before_return
+task_total,18.081326,success=1
+==== 2026-04-30 19:14:02 | picked=1 ====
+phase1_move_view,0.000073,already at viewpoint
+phase2_detection,0.109901,target detection finished
+phase3_search_pose,0.000661,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,6.667620,theta=-30, success
+phase3_total,6.817607,theta=-30, success
+phase4_place_plan,3.732724,success
+phase5_exec,7.579943,picked=1
+pick_to_return,18.240650,picked=1, before_return
+task_total,23.148657,success=1
+==== 2026-04-30 19:14:26 | picked=0 ====
+phase1_move_view,0.000091,already at viewpoint
+phase2_detection,0.090468,target detection finished
+task_total,0.097636,success=0
+==== 2026-04-30 19:14:26 | picked=0 ====
+phase1_move_view,0.000085,already at viewpoint
+phase2_detection,0.086965,target detection finished
+task_total,0.096310,success=0
+==== 2026-04-30 19:14:26 | picked=0 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.090807,target detection finished
+task_total,0.098285,success=0
+==== 2026-04-30 19:14:27 | picked=0 ====
+phase1_move_view,0.000085,already at viewpoint
+phase2_detection,0.078729,target detection finished
+task_total,0.083820,success=0
+==== 2026-04-30 19:14:27 | picked=0 ====
+phase1_move_view,0.000120,already at viewpoint
+phase2_detection,0.099453,target detection finished
+task_total,0.104576,success=0
+==== 2026-04-30 19:14:36 | picked=1 ====
+phase1_move_view,0.000079,already at viewpoint
+phase2_detection,0.125662,target detection finished
+phase3_search_pose,0.000666,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.027245,theta=-30, success
+phase3_total,2.129258,theta=-30, success
+phase4_place_plan,2.437128,success
+phase5_exec,6.908407,picked=1
+pick_to_return,11.601038,picked=1, before_return
+task_total,18.378988,success=1
+==== 2026-04-30 19:14:55 | picked=0 ====
+phase1_move_view,0.000077,already at viewpoint
+phase2_detection,0.093422,target detection finished
+task_total,0.107421,success=0
+==== 2026-04-30 19:14:55 | picked=1 ====
+phase1_move_view,0.000081,already at viewpoint
+phase2_detection,0.131783,target detection finished
+phase3_search_pose,0.009043,theta=-3
+phase3_inverse_ik,0.978866,theta=-3, success
+phase3_path_plan,1.879885,theta=-3, success
+phase3_total,2.981405,theta=-3, success
+phase4_place_plan,2.605425,success
+phase5_exec,6.713416,picked=1
+pick_to_return,12.432523,picked=1, before_return
+task_total,19.855216,success=1
+==== 2026-05-01 14:33:33 | picked=0 ====
+init_scene,0.227521,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.419234,realsense pipeline started
+init_robot_planner,21.424466,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:34:02 | picked=0 ====
+phase1_move_view,9.463904,moved to viewpoint
+phase2_detection,0.017779,target detection finished
+phase3_search_pose,0.863656,failed
+phase3_inverse_ik,0.863656,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.880170,failed
+task_total,10.376612,success=0
+==== 2026-05-01 14:34:12 | picked=0 ====
+phase1_move_view,8.846446,moved to viewpoint
+phase2_detection,0.003760,target detection finished
+phase3_search_pose,0.869052,failed
+phase3_inverse_ik,0.869052,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.887523,failed
+task_total,9.743240,success=0
+==== 2026-05-01 14:37:39 | picked=0 ====
+init_scene,0.208985,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.419215,realsense pipeline started
+init_robot_planner,22.705141,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:38:09 | picked=0 ====
+phase1_move_view,5.993804,moved to viewpoint
+phase2_detection,0.013478,target detection finished
+phase3_search_pose,0.864114,failed
+phase3_inverse_ik,0.864114,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.881470,failed
+task_total,6.894476,success=0
+==== 2026-05-01 14:38:16 | picked=0 ====
+phase1_move_view,0.000091,already at viewpoint
+phase2_detection,0.004099,target detection finished
+phase3_search_pose,0.861812,failed
+phase3_inverse_ik,0.861812,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.884734,failed
+task_total,0.899159,success=0
+==== 2026-05-01 14:38:17 | picked=0 ====
+phase1_move_view,0.000099,already at viewpoint
+phase2_detection,0.004158,target detection finished
+phase3_search_pose,0.886602,failed
+phase3_inverse_ik,0.886602,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.904547,failed
+task_total,0.918558,success=0
+==== 2026-05-01 14:38:18 | picked=0 ====
+phase1_move_view,0.000094,already at viewpoint
+phase2_detection,0.005378,target detection finished
+phase3_search_pose,0.887594,failed
+phase3_inverse_ik,0.887594,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.904451,failed
+task_total,0.919004,success=0
+==== 2026-05-01 14:38:20 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.003433,target detection finished
+phase3_search_pose,0.883414,failed
+phase3_inverse_ik,0.883414,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.900267,failed
+task_total,0.914171,success=0
+==== 2026-05-01 14:38:30 | picked=0 ====
+phase1_move_view,0.000105,already at viewpoint
+phase2_detection,0.003802,target detection finished
+phase3_search_pose,0.868895,failed
+phase3_inverse_ik,0.868895,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.886621,failed
+task_total,0.898353,success=0
+==== 2026-05-01 14:38:31 | picked=0 ====
+phase1_move_view,0.000088,already at viewpoint
+phase2_detection,0.003348,target detection finished
+phase3_search_pose,0.891509,failed
+phase3_inverse_ik,0.891509,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.908448,failed
+task_total,0.919303,success=0
+==== 2026-05-01 14:38:32 | picked=0 ====
+phase1_move_view,0.000089,already at viewpoint
+phase2_detection,0.003667,target detection finished
+phase3_search_pose,0.880774,failed
+phase3_inverse_ik,0.880774,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.898019,failed
+task_total,0.913681,success=0
+==== 2026-05-01 14:38:33 | picked=0 ====
+phase1_move_view,0.000102,already at viewpoint
+phase2_detection,0.003828,target detection finished
+phase3_search_pose,0.870486,failed
+phase3_inverse_ik,0.870486,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.891927,failed
+task_total,0.903623,success=0
+==== 2026-05-01 14:38:34 | picked=0 ====
+phase1_move_view,0.000078,already at viewpoint
+phase2_detection,0.003277,target detection finished
+phase3_search_pose,0.863989,failed
+phase3_inverse_ik,0.863989,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.882691,failed
+task_total,0.893402,success=0
+==== 2026-05-01 14:39:42 | picked=0 ====
+init_scene,0.210013,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.425138,realsense pipeline started
+init_robot_planner,20.716652,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-01 14:40:10 | picked=0 ====
+phase1_move_view,0.000106,already at viewpoint
+phase2_detection,0.012886,target detection finished
+phase3_search_pose,0.876180,failed
+phase3_inverse_ik,0.876180,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.893611,failed
+task_total,0.914344,success=0
+==== 2026-05-01 14:40:11 | picked=0 ====
+phase1_move_view,0.000105,already at viewpoint
+phase2_detection,0.004053,target detection finished
+phase3_search_pose,0.884264,failed
+phase3_inverse_ik,0.884264,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.901685,failed
+task_total,0.915687,success=0
+==== 2026-05-01 14:40:12 | picked=0 ====
+phase1_move_view,0.000098,already at viewpoint
+phase2_detection,0.004333,target detection finished
+phase3_search_pose,0.858736,failed
+phase3_inverse_ik,0.858736,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.876083,failed
+task_total,0.890103,success=0
+==== 2026-05-01 14:40:13 | picked=0 ====
+phase1_move_view,0.000086,already at viewpoint
+phase2_detection,0.003704,target detection finished
+phase3_search_pose,0.887136,failed
+phase3_inverse_ik,0.887136,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.905924,failed
+task_total,0.917833,success=0
+==== 2026-05-01 14:40:14 | picked=0 ====
+phase1_move_view,0.000087,already at viewpoint
+phase2_detection,0.003823,target detection finished
+phase3_search_pose,0.868089,failed
+phase3_inverse_ik,0.868089,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.884737,failed
+task_total,0.896371,success=0
+==== 2026-05-01 14:40:25 | picked=0 ====
+phase1_move_view,0.000085,already at viewpoint
+phase2_detection,0.008448,target detection finished
+phase3_search_pose,0.892258,failed
+phase3_inverse_ik,0.892258,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.909208,failed
+task_total,0.923331,success=0
+==== 2026-05-01 14:40:26 | picked=0 ====
+phase1_move_view,0.000088,already at viewpoint
+phase2_detection,0.003336,target detection finished
+phase3_search_pose,0.866431,failed
+phase3_inverse_ik,0.866431,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.882596,failed
+task_total,0.893317,success=0
+==== 2026-05-01 14:40:27 | picked=0 ====
+phase1_move_view,0.000103,already at viewpoint
+phase2_detection,0.004427,target detection finished
+phase3_search_pose,0.862845,failed
+phase3_inverse_ik,0.862845,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.889702,failed
+task_total,0.900026,success=0
+==== 2026-05-01 14:40:28 | picked=0 ====
+phase1_move_view,0.000121,already at viewpoint
+phase2_detection,0.003563,target detection finished
+phase3_search_pose,0.870091,failed
+phase3_inverse_ik,0.870091,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.887149,failed
+task_total,0.900390,success=0
+==== 2026-05-01 14:40:29 | picked=0 ====
+phase1_move_view,0.000091,already at viewpoint
+phase2_detection,0.003537,target detection finished
+phase3_search_pose,0.882869,failed
+phase3_inverse_ik,0.882869,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.905092,failed
+task_total,0.916528,success=0
+==== 2026-05-01 14:40:40 | picked=0 ====
+phase1_move_view,0.000100,already at viewpoint
+phase2_detection,0.003699,target detection finished
+phase3_search_pose,0.864244,failed
+phase3_inverse_ik,0.864244,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.881586,failed
+task_total,0.891087,success=0
+==== 2026-05-01 14:40:41 | picked=0 ====
+phase1_move_view,0.000081,already at viewpoint
+phase2_detection,0.003520,target detection finished
+phase3_search_pose,0.865029,failed
+phase3_inverse_ik,0.865029,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.881416,failed
+task_total,0.890327,success=0
+==== 2026-05-01 14:40:42 | picked=0 ====
+phase1_move_view,0.000074,already at viewpoint
+phase2_detection,0.003480,target detection finished
+phase3_search_pose,0.912121,failed
+phase3_inverse_ik,0.912121,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.928485,failed
+task_total,0.941453,success=0
+==== 2026-05-01 14:40:43 | picked=0 ====
+phase1_move_view,0.000084,already at viewpoint
+phase2_detection,0.005532,target detection finished
+phase3_search_pose,0.888787,failed
+phase3_inverse_ik,0.888787,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.905826,failed
+task_total,0.919185,success=0
+==== 2026-05-01 14:40:44 | picked=0 ====
+phase1_move_view,0.000082,already at viewpoint
+phase2_detection,0.003525,target detection finished
+phase3_search_pose,0.874161,failed
+phase3_inverse_ik,0.874161,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.890545,failed
+task_total,0.900475,success=0
+==== 2026-05-01 14:40:54 | picked=0 ====
+phase1_move_view,0.000084,already at viewpoint
+phase2_detection,0.003449,target detection finished
+phase3_search_pose,0.865175,failed
+phase3_inverse_ik,0.865175,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.884426,failed
+task_total,0.897465,success=0
+==== 2026-05-01 14:40:55 | picked=0 ====
+phase1_move_view,0.000093,already at viewpoint
+phase2_detection,0.003770,target detection finished
+phase3_search_pose,0.865749,failed
+phase3_inverse_ik,0.865749,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.882809,failed
+task_total,0.892252,success=0
+==== 2026-05-01 14:40:57 | picked=0 ====
+phase1_move_view,0.000095,already at viewpoint
+phase2_detection,0.003776,target detection finished
+phase3_search_pose,0.874681,failed
+phase3_inverse_ik,0.874681,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.892512,failed
+task_total,0.904288,success=0
+==== 2026-05-01 14:40:58 | picked=0 ====
+phase1_move_view,0.000093,already at viewpoint
+phase2_detection,0.003389,target detection finished
+phase3_search_pose,0.865413,failed
+phase3_inverse_ik,0.865413,failed
+phase3_path_plan,0.000000,failed
+phase3_total,0.881820,failed
+task_total,0.892640,success=0
+==== 2026-05-20 12:27:45 | picked=0 ====
+init_scene,0.337327,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.440802,realsense pipeline started
+init_robot_planner,12.056273,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-20 12:28:09 | picked=0 ====
+phase1_move_view,3.552895,moved to viewpoint
+phase2_detection,3.190243,target detection finished
+task_total,6.752673,success=0
+==== 2026-05-20 12:28:16 | picked=0 ====
+phase1_move_view,0.004579,already at viewpoint
+phase2_detection,0.114156,target detection finished
+task_total,0.126737,success=0
+==== 2026-05-20 12:28:16 | picked=0 ====
+phase1_move_view,0.009404,already at viewpoint
+phase2_detection,0.066288,target detection finished
+task_total,0.084751,success=0
+==== 2026-05-20 12:28:16 | picked=0 ====
+phase1_move_view,0.004626,already at viewpoint
+phase2_detection,0.075284,target detection finished
+task_total,0.087381,success=0
+==== 2026-05-20 12:28:17 | picked=0 ====
+phase1_move_view,0.007652,already at viewpoint
+phase2_detection,0.086146,target detection finished
+task_total,0.101602,success=0
+==== 2026-05-20 12:28:26 | picked=1 ====
+phase1_move_view,0.006781,already at viewpoint
+phase2_detection,0.148550,target detection finished
+phase3_search_pose,0.000649,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,5.774814,theta=-30, success
+phase3_total,5.890664,theta=-30, success
+phase4_place_plan,3.793611,success
+phase5_exec,8.435246,picked=1
+pick_to_return,18.268543,picked=1, before_return
+task_total,24.816468,success=1
+==== 2026-05-20 12:31:05 | picked=0 ====
+init_scene,0.286525,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.428665,realsense pipeline started
+init_robot_planner,9.774190,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-20 12:31:22 | picked=1 ====
+phase1_move_view,3.815999,moved to viewpoint
+phase2_detection,2.090574,target detection finished
+phase3_search_pose,0.000780,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.143840,theta=-30, success
+phase3_total,2.281085,theta=-30, success
+phase4_place_plan,2.162472,success
+phase5_exec,7.443657,picked=1
+pick_to_return,13.978359,picked=1, before_return
+task_total,23.062409,success=1
+==== 2026-05-20 12:31:45 | picked=0 ====
+phase1_move_view,0.006889,already at viewpoint
+phase2_detection,0.062553,target detection finished
+task_total,0.088178,success=0
+==== 2026-05-20 12:31:46 | picked=0 ====
+phase1_move_view,0.005142,already at viewpoint
+phase2_detection,0.094434,target detection finished
+task_total,0.109140,success=0
+==== 2026-05-20 12:31:46 | picked=0 ====
+phase1_move_view,0.009506,already at viewpoint
+phase2_detection,0.104486,target detection finished
+task_total,0.124022,success=0
+==== 2026-05-20 12:31:46 | picked=0 ====
+phase1_move_view,0.011520,already at viewpoint
+phase2_detection,0.093462,target detection finished
+task_total,0.116031,success=0
+==== 2026-05-20 12:31:47 | picked=0 ====
+phase1_move_view,0.004469,already at viewpoint
+phase2_detection,0.088575,target detection finished
+task_total,0.099253,success=0
+==== 2026-05-20 12:31:56 | picked=0 ====
+phase1_move_view,0.006685,already at viewpoint
+phase2_detection,0.107454,target detection finished
+task_total,0.123948,success=0
+==== 2026-05-20 12:31:56 | picked=0 ====
+phase1_move_view,0.011687,already at viewpoint
+phase2_detection,0.068420,target detection finished
+task_total,0.090194,success=0
+==== 2026-05-20 12:31:57 | picked=0 ====
+phase1_move_view,0.003911,already at viewpoint
+phase2_detection,0.087615,target detection finished
+task_total,0.099169,success=0
+==== 2026-05-20 12:31:57 | picked=0 ====
+phase1_move_view,0.008646,already at viewpoint
+phase2_detection,0.097019,target detection finished
+task_total,0.113531,success=0
+==== 2026-05-20 12:31:57 | picked=0 ====
+phase1_move_view,0.009296,already at viewpoint
+phase2_detection,0.101506,target detection finished
+task_total,0.118378,success=0
+==== 2026-05-20 12:32:07 | picked=1 ====
+phase1_move_view,0.002522,already at viewpoint
+phase2_detection,0.158448,target detection finished
+phase3_search_pose,0.009990,theta=0
+phase3_inverse_ik,1.048388,theta=0, success
+phase3_path_plan,1.990541,theta=0, success
+phase3_total,3.158270,theta=0, success
+phase4_place_plan,2.815544,success
+phase5_exec,8.384068,picked=1
+pick_to_return,14.516811,picked=1, before_return
+task_total,15.060062,success=1
+==== 2026-05-20 12:40:27 | picked=0 ====
+init_scene,0.229145,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.398806,realsense pipeline started
+init_robot_planner,10.005763,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-20 12:40:45 | picked=1 ====
+phase1_move_view,3.676676,moved to viewpoint
+phase2_detection,1.894567,target detection finished
+phase3_search_pose,0.000712,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.696534,theta=-30, success
+phase3_total,1.851522,theta=-30, success
+phase4_place_plan,2.889201,success
+phase5_exec,7.316418,picked=1
+pick_to_return,13.952217,picked=1, before_return
+task_total,21.990592,success=1
+==== 2026-05-20 12:41:07 | picked=0 ====
+phase1_move_view,0.006684,already at viewpoint
+phase2_detection,0.076238,target detection finished
+task_total,0.095714,success=0
+==== 2026-05-20 12:41:07 | picked=0 ====
+phase1_move_view,0.007176,already at viewpoint
+phase2_detection,0.063531,target detection finished
+task_total,0.078852,success=0
+==== 2026-05-20 12:41:07 | picked=0 ====
+phase1_move_view,0.017242,already at viewpoint
+phase2_detection,0.081965,target detection finished
+task_total,0.104458,success=0
+==== 2026-05-20 12:41:08 | picked=0 ====
+phase1_move_view,0.004651,already at viewpoint
+phase2_detection,0.063667,target detection finished
+task_total,0.082149,success=0
+==== 2026-05-20 12:41:08 | picked=0 ====
+phase1_move_view,0.004536,already at viewpoint
+phase2_detection,0.087092,target detection finished
+task_total,0.102639,success=0
+==== 2026-05-20 12:41:10 | picked=0 ====
+phase1_move_view,0.016127,already at viewpoint
+phase2_detection,0.078255,target detection finished
+task_total,0.101551,success=0
+==== 2026-05-20 12:41:11 | picked=0 ====
+phase1_move_view,0.009110,already at viewpoint
+phase2_detection,0.076505,target detection finished
+task_total,0.092849,success=0
+==== 2026-05-20 12:41:11 | picked=1 ====
+phase1_move_view,0.006692,already at viewpoint
+phase2_detection,0.112837,target detection finished
+phase3_search_pose,0.000648,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.835608,theta=-30, success
+phase3_total,1.962182,theta=-30, success
+phase4_place_plan,2.491546,success
+phase5_exec,7.293608,picked=1
+pick_to_return,11.860660,picked=1, before_return
+task_total,16.946924,success=1
+==== 2026-05-20 12:41:28 | picked=1 ====
+phase1_move_view,0.006637,already at viewpoint
+phase2_detection,0.101852,target detection finished
+phase3_search_pose,0.000665,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,2.825557,theta=-30, success
+phase3_total,2.928648,theta=-30, success
+phase4_place_plan,3.107390,success
+phase5_exec,7.491087,picked=1
+pick_to_return,13.629481,picked=1, before_return
+task_total,18.442738,success=1
+==== 2026-05-20 13:07:46 | picked=0 ====
+init_scene,0.216111,world/frame attached
+init_rm_controller,0.000000,realman controller connected
+init_realsense,0.404508,realsense pipeline started
+init_robot_planner,7.455011,robot/adp ready
+init_total,0.000000,initialization finished
+==== 2026-05-20 13:08:01 | picked=1 ====
+phase1_move_view,3.434460,moved to viewpoint
+phase2_detection,1.825822,target detection finished
+phase3_search_pose,0.000796,theta=-30
+phase3_inverse_ik,0.000000,theta=-30, success
+phase3_path_plan,1.679199,theta=-30, success
+phase3_total,1.777938,theta=-30, success
+phase4_place_plan,1.134003,success
+phase5_exec,7.332055,picked=1
+pick_to_return,12.070452,picked=1, before_return
+task_total,20.702503,success=1
+==== 2026-05-20 13:08:22 | picked=1 ====
+phase1_move_view,0.004558,already at viewpoint
+phase2_detection,0.090173,target detection finished
+phase3_search_pose,0.007935,theta=0
+phase3_inverse_ik,0.709666,theta=0, success
+phase3_path_plan,2.882960,theta=0, success
+phase3_total,3.877005,theta=0, success
+phase4_place_plan,2.701808,success
+phase5_exec,7.297643,picked=1
+pick_to_return,13.967121,picked=1, before_return
+task_total,18.625226,success=1
+==== 2026-05-20 13:08:40 | picked=0 ====
+phase1_move_view,0.004559,already at viewpoint
+phase2_detection,0.071634,target detection finished
+task_total,0.086537,success=0
+==== 2026-05-20 13:08:41 | picked=0 ====
+phase1_move_view,0.006679,already at viewpoint
+phase2_detection,0.072315,target detection finished
+task_total,0.084102,success=0
+==== 2026-05-20 13:08:41 | picked=0 ====
+phase1_move_view,0.004575,already at viewpoint
+phase2_detection,0.083605,target detection finished
+task_total,0.093331,success=0
+==== 2026-05-20 13:08:41 | picked=0 ====
+phase1_move_view,0.006754,already at viewpoint
+phase2_detection,0.066894,target detection finished
+task_total,0.086309,success=0
+==== 2026-05-20 13:08:42 | picked=0 ====
+phase1_move_view,0.010852,already at viewpoint
+phase2_detection,0.064754,target detection finished
+task_total,0.088468,success=0
+==== 2026-05-20 13:08:51 | picked=0 ====
+phase1_move_view,0.004639,already at viewpoint
+phase2_detection,0.084301,target detection finished
+task_total,0.098189,success=0
+==== 2026-05-20 13:08:51 | picked=0 ====
+phase1_move_view,0.006556,already at viewpoint
+phase2_detection,0.071239,target detection finished
+task_total,0.084980,success=0
+==== 2026-05-20 13:08:52 | picked=0 ====
+phase1_move_view,0.004563,already at viewpoint
+phase2_detection,0.074313,target detection finished
+task_total,0.086011,success=0
+==== 2026-05-20 13:08:52 | picked=0 ====
+phase1_move_view,0.012930,already at viewpoint
+phase2_detection,0.078885,target detection finished
+task_total,0.098230,success=0
+==== 2026-05-20 13:08:52 | picked=0 ====
+phase1_move_view,0.008812,already at viewpoint
+phase2_detection,0.066396,target detection finished
+task_total,0.084654,success=0
+==== 2026-05-20 13:09:02 | picked=0 ====
+phase1_move_view,0.004725,already at viewpoint
+phase2_detection,0.082800,target detection finished
+task_total,0.095386,success=0
+==== 2026-05-20 13:09:02 | picked=0 ====
+phase1_move_view,0.006720,already at viewpoint
+phase2_detection,0.080659,target detection finished
+task_total,0.092625,success=0
+==== 2026-05-20 13:09:02 | picked=0 ====
+phase1_move_view,0.004647,already at viewpoint
+phase2_detection,0.088285,target detection finished
+task_total,0.100097,success=0
+==== 2026-05-20 13:09:03 | picked=0 ====
+phase1_move_view,0.009755,already at viewpoint
+phase2_detection,0.070641,target detection finished
+task_total,0.091904,success=0
+==== 2026-05-20 13:09:03 | picked=0 ====
+phase1_move_view,0.004514,already at viewpoint
+phase2_detection,0.071954,target detection finished
+task_total,0.083618,success=0
+==== 2026-05-20 13:09:13 | picked=1 ====
+phase1_move_view,0.006650,already at viewpoint
+phase2_detection,0.092618,target detection finished
+phase3_search_pose,0.006277,theta=-6
+phase3_inverse_ik,0.468046,theta=-6, success
+phase3_path_plan,2.497830,theta=-6, success
+phase3_total,3.281748,theta=-6, success
+phase4_place_plan,1.626522,success
+phase5_exec,7.237421,picked=1
+pick_to_return,12.238811,picked=1, before_return
+task_total,17.048432,success=1
+==== 2026-05-20 13:09:30 | picked=0 ====
+phase1_move_view,0.004584,already at viewpoint
+phase2_detection,0.082605,target detection finished
+task_total,0.093593,success=0
+==== 2026-05-20 13:09:30 | picked=0 ====
+phase1_move_view,0.006613,already at viewpoint
+phase2_detection,0.082107,target detection finished
+task_total,0.094061,success=0
+==== 2026-05-20 13:09:30 | picked=0 ====
+phase1_move_view,0.004613,already at viewpoint
+phase2_detection,0.066044,target detection finished
+task_total,0.075875,success=0
+==== 2026-05-20 13:09:31 | picked=0 ====
+phase1_move_view,0.004653,already at viewpoint
+phase2_detection,0.069008,target detection finished
+task_total,0.081336,success=0
+==== 2026-05-20 13:09:31 | picked=0 ====
+phase1_move_view,0.004585,already at viewpoint
+phase2_detection,0.073729,target detection finished
+task_total,0.087729,success=0

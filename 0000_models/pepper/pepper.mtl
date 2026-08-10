@@ -1,0 +1,129 @@
+# Blender 5.0.0 Release Candidate MTL File: '辣椒.blend'
+# www.blender.org
+
+newmtl Lime._Material_#23
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd maps/Lime._Diff_3d66Model-7852863-files-7.jpg
+map_Ns maps/Lime._3d66Model-7852863-files-8.jpg
+map_refl maps/Lime._3d66Model-7852863-files-11.jpg
+map_d maps/Lime._3d66Model-7852863-files-10.jpg
+map_Bump -bm 1.000000 maps/Lime._Bump_3d66Model-7852863-files-9.jpg
+
+newmtl Lime._Material_#26
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd maps/Lime._Diff_3d66Model-7852863-files-13.jpg
+map_Ns maps/Lime._3d66Model-7852863-files-14.jpg
+map_refl maps/Lime._3d66Model-7852863-files-17.jpg
+map_d maps/Lime._3d66Model-7852863-files-16.jpg
+map_Bump -bm 1.000000 maps/Lime._Bump_3d66Model-7852863-files-15.jpg
+
+newmtl Lime._Material_#29
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd maps/Lime._Diff_3d66Model-7852863-files-19.jpg
+map_Ns maps/Lime._3d66Model-7852863-files-20.jpg
+map_refl maps/Lime._3d66Model-7852863-files-24.jpg
+map_d maps/Lime._3d66Model-7852863-files-22.jpg
+map_Bump -bm 1.000000 maps/Lime._Bump_3d66Model-7852863-files-21.jpg
+
+newmtl Lime._Material_#34
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd maps/Lime._3d66Model-7852863-files-1.jpg
+map_Ns maps/Lime._3d66Model-7852863-files-12.jpg
+map_refl maps/Lime._3d66Model-7852863-files-36.jpg
+map_d maps/Lime._3d66Model-7852863-files-34.jpg
+map_Bump -bm 1.000000 maps/Lime._Bump_3d66Model-7852863-files-23.jpg
+
+newmtl Lime._Material_#36
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd maps/Lime._3d66Model-7852863-files-37.jpg
+
+newmtl Lime._flower3
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Kd 0.925490 0.909804 0.749020
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+
+newmtl Lime._fruit1
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd maps/Lime._3d66Model-7852863-files-38.jpg
+map_Ns maps/Lime._3d66Model-7852863-files-39.jpg
+map_refl maps/Lime._3d66Model-7852863-files-2.jpg
+map_Bump -bm 0.400000 maps/Lime._Bump_3d66Model-7852863-files-40.jpg
+
+newmtl Lime._fruit2
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd maps/Lime._3d66Model-7852863-files-3.jpg
+map_Ns maps/Lime._3d66Model-7852863-files-4.jpg
+map_refl maps/Lime._3d66Model-7852863-files-6.jpg
+map_Bump -bm 0.400000 maps/Lime._Bump_3d66Model-7852863-files-5.jpg
+
+newmtl Lime._stem1
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd maps/Lime._3d66Model-7852863-files-32.jpg
+map_refl maps/Lime._3d66Model-7852863-files-35.jpg
+map_Bump -bm 1.000000 maps/Lime._Bump_3d66Model-7852863-files-33.jpg
+
+newmtl Lime._stem2
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd maps/Lime._3d66Model-7852863-files-26.jpg
+map_Bump -bm 1.000000 maps/Lime._Bump_3d66Model-7852863-files-27.jpg
+
+newmtl Lime._stem3
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd maps/Lime._3d66Model-7852863-files-28.jpg
+map_Ns maps/Lime._3d66Model-7852863-files-29.jpg
+map_refl maps/Lime._3d66Model-7852863-files-31.jpg
+map_Bump -bm 1.000000 maps/Lime._Bump_3d66Model-7852863-files-30.jpg
