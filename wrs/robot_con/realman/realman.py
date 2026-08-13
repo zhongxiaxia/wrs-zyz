@@ -70,90 +70,15 @@ class RealmanArmController:
         else:
             print("位姿运动失败")
 
-    def get_joint_values(self, retries: int = 5, retry_delay_s: float = 0.05):
-        """Read joint values, retrying transient SDK receive errors.
-
-        State queries are safe to retry because they do not issue a motion
-        command. A bounded retry prevents one short network/SDK receive error
-        from aborting an otherwise successful trajectory.
+    def get_joint_values(self):
         """
-        retries = int(retries)
-        retry_delay_s = float(retry_delay_s)
-        if retries < 1:
-            raise ValueError("retries must be at least 1")
-        if not np.isfinite(retry_delay_s) or retry_delay_s < 0:
-            raise ValueError("retry_delay_s must be a finite non-negative value")
-
-        last_error = "unknown error"
-        for attempt in range(1, retries + 1):
-            try:
-                result = self.arm.rm_get_joint_degree()
-                if not isinstance(result, (tuple, list)) or len(result) < 2:
-                    last_error = f"invalid SDK result: {result!r}"
-                else:
-                    err_code, joint_values = result[0], result[1]
-                    if err_code != 0:
-                        last_error = f"SDK return_code={err_code}"
-                    else:
-                        joint_values = np.asarray(joint_values, dtype=float).reshape(-1)
-                        if joint_values.size != 6:
-                            last_error = (
-                                "invalid joint count: "
-                                f"expected 6, got {joint_values.size}"
-                            )
-                        elif not np.all(np.isfinite(joint_values)):
-                            last_error = "SDK returned non-finite joint values"
-                        else:
-                            return np.radians(joint_values)
-            except Exception as exc:
-                last_error = f"{type(exc).__name__}: {exc}"
-
-            if attempt < retries:
-                print(
-                    "[RealMan][关节角读取重试] "
-                    f"第 {attempt}/{retries} 次失败：{last_error}；"
-                    f"{retry_delay_s:.3f} 秒后重试。"
-                )
-                if retry_delay_s > 0:
-                    time.sleep(retry_delay_s)
-
-        raise RuntimeError(
-            f"获取关节角失败：连续 {retries} 次读取均失败；最后错误：{last_error}"
-        )
-
-    def _send_movej_canfd_checked(self,
-                                  joint_values_deg,
-                                  *,
-                                  context: str,
-                                  sample_index: int,
-                                  sample_count: int):
-        """Send one CAN-FD waypoint and fail immediately on an SDK error.
-
-        Motion commands are deliberately not retried: if an acknowledgement is
-        lost, the controller may already have accepted the command, so resending
-        it automatically would make execution state ambiguous.
+        获取当前机器人的关节角度值
+        :return: 返回关节角度列表
         """
-        joint_values_deg = np.asarray(joint_values_deg, dtype=float).reshape(-1)
-        if joint_values_deg.size != 6 or not np.all(np.isfinite(joint_values_deg)):
-            raise ValueError(
-                "CAN-FD trajectory sample must contain 6 finite joint values; "
-                f"context={context}, sample={sample_index}/{sample_count}"
-            )
-
-        result = self.arm.rm_movej_canfd(
-            joint_values_deg,
-            False,
-            0,
-            trajectory_mode=1,
-            radio=50,
-        )
-        if result != 0:
-            raise RuntimeError(
-                "CAN-FD轨迹点下发失败："
-                f"轨迹段={context}，采样点={sample_index}/{sample_count}，"
-                f"SDK return_code={result}。运动命令未自动重发。"
-            )
-        return result
+        err_code, joint_values = self.arm.rm_get_joint_degree()
+        if err_code < 0:
+            raise Exception("获取关节角失败")
+        return np.radians(joint_values)
 
     def get_pose(self) -> (np.ndarray, np.ndarray):
         """
@@ -314,14 +239,13 @@ class RealmanArmController:
             goal_jnt_values = np.asarray(path[-1], dtype=float).copy()
             interpolated_path = interpolated_path[start_frame_id:]
             interpolated_path = np.rad2deg(interpolated_path)
-            sample_count = len(interpolated_path)
-            for sample_index, jnt_values in enumerate(interpolated_path, start=1):
-                self._send_movej_canfd_checked(
+            for jnt_values in interpolated_path:
+                self.arm.rm_movej_canfd(
                     jnt_values,
-                    context="move_jntspace_path/toppra",
-                    sample_index=sample_index,
-                    sample_count=sample_count,
-                )
+                    False,
+                    0,
+                    trajectory_mode=1,
+                    radio=50)
                 time.sleep(.1)
             self.wait_until_joint_target(
                 goal_jnt_values,
@@ -341,13 +265,13 @@ class RealmanArmController:
         path_deg = np.degrees(path)
         dt = float(canfd_dt) if canfd_dt is not None else 0.02
         dt = max(0.0, dt)
-        sample_count = len(path_deg)
-        for sample_index, jnt_values_deg in enumerate(path_deg, start=1):
-            self._send_movej_canfd_checked(
+        for jnt_values_deg in path_deg:
+            self.arm.rm_movej_canfd(
                 jnt_values_deg,
-                context="move_jntspace_path/direct",
-                sample_index=sample_index,
-                sample_count=sample_count,
+                False,
+                0,
+                trajectory_mode=1,
+                radio=50
             )
             if dt > 0:
                 time.sleep(dt)
@@ -434,30 +358,18 @@ class RealmanArmController:
             # for one control period.  This realizes the zero boundary velocity
             # assumed by the two independently retimed sections without an
             # additional wait_until_idle pause.
-            prepared_segment = sampled[1:] if index == 0 else sampled
-            prepared.append(prepared_segment)
-            segment_name = str(segment.get("name") or f"segment_{index + 1}")
-            segment_sample_count = len(prepared_segment)
-            prepared_sample_info.extend(
-                (segment_name, sample_index, segment_sample_count)
-                for sample_index in range(1, segment_sample_count + 1)
-            )
+            prepared.append(sampled[1:] if index == 0 else sampled)
             previous_end = path[-1]
 
         command_path = np.vstack(prepared)
         command_path_deg = np.degrees(command_path)
-        global_sample_count = len(command_path_deg)
-        for global_sample_index, (jnt_values_deg, sample_info) in enumerate(
-                zip(command_path_deg, prepared_sample_info), start=1):
-            segment_name, segment_sample_index, segment_sample_count = sample_info
-            self._send_movej_canfd_checked(
+        for jnt_values_deg in command_path_deg:
+            self.arm.rm_movej_canfd(
                 jnt_values_deg,
-                context=(
-                    f"move_jntspace_path_sequence/{segment_name} "
-                    f"(全局采样点 {global_sample_index}/{global_sample_count})"
-                ),
-                sample_index=segment_sample_index,
-                sample_count=segment_sample_count,
+                False,
+                0,
+                trajectory_mode=1,
+                radio=50,
             )
             time.sleep(dt)
 
@@ -508,15 +420,14 @@ class RealmanArmController:
             # toppra返回的是弧度，机械臂SDK需要度
             interpolated_path_deg = np.degrees(interpolated_path)
 
-            sample_count = len(interpolated_path_deg)
-            for sample_index, jnt_values_deg in enumerate(
-                    interpolated_path_deg, start=1):
+            for jnt_values_deg in interpolated_path_deg:
                 # canfd高频下发接口
-                self._send_movej_canfd_checked(
+                self.arm.rm_movej_canfd(
                     jnt_values_deg,
-                    context="move_jntspace_path_hyk/toppra",
-                    sample_index=sample_index,
-                    sample_count=sample_count,
+                    False,
+                    0,
+                    trajectory_mode=1,
+                    radio=50
                 )
                 time.sleep(.05)
             return

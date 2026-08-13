@@ -762,6 +762,27 @@ def list_serial_ports():
     return [port for port, _description in list_serial_port_infos()]
 
 
+def resolve_scissor_port():
+    """Find the scissor serial port using the same policy as the picker."""
+    available_ports = list_serial_port_infos()
+    if not available_ports:
+        return None
+
+    if len(available_ports) > 1:
+        print("找到多个串口候选（已按剪刀串口优先级排序）:")
+        for index, (port, description) in enumerate(available_ports):
+            detail = f" ({description})" if description else ""
+            print(f"  [{index}] {port}{detail}")
+
+    selected_port = available_ports[0][0]
+    env_port = os.environ.get(SCISSOR_PORT_ENV, "").strip()
+    if env_port:
+        print(f"\n使用环境变量 {SCISSOR_PORT_ENV}: {selected_port}")
+    else:
+        print(f"\n自动选择剪刀串口: {selected_port}")
+    return selected_port
+
+
 def main():
     """主函数"""
     print("=" * 60)
@@ -770,31 +791,16 @@ def main():
 
     # 列出可用串口
     print("\n扫描可用串口...")
-    available_ports = list_serial_ports()
+    selected_port = resolve_scissor_port()
 
-    if not available_ports:
+    if selected_port is None:
         print("未找到可用串口！")
         print("请检查:")
         print("1. STM32是否已连接到电脑")
         print("2. USB转串口驱动是否安装")
         print("3. 串口线是否正常")
+        print(f"4. 或设置 {SCISSOR_PORT_ENV}=/dev/serial/by-id/...")
         return
-
-    print("找到以下串口:")
-    for i, port in enumerate(available_ports):
-        print(f"  [{i}] {port}")
-
-    # 选择串口
-    try:
-        if len(available_ports) == 1:
-            selected_port = available_ports[0]
-            print(f"\n自动选择串口: {selected_port}")
-        else:
-            choice = int(input(f"\n请选择串口编号 (0-{len(available_ports) - 1}): "))
-            selected_port = available_ports[choice]
-    except (ValueError, IndexError):
-        print("选择无效，使用列表中的第一个串口")
-        selected_port = available_ports[0]
 
     # 创建控制器并连接
     controller = STM32ScissorController(port=selected_port, baudrate=115200)
@@ -844,5 +850,4 @@ if __name__ == "__main__":
         print("错误: 未找到pyserial库")
         print("请先安装: pip install pyserial")
         sys.exit(1)
-
     main()

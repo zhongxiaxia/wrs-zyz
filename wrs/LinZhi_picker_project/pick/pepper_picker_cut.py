@@ -136,11 +136,13 @@ GRIPPER_BAUDRATE = 115200
 GRIPPER_TIMEOUT = 2
 SCISSOR_PORT_ENV = "WRS_SCISSOR_PORT"
 SCISSOR_BAUDRATE = 115200
-SCISSOR_SETTLE_TIME = 0.8
+SCISSOR_SETTLE_TIME = 1.0
 SCISSOR_KEEPALIVE_INTERVAL = 60.0
 SCISSOR_KEEPALIVE_INTERVAL_ENV = "WRS_SCISSOR_KEEPALIVE_INTERVAL"
 PRE_PICK_WRIST_ROTATE_ENV = "WRS_PRE_PICK_WRIST_ROTATE_DEG"
 WRIST_JOINT_INDEX = -1
+PICK_J6_MAX_DEVIATION_ENV = "WRS_PICK_J6_MAX_DEVIATION_DEG"
+PICK_J6_MAX_DEVIATION_DEG = 20.0
 
 JOINT_LIMIT_MARGIN = 0.08
 JOINT3_EXTRA_MARGIN = 0.18
@@ -186,6 +188,21 @@ def _apply_side_mount_base_correction(points):
         return CAMERA_SIDE_MOUNT_BASE_CORRECTION_ROTMAT @ points
     return points @ CAMERA_SIDE_MOUNT_BASE_CORRECTION_ROTMAT.T
 
+
+class JointConstrainedRRTConnect(rrtc.RRTConnect):
+    """RRT-Connect whose random samples obey picker-specific joint constraints."""
+
+    def __init__(self, robot, sample_conf_fn=None):
+        super().__init__(robot)
+        self.sample_conf_fn = sample_conf_fn
+
+    def _sample_conf(self, rand_rate, default_conf):
+        if self.sample_conf_fn is None:
+            return super()._sample_conf(rand_rate, default_conf)
+        if default_conf is not None and np.random.randint(0, 100) >= rand_rate:
+            return default_conf
+        return self.sample_conf_fn()
+
 # 林芝采摘专用关节限制，单位：弧度。
 # 这里只额外限制第 1 个关节 J1 的活动范围：[-2.06465465, -1.17106357]。
 # 说明：用户给出的范围为 -1.17106357 ~ -2.06465465，实际检查时按较小值作为下限。
@@ -195,7 +212,7 @@ CUSTOM_JOINT_LIMITS = {
 
 # 林芝目标选择：类别 1 的第 1 个关键点。关键点索引从 0 开始，所以第 1 个关键点为 0。
 TARGET_CLASS_ID = 1
-TARGET_KEYPOINT_INDEX = 0
+TARGET_KEYPOINT_INDEX = 1
 
 
 def _make_gripper_params(port: int, address: int, device: int, num: int = 0):
@@ -355,6 +372,10 @@ class LinZhiCutController:
             print("[CUT][error] failed to connect STM32 scissor controller")
             self.controller = None
             return False
+        # Keep draining and displaying STM32 replies in integrated picker mode.
+        # This makes it possible to distinguish "serial write succeeded" from
+        # "STM32 received the command" while the robot program is running.
+        self.controller.start_receiver_thread()
         with self._io_lock:
             if self.controller.checkstate() == 0:
                 print("[CUT] waking STM32 scissor")
@@ -437,7 +458,8 @@ class RealmanPepperPickerFast:
                  use_gripper: bool = True,
                  use_scissor_cut: bool = True,
                  scissor_port: Optional[str] = None,
-                 pre_pick_wrist_rotate_deg: Optional[float] = None):
+                 pre_pick_wrist_rotate_deg: Optional[float] = None,
+                 pick_j6_max_deviation_deg: Optional[float] = None):
         self._reset_timing_records()
         self.real_robot = real_robot
         self.defer_init = defer_init
@@ -446,6 +468,11 @@ class RealmanPepperPickerFast:
         self.scissor_port = scissor_port
         self.pre_pick_wrist_rotate_deg = self._resolve_pre_pick_wrist_rotate_deg(pre_pick_wrist_rotate_deg)
         self.pre_pick_wrist_rotate_rad = np.radians(self.pre_pick_wrist_rotate_deg)
+        self.pick_j6_max_deviation_deg = self._resolve_pick_j6_max_deviation_deg(
+            pick_j6_max_deviation_deg
+        )
+        self.pick_j6_max_deviation_rad = np.radians(self.pick_j6_max_deviation_deg)
+        self._pick_j6_reference_rad = None
         self._inited = False
         self.base = None
         self.shelf_model = None
@@ -474,6 +501,26 @@ class RealmanPepperPickerFast:
         except ValueError:
             print(f"[WRIST][warn] invalid {PRE_PICK_WRIST_ROTATE_ENV}={env_value!r}; using 0 deg")
             return 0.0
+
+    @staticmethod
+    def _resolve_pick_j6_max_deviation_deg(value: Optional[float]) -> float:
+        if value is None:
+            env_value = (os.environ.get(PICK_J6_MAX_DEVIATION_ENV) or "").strip()
+            if env_value:
+                try:
+                    value = float(env_value)
+                except ValueError:
+                    print(
+                        f"[J6][warn] invalid {PICK_J6_MAX_DEVIATION_ENV}={env_value!r}; "
+                        f"using {PICK_J6_MAX_DEVIATION_DEG:.1f} deg"
+                    )
+                    value = PICK_J6_MAX_DEVIATION_DEG
+            else:
+                value = PICK_J6_MAX_DEVIATION_DEG
+        value = float(value)
+        if value <= 0:
+            raise ValueError("pick_j6_max_deviation_deg must be greater than 0")
+        return value
 
     def initialize(self):
         """Build the simulation scene, connect hardware, and load perception models.
@@ -513,7 +560,10 @@ class RealmanPepperPickerFast:
         self.box_model.attach_to(self.base)
 
         self.robot = Realman(rotmat=SIM_BASE_ROTMAT, enable_cc=True)
-        self.rrtc_planner = rrtc.RRTConnect(self.robot)
+        self.rrtc_planner = JointConstrainedRRTConnect(
+            self.robot,
+            sample_conf_fn=self._sample_rrt_conf,
+        )
         self.adp_planner = adp.ADPlanner(self.robot)
         self.rm_controller = None
         self.rs_pipeline = None
@@ -621,15 +671,98 @@ class RealmanPepperPickerFast:
         j3_low, j3_high = ranges[2]
         return bool((conf[2] >= j3_low + extra_margin) and (conf[2] <= j3_high - extra_margin))
 
+    def _is_conf_within_pick_j6_window(self, conf):
+        if self._pick_j6_reference_rad is None:
+            return True
+        conf = np.asarray(conf, dtype=float).reshape(-1)
+        if conf.shape[0] < 6:
+            return True
+        return bool(
+            abs(conf[WRIST_JOINT_INDEX] - self._pick_j6_reference_rad)
+            <= self.pick_j6_max_deviation_rad + 1e-9
+        )
+
+    def _align_j6_to_pick_reference(self, conf):
+        """Use the 2*pi-equivalent J6 value closest to the observation pose."""
+        conf = np.asarray(conf, dtype=float).reshape(-1).copy()
+        if self._pick_j6_reference_rad is None or conf.shape[0] < 6:
+            return conf
+        ranges = self._joint_limit_range()
+        candidates = [
+            conf[WRIST_JOINT_INDEX] + turn * 2.0 * np.pi
+            for turn in range(-2, 3)
+        ]
+        if ranges is not None and ranges.shape[0] >= 6:
+            j6_low, j6_high = ranges[WRIST_JOINT_INDEX]
+            candidates = [value for value in candidates if j6_low <= value <= j6_high]
+        if candidates:
+            conf[WRIST_JOINT_INDEX] = min(
+                candidates,
+                key=lambda value: abs(value - self._pick_j6_reference_rad),
+            )
+        return conf
+
+    def _conf_constraint_violation(self, conf, margin: float = RRT_PATH_MARGIN):
+        conf = np.asarray(conf, dtype=float).reshape(-1)
+        ranges = self._joint_limit_range()
+        if ranges is not None and conf.shape[0] == ranges.shape[0]:
+            for joint_idx, value in enumerate(conf):
+                low = ranges[joint_idx, 0] + margin
+                high = ranges[joint_idx, 1] - margin
+                if value < low or value > high:
+                    return (
+                        f"J{joint_idx + 1}={np.degrees(value):.2f} deg outside "
+                        f"[{np.degrees(low):.2f}, {np.degrees(high):.2f}] deg"
+                    )
+            if conf.shape[0] >= 3:
+                j3_low = ranges[2, 0] + JOINT3_EXTRA_MARGIN
+                j3_high = ranges[2, 1] - JOINT3_EXTRA_MARGIN
+                if conf[2] < j3_low or conf[2] > j3_high:
+                    return (
+                        f"J3={np.degrees(conf[2]):.2f} deg outside extra-safe range "
+                        f"[{np.degrees(j3_low):.2f}, {np.degrees(j3_high):.2f}] deg"
+                    )
+        if not self._is_conf_within_pick_j6_window(conf):
+            j6_deg = np.degrees(conf[WRIST_JOINT_INDEX])
+            ref_deg = np.degrees(self._pick_j6_reference_rad)
+            return (
+                f"J6={j6_deg:.2f} deg differs from observation J6={ref_deg:.2f} deg "
+                f"by more than +/-{self.pick_j6_max_deviation_deg:.2f} deg"
+            )
+        return None
+
+    def _sample_rrt_conf(self):
+        """Sample only the convex joint region accepted by the final path checks."""
+        ranges = self._joint_limit_range()
+        if ranges is None:
+            return self.robot.rand_conf()
+        lower = ranges[:, 0] + RRT_PATH_MARGIN
+        upper = ranges[:, 1] - RRT_PATH_MARGIN
+        if ranges.shape[0] >= 3:
+            lower[2] = max(lower[2], ranges[2, 0] + JOINT3_EXTRA_MARGIN)
+            upper[2] = min(upper[2], ranges[2, 1] - JOINT3_EXTRA_MARGIN)
+        if self._pick_j6_reference_rad is not None and ranges.shape[0] >= 6:
+            lower[WRIST_JOINT_INDEX] = max(
+                lower[WRIST_JOINT_INDEX],
+                self._pick_j6_reference_rad - self.pick_j6_max_deviation_rad,
+            )
+            upper[WRIST_JOINT_INDEX] = min(
+                upper[WRIST_JOINT_INDEX],
+                self._pick_j6_reference_rad + self.pick_j6_max_deviation_rad,
+            )
+        if np.any(lower >= upper):
+            raise RuntimeError("picker joint constraints leave no valid RRT sampling range")
+        return np.random.uniform(lower, upper)
+
     def _path_within_joint_margin(self, path, margin: float = RRT_PATH_MARGIN):
         if path is None:
             return False
         jv_list = getattr(path, "jv_list", path)
         try:
-            for conf in jv_list:
-                if not self._is_conf_within_joint_margin(conf, margin=margin):
-                    return False
-                if not self._is_conf_safe_for_joint3(conf):
+            for point_idx, conf in enumerate(jv_list):
+                violation = self._conf_constraint_violation(conf, margin=margin)
+                if violation is not None:
+                    print(f"[LIMIT][detail] path point {point_idx}: {violation}")
                     return False
             return True
         except Exception:
@@ -644,6 +777,11 @@ class RealmanPepperPickerFast:
             raise ValueError(
                 f"pre-pick wrist offset {self.pre_pick_wrist_rotate_deg:.2f} deg "
                 "would exceed joint limits"
+            )
+        if not self._is_conf_within_pick_j6_window(conf):
+            raise ValueError(
+                f"pre-pick wrist offset would move J6 outside observation +/-"
+                f"{self.pick_j6_max_deviation_deg:.2f} deg"
             )
         return conf
 
@@ -961,7 +1099,7 @@ class RealmanPepperPickerFast:
         bound_lower=-180,
         bound_upper=180,
         grad=5,
-        viewpoint_joint=np.array([-1.5436739 ,  0.04488987, -2.4986832 ,  2.39069974,  1.56926048,-0.47572439]),
+        viewpoint_joint=np.array([-1.61922924,  0.18217746, -2.57479687,  2.32219551,  1.68335257,    2.58268595]),
         continuous_mode=True,
         stop_on_no_detection=True,
         control_frequency=1,
@@ -1022,6 +1160,15 @@ class RealmanPepperPickerFast:
             self._record_timing("phase1_move_view", time.time() - _t0, "already at viewpoint")
             print("当前已经位于观察位。")
 
+        # The viewpoint J6 is the reference for every subsequent picking motion.
+        # The unrestricted move to the viewpoint has already completed above.
+        self._pick_j6_reference_rad = float(np.asarray(viewpoint_joint)[WRIST_JOINT_INDEX])
+        print(
+            "[J6] 采摘阶段限制：观察位 J6="
+            f"{np.degrees(self._pick_j6_reference_rad):.2f} deg，允许偏移 "
+            f"+/-{self.pick_j6_max_deviation_deg:.2f} deg"
+        )
+
         claw_controller = self.claw_controller
 
         pick_count = 0
@@ -1068,6 +1215,8 @@ class RealmanPepperPickerFast:
             final_linear_path = None
             final_approach_path = None
             ik_seed_conf = _get_current_joint_values()
+            # Use the actual post-viewpoint state as both the IK seed and RRT start.
+            start_conf = np.asarray(ik_seed_conf, dtype=float).copy()
 
             try:
                 cur_tcp_pos, _ = robot.fk(ik_seed_conf, update=False)
@@ -1099,9 +1248,17 @@ class RealmanPepperPickerFast:
                     phase3_ik_time += time.time() - _t_ik
                     print(f"[IK][fail] dir={hand_dir_name} theta={theta} grasp")
                     continue
+                grasp_conf = self._align_j6_to_pick_reference(grasp_conf)
                 if not self._is_conf_within_joint_margin(grasp_conf):
                     phase3_ik_time += time.time() - _t_ik
                     print(f"[LIMIT][skip] dir={hand_dir_name} theta={theta} grasp near joint limit")
+                    continue
+                if not self._is_conf_within_pick_j6_window(grasp_conf):
+                    phase3_ik_time += time.time() - _t_ik
+                    print(
+                        f"[J6][skip] dir={hand_dir_name} theta={theta} grasp J6="
+                        f"{np.degrees(grasp_conf[WRIST_JOINT_INDEX]):.2f} deg"
+                    )
                     continue
 
                 approach_pos = tgt_pos - hand_z * approach_dis
@@ -1110,9 +1267,17 @@ class RealmanPepperPickerFast:
                     phase3_ik_time += time.time() - _t_ik
                     print(f"[IK][fail] dir={hand_dir_name} theta={theta} approach")
                     continue
+                approach_conf = self._align_j6_to_pick_reference(approach_conf)
                 if not self._is_conf_within_joint_margin(approach_conf):
                     phase3_ik_time += time.time() - _t_ik
                     print(f"[LIMIT][skip] dir={hand_dir_name} theta={theta} approach near joint limit")
+                    continue
+                if not self._is_conf_within_pick_j6_window(approach_conf):
+                    phase3_ik_time += time.time() - _t_ik
+                    print(
+                        f"[J6][skip] dir={hand_dir_name} theta={theta} approach J6="
+                        f"{np.degrees(approach_conf[WRIST_JOINT_INDEX]):.2f} deg"
+                    )
                     continue
 
                 robot.goto_given_conf(grasp_conf)
@@ -1172,6 +1337,13 @@ class RealmanPepperPickerFast:
                 self._record_timing("phase3_path_plan", phase3_plan_time, f"dir={hand_dir_name}, theta={theta}, success")
                 self._record_timing("phase3_total", time.time() - _t0, f"dir={hand_dir_name}, theta={theta}, success")
                 print(f"[IK][success] dir={hand_dir_name} theta={theta}")
+                grasp_j6_deg = np.degrees(grasp_conf[WRIST_JOINT_INDEX])
+                ref_j6_deg = np.degrees(self._pick_j6_reference_rad)
+                print(
+                    f"[J6][success] observation={ref_j6_deg:.2f} deg, "
+                    f"grasp={grasp_j6_deg:.2f} deg, "
+                    f"offset={grasp_j6_deg - ref_j6_deg:+.2f} deg"
+                )
                 print(f"角度 {theta}：IK、碰撞检查、RRT 与直线规划全部通过。")
                 break
 
@@ -1326,8 +1498,9 @@ if __name__ == "__main__":
         real_robot=True,
         defer_init=False,
         use_gripper=False,
-        # use_scissor_cut=True,
-        pre_pick_wrist_rotate_deg=-120,
+        use_scissor_cut=True,
+        pre_pick_wrist_rotate_deg=0,
+        pick_j6_max_deviation_deg=20,
     )
     picker.initialize()
     picker.pick_place_fast(
@@ -1337,6 +1510,6 @@ if __name__ == "__main__":
         grad=5,
         continuous_mode=True,
         stop_on_no_detection=True,
-        control_frequency=1,
+        control_frequency=0.9,
         open_close_retries=3,
     )
