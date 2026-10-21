@@ -1,0 +1,8 @@
+train: F:/WRS/wrs-virtual/0000_examples/pepper/yolo11/VOCdevkit/train/images  # train images (relative to 'path') 128 images
+val: F:/WRS/wrs-virtual/0000_examples/pepper/yolo11/VOCdevkit/val/images  # val images (relative to 'path') 128 images
+test: F:/WRS/wrs-virtual/0000_examples/pepper/yolo11/VOCdevkit/test/images
+
+nc: 2
+
+# Classes
+names: ['pepper','stem']

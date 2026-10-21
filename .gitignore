@@ -92,7 +92,8 @@ Desktop.ini
 /ISAT_with_segment_anything/
 
 # 独立实验
-/0000_examples/
+/0000_examples/*
+!/0000_examples/pepper_nbv_v0/
 
 # 本地安装包，当前采摘源码没有引用
 /JodellTool-*.whl

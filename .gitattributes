@@ -1,0 +1,10 @@
+# Preserve the verified backup bytes across Windows and Linux checkouts.
+/0000_examples/pepper_nbv_v0/** -text -filter -ident
+/0000_examples/pepper_nbv_v1/pepper_nbv/__init__.py -text -filter -ident
+/0000_examples/pepper_nbv_v1/pepper_nbv/paths.py -text -filter -ident
+/0000_examples/pepper_nbv_v1/pepper_nbv/config.py -text -filter -ident
+/0000_examples/pepper_nbv_v1/pepper_nbv/robot_adapter.py -text -filter -ident
+/0000_examples/pepper_nbv_v1/pepper_nbv/scene_config.py -text -filter -ident
+/0000_examples/pepper_nbv_v1/pepper_nbv/scene_models.py -text -filter -ident
+/manual_calibration_realman22.json -text -filter -ident
+/backups/pepper_nbv_v0/** -text -filter -ident
